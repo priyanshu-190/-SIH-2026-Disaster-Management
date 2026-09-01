@@ -1,0 +1,541 @@
+description,incident_type,severity,people_affected,rainfall_mm,nearby_reports,risk_zone,risk_score,incident_type_encoded,severity_encoded,risk_zone_encoded
+a large hillside collapse has damaged nearby houses creating a serious threat to nearby communities.,Landslide,Medium,22,199,20,Low,40,5,2,1
+a major building fire has destroyed residential property and firefighters require immediate assistance.,Urban Fire,Critical,20,63,14,High,85,8,0,0
+a large fire in dry forest land is burning through dry vegetation with visibility severely reduced by smoke.,Forest Fire,Critical,22,41,7,High,97,3,0,0
+severe waterlogging has submerged low lying areas while water levels continue to rise.,Flood,Critical,24,128,7,High,87,2,0,0
+a rapidly spreading city fire has filled buildings with heavy smoke and trapped residents need rescue.,Urban Fire,Medium,2,64,9,Medium,45,8,2,2
+violent storm activity has forced families to leave their homes and additional emergency support is needed.,Cyclone,Medium,1,178,2,Low,42,0,2,1
+a rapidly approaching cyclone has damaged communication infrastructure and emergency evacuation is required.,Cyclone,Medium,11,43,12,Low,35,0,2,1
+a major landslide has blocked access to residential areas while residents remain stranded.,Landslide,High,5,61,10,Medium,72,5,1,2
+flood water has isolated the local community and rescue teams are needed.,Flood,High,7,186,2,High,66,2,1,0
+flames inside the forest is moving toward populated regions creating a serious danger to nearby communities.,Forest Fire,High,28,38,4,High,77,3,1,0
+a major earthquake has created large cracks in walls and immediate structural assessment is required.,Earthquake,Critical,4,64,9,High,88,1,0,0
+a lightning strike has struck a residential building as additional lightning activity is reported.,Lightning,Critical,9,2,10,High,89,6,0,0
+rising river water has reached nearby schools and rescue teams are needed.,Flood,Critical,6,25,19,High,87,2,0,0
+a large market fire has destroyed residential property with emergency responders at the scene.,Urban Fire,Medium,0,8,2,Low,52,8,2,1
+a lightning strike has disrupted electrical equipment creating a serious safety risk.,Lightning,High,27,44,14,High,73,6,1,0
+repeated lightning activity has caused a medical emergency and emergency responders are needed.,Lightning,High,6,24,13,Medium,82,6,1,2
+a seriously injured person requires emergency evacuation with medical assistance urgently required.,Medical Emergency,High,24,76,18,High,81,7,1,0
+severe waterlogging has disrupted transportation and rescue teams are needed.,Flood,High,7,71,14,Medium,76,2,1,2
+a large fire in dry forest land has forced residents to prepare for evacuation with visibility severely reduced by smoke.,Forest Fire,Medium,13,48,14,Medium,37,3,2,2
+unstable hillside material has damaged local infrastructure with transportation completely disrupted.,Landslide,Medium,23,142,16,Low,48,5,2,1
+a commercial building fire has trapped people inside a building and trapped residents need rescue.,Urban Fire,Critical,24,13,3,High,99,8,0,0
+a large fire in dry forest land has affected a large forest area with visibility severely reduced by smoke.,Forest Fire,Critical,6,75,11,High,98,3,0,0
+repeated lightning activity has damaged electrical infrastructure as additional lightning activity is reported.,Lightning,High,2,55,6,Medium,69,6,1,2
+a large hillside collapse has buried part of the mountain road creating a serious threat to nearby communities.,Landslide,Critical,17,175,16,High,91,5,0,0
+a large hillside collapse has buried sections of the roadway and emergency clearance is needed.,Landslide,Critical,10,45,20,High,90,5,0,0
+rapidly rising water levels has blocked the main access road and rescue teams are needed.,Flood,Medium,13,20,16,Medium,64,2,2,2
+severe heat conditions is affecting outdoor workers and vulnerable residents need support.,Heatwave,Medium,10,70,1,Low,35,4,2,1
+a powerful electrical discharge has damaged electrical infrastructure as additional lightning activity is reported.,Lightning,Critical,25,24,4,High,85,6,0,0
+severe heat conditions is causing heat exhaustion and emergency medical teams are being requested.,Heatwave,Critical,5,68,17,High,85,4,0,0
+a powerful earthquake has damaged residential structures with people potentially trapped under debris.,Earthquake,Medium,21,54,17,Medium,50,1,2,2
+a major landslide has completely blocked the highway and rescue teams are required.,Landslide,High,22,55,15,High,79,5,1,0
+several injured residents needs critical medical attention with emergency medical support required.,Medical Emergency,Critical,16,58,17,High,99,7,0,0
+a rapidly spreading wildfire is producing heavy smoke and firefighters require additional support.,Forest Fire,High,28,6,1,Medium,68,3,1,2
+a major building fire is spreading through a residential area and emergency evacuation is required.,Urban Fire,Critical,20,49,9,High,88,8,0,0
+strong seismic shaking has created large cracks in walls while aftershocks remain possible.,Earthquake,Medium,0,50,8,Medium,61,1,2,2
+extreme storm conditions has blocked several roads as the storm continues to intensify.,Cyclone,Medium,20,172,0,Low,36,0,2,1
+heavy rainfall has submerged low lying areas and residents are requesting immediate assistance.,Flood,High,24,117,8,Medium,78,2,1,2
+a commercial building fire has destroyed residential property with emergency responders at the scene.,Urban Fire,Medium,26,71,18,Low,46,8,2,1
+rapidly rising water levels has disrupted transportation and rescue teams are needed.,Flood,High,25,168,19,Medium,75,2,1,2
+flames inside the forest has affected a large forest area creating a serious danger to nearby communities.,Forest Fire,High,10,70,18,Medium,69,3,1,2
+prolonged hot weather is causing serious illness among residents creating a serious public safety concern.,Heatwave,Medium,10,67,7,Medium,40,4,2,2
+dangerously high temperatures is causing people to collapse and medical assistance is required.,Heatwave,Critical,3,50,6,High,92,4,0,0
+a strong seismic event has damaged residential structures with people potentially trapped under debris.,Earthquake,Medium,28,63,14,Low,38,1,2,1
+severe earthquake tremors has destroyed several homes while aftershocks remain possible.,Earthquake,Critical,25,75,17,High,88,1,0,0
+overflowing water has isolated the local community and residents are requesting immediate assistance.,Flood,Medium,27,51,9,Low,51,2,2,1
+a rapidly approaching cyclone has caused widespread property damage and residents need immediate shelter.,Cyclone,Critical,4,164,6,High,86,0,0,0
+severe cyclone winds has knocked down electricity poles while dangerous winds continue.,Cyclone,Medium,22,103,12,Low,54,0,2,1
+a strong seismic event has damaged roads and bridges and injured residents require assistance.,Earthquake,Medium,1,9,1,Medium,59,1,2,2
+heavy rainfall has blocked the main access road with several people unable to leave.,Flood,Medium,17,172,10,Low,59,2,2,1
+an unconscious patient needs critical medical attention while the patient's condition remains serious.,Medical Emergency,High,5,7,9,Medium,71,7,1,2
+a strong seismic event has left multiple buildings unsafe and emergency response operations are underway.,Earthquake,High,30,48,16,Medium,75,1,1,2
+heavy rainfall triggered debris has covered the road with debris and rescue teams are required.,Landslide,Medium,8,83,3,Medium,35,5,2,2
+overflowing water has surrounded several families and rescue teams are needed.,Flood,Critical,23,141,14,High,89,2,0,0
+falling rocks and soil has created dangerous conditions for travelers with transportation completely disrupted.,Landslide,Critical,24,185,11,High,90,5,0,0
+multiple accident victims needs an emergency ambulance creating a critical situation.,Medical Emergency,High,15,50,5,Medium,65,7,1,2
+strong seismic shaking has damaged roads and bridges and immediate structural assessment is required.,Earthquake,High,21,77,19,High,66,1,1,0
+severe cyclone winds has blocked several roads and residents need immediate shelter.,Cyclone,Medium,13,49,4,Medium,36,0,2,2
+unstable hillside material has damaged nearby houses creating a serious threat to nearby communities.,Landslide,Medium,23,105,4,Low,36,5,2,1
+a person with a critical injury requires emergency evacuation with medical assistance urgently required.,Medical Emergency,Critical,13,37,12,High,87,7,0,0
+flood water has blocked the main access road with several people unable to leave.,Flood,High,28,30,11,High,71,2,1,0
+intense ground movement has caused widespread structural damage while aftershocks remain possible.,Earthquake,Critical,22,77,6,High,91,1,0,0
+a rapidly spreading wildfire has damaged forest infrastructure and evacuation may become necessary.,Forest Fire,Critical,18,28,16,High,95,3,0,0
+strong seismic shaking has affected hospitals and public buildings creating a serious threat to residents.,Earthquake,Medium,27,44,3,Low,40,1,2,1
+a major landslide has isolated a village and immediate assistance is requested.,Landslide,High,23,24,11,Medium,67,5,1,2
+a rapidly approaching cyclone has forced families to leave their homes with rescue teams being deployed.,Cyclone,Medium,6,178,8,Medium,56,0,2,2
+severe lightning activity has struck a residential building and emergency responders are needed.,Lightning,Critical,5,35,12,High,87,6,0,0
+a commercial building fire has damaged commercial infrastructure and trapped residents need rescue.,Urban Fire,Critical,3,8,15,High,93,8,0,0
+lightning during a major storm has caused serious injuries with medical teams being requested.,Lightning,High,6,31,2,Medium,76,6,1,2
+heavy rainfall triggered debris has trapped several vehicles while residents remain stranded.,Landslide,High,16,193,5,High,65,5,1,0
+extreme storm conditions has forced families to leave their homes and emergency evacuation is required.,Cyclone,Critical,4,158,8,High,97,0,0,0
+a powerful earthquake has caused widespread structural damage and rescue teams are urgently needed.,Earthquake,High,9,35,1,High,82,1,1,0
+extreme storm conditions has damaged communication infrastructure while dangerous winds continue.,Cyclone,High,20,45,15,Medium,84,0,1,2
+a sudden mountain slope collapse has trapped several vehicles and immediate assistance is requested.,Landslide,Medium,17,94,9,Medium,62,5,2,2
+a large hillside collapse has isolated a village and immediate assistance is requested.,Landslide,High,16,34,3,High,81,5,1,0
+heavy rainfall has blocked the main access road making the area inaccessible.,Flood,Critical,20,196,0,High,99,2,0,0
+a strong seismic event has left multiple buildings unsafe creating a serious threat to residents.,Earthquake,Medium,16,32,11,Low,43,1,2,1
+unstable hillside material has blocked access to residential areas and immediate assistance is requested.,Landslide,Critical,14,64,14,High,86,5,0,0
+a severe medical emergency has been injured in an accident while the patient's condition remains serious.,Medical Emergency,High,16,55,4,Medium,69,7,1,2
+a major landslide has blocked access to residential areas with transportation completely disrupted.,Landslide,High,19,129,5,Medium,79,5,1,2
+flames inside the forest has damaged forest infrastructure and firefighters require additional support.,Forest Fire,High,21,62,13,Medium,79,3,1,2
+a major building fire has filled buildings with heavy smoke and trapped residents need rescue.,Urban Fire,High,13,26,13,Medium,76,8,1,2
+a severe heatwave has affected elderly people creating a serious public safety concern.,Heatwave,Medium,2,23,5,Medium,58,4,2,2
+a rapidly spreading city fire has damaged several shops and trapped residents need rescue.,Urban Fire,Critical,27,66,9,High,88,8,0,0
+severe cyclone winds has damaged residential roofs while dangerous winds continue.,Cyclone,High,29,169,4,Medium,72,0,1,2
+severe cyclone winds has affected multiple villages as the storm continues to intensify.,Cyclone,High,24,57,19,Medium,65,0,1,2
+a lightning strike has caused a medical emergency and injured people need immediate treatment.,Lightning,High,29,8,2,Medium,77,6,1,2
+strong seismic shaking has damaged residential structures with people potentially trapped under debris.,Earthquake,Critical,26,70,16,High,88,1,0,0
+heavy rainfall triggered debris has damaged nearby houses and immediate assistance is requested.,Landslide,Critical,1,71,1,High,90,5,0,0
+extreme storm conditions has affected multiple villages and emergency evacuation is required.,Cyclone,Critical,23,43,13,High,86,0,0,0
+a large fire in dry forest land is producing heavy smoke as strong winds continue to push the flames.,Forest Fire,Medium,12,62,4,Low,53,3,2,1
+severe lightning activity has affected people outdoors and injured people need immediate treatment.,Lightning,High,20,15,0,Medium,72,6,1,2
+a powerful electrical discharge has injured people in the area and emergency medical assistance is required.,Lightning,Critical,14,6,11,High,96,6,0,0
+a powerful coastal cyclone has uprooted large trees while dangerous winds continue.,Cyclone,High,1,196,11,Medium,71,0,1,2
+a severe medical emergency needs an emergency ambulance and an ambulance is needed immediately.,Medical Emergency,Critical,30,79,4,High,98,7,0,0
+rapidly rising water levels has disrupted transportation with several people unable to leave.,Flood,Medium,4,69,13,Low,56,2,2,1
+flames inside the forest is spreading toward nearby villages as strong winds continue to push the flames.,Forest Fire,High,22,37,9,Medium,83,3,1,2
+violent storm activity has affected multiple villages and residents need immediate shelter.,Cyclone,Medium,4,39,15,Low,60,0,2,1
+extreme heat is causing people to collapse and medical assistance is required.,Heatwave,Critical,16,13,0,High,91,4,0,0
+severe heat conditions is causing heat exhaustion while temperatures remain extremely high.,Heatwave,Critical,1,7,6,High,89,4,0,0
+extreme storm conditions has damaged communication infrastructure and residents need immediate shelter.,Cyclone,Medium,20,161,6,Low,48,0,2,1
+rapidly rising water levels has affected the village market and residents are requesting immediate assistance.,Flood,Medium,29,105,13,Medium,60,2,2,2
+a wildfire driven by strong winds is threatening nearby homes and evacuation may become necessary.,Forest Fire,Medium,3,0,6,Medium,50,3,2,2
+unstable hillside material has blocked access to residential areas creating a serious threat to nearby communities.,Landslide,Medium,21,132,1,Medium,39,5,2,2
+extreme daytime temperatures is creating dangerous conditions outdoors creating a serious public safety concern.,Heatwave,High,21,15,17,High,65,4,1,0
+rising river water has blocked the main access road and emergency evacuation is required.,Flood,High,10,158,2,High,69,2,1,0
+a major landslide has buried sections of the roadway with transportation completely disrupted.,Landslide,Critical,2,103,9,High,89,5,0,0
+overflowing water has blocked the main access road and rescue teams are needed.,Flood,Critical,12,197,4,High,96,2,0,0
+an unconscious patient needs immediate first response and immediate treatment is necessary.,Medical Emergency,High,9,56,20,High,73,7,1,0
+severe lightning activity has damaged a nearby structure while severe weather continues.,Lightning,Medium,20,11,6,Medium,49,6,2,2
+a fire inside a crowded neighborhood has forced residents to evacuate and firefighters require immediate assistance.,Urban Fire,Critical,16,54,15,High,93,8,0,0
+a major building fire has trapped people inside a building and trapped residents need rescue.,Urban Fire,Critical,17,33,7,High,89,8,0,0
+an unconscious patient has suffered a sudden health crisis with emergency medical support required.,Medical Emergency,High,16,28,4,Medium,66,7,1,2
+several injured residents has been injured in an accident creating a critical situation.,Medical Emergency,Critical,10,50,4,High,86,7,0,0
+a powerful coastal cyclone has uprooted large trees with rescue teams being deployed.,Cyclone,High,0,164,1,Medium,84,0,1,2
+violent storm activity has blocked several roads and additional emergency support is needed.,Cyclone,High,14,112,16,High,83,0,1,0
+a large fire in dry forest land is threatening nearby homes and evacuation may become necessary.,Forest Fire,Critical,23,13,3,High,90,3,0,0
+extreme heat is causing serious illness among residents as dangerous heat continues.,Heatwave,Medium,23,52,3,Medium,43,4,2,2
+a large forest fire is producing heavy smoke with visibility severely reduced by smoke.,Forest Fire,Critical,7,11,13,High,86,3,0,0
+multiple accident victims requires emergency evacuation while the patient's condition remains serious.,Medical Emergency,Medium,3,57,14,Medium,61,7,2,2
+a large forest fire has forced residents to prepare for evacuation while the fire continues to spread.,Forest Fire,High,18,0,2,Medium,79,3,1,2
+dangerously high temperatures is causing people to collapse creating a serious public safety concern.,Heatwave,Medium,26,29,8,Low,48,4,2,1
+dangerously high temperatures is causing people to collapse with residents advised to seek shelter.,Heatwave,Medium,23,68,9,Low,63,4,2,1
+extreme daytime temperatures has affected elderly people while temperatures remain extremely high.,Heatwave,Critical,6,79,9,High,95,4,0,0
+severe earthquake tremors has collapsed several buildings and injured residents require assistance.,Earthquake,High,17,74,18,Medium,78,1,1,2
+strong seismic shaking has left multiple buildings unsafe and rescue teams are urgently needed.,Earthquake,Medium,26,31,15,Low,52,1,2,1
+a person with a critical injury needs immediate first response creating a critical situation.,Medical Emergency,Medium,30,73,19,Medium,52,7,2,2
+prolonged hot weather has increased hospital admissions and medical assistance is required.,Heatwave,High,25,38,19,Medium,67,4,1,2
+a lightning strike has caused serious injuries while severe weather continues.,Lightning,Critical,2,43,5,High,99,6,0,0
+a commercial building fire is spreading between nearby buildings and emergency evacuation is required.,Urban Fire,Medium,22,29,10,Low,48,8,2,1
+a large market fire has destroyed residential property while smoke continues to spread.,Urban Fire,Critical,0,50,16,High,97,8,0,0
+strong seismic shaking has caused widespread structural damage while aftershocks remain possible.,Earthquake,High,6,42,9,High,65,1,1,0
+flood water has damaged roads and buildings making the area inaccessible.,Flood,Medium,13,103,12,Low,57,2,2,1
+several injured residents needs an emergency ambulance while the patient's condition remains serious.,Medical Emergency,Critical,13,1,8,High,91,7,0,0
+a powerful earthquake has collapsed several buildings and emergency response operations are underway.,Earthquake,High,14,69,13,Medium,82,1,1,2
+intense ground movement has destroyed several homes and rescue teams are urgently needed.,Earthquake,High,0,64,13,High,70,1,1,0
+a fire inside a crowded neighborhood is threatening nearby homes while smoke continues to spread.,Urban Fire,Critical,15,40,11,High,88,8,0,0
+severe cyclone winds has knocked down electricity poles and additional emergency support is needed.,Cyclone,Critical,10,175,4,High,86,0,0,0
+severe waterlogging has submerged low lying areas with several people unable to leave.,Flood,High,28,169,0,Medium,83,2,1,2
+violent storm activity has knocked down electricity poles and residents need immediate shelter.,Cyclone,High,6,51,14,High,67,0,1,0
+violent storm activity has uprooted large trees and emergency evacuation is required.,Cyclone,Medium,13,154,3,Medium,58,0,2,2
+strong seismic shaking has left multiple buildings unsafe while aftershocks remain possible.,Earthquake,Critical,17,41,9,High,91,1,0,0
+severe waterlogging has trapped residents inside their homes creating a serious threat to residents.,Flood,Medium,26,157,10,Medium,35,2,2,2
+extreme storm conditions has blocked several roads with rescue teams being deployed.,Cyclone,High,30,80,11,Medium,68,0,1,2
+flood water has trapped residents inside their homes and rescue teams are needed.,Flood,Critical,26,80,9,High,88,2,0,0
+severe lightning activity has struck an open area and injured people need immediate treatment.,Lightning,High,28,4,16,High,83,6,1,0
+heavy rainfall triggered debris has isolated a village while residents remain stranded.,Landslide,Critical,13,33,12,High,93,5,0,0
+heavy rainfall has reached nearby schools while water levels continue to rise.,Flood,Critical,28,125,0,High,87,2,0,0
+a large fire in dry forest land has damaged forest infrastructure while the fire continues to spread.,Forest Fire,High,8,44,2,High,79,3,1,0
+dangerously high temperatures is affecting vulnerable populations with residents advised to seek shelter.,Heatwave,Medium,10,4,2,Medium,37,4,2,2
+a large forest fire is burning through dry vegetation with visibility severely reduced by smoke.,Forest Fire,High,25,17,7,High,73,3,1,0
+severe earthquake tremors has created large cracks in walls and rescue teams are urgently needed.,Earthquake,Critical,28,65,14,High,97,1,0,0
+a powerful coastal cyclone has blocked several roads and residents need immediate shelter.,Cyclone,High,25,49,14,High,67,0,1,0
+severe earthquake tremors has created large cracks in walls and emergency response operations are underway.,Earthquake,High,29,26,11,Medium,75,1,1,2
+lightning during a major storm has struck a residential building while severe weather continues.,Lightning,High,23,62,16,High,76,6,1,0
+multiple accident victims needs an emergency ambulance while the patient's condition remains serious.,Medical Emergency,Medium,10,61,5,Medium,50,7,2,2
+prolonged hot weather has increased hospital admissions and vulnerable residents need support.,Heatwave,High,26,37,17,Medium,81,4,1,2
+a sudden mountain slope collapse has covered the road with debris while residents remain stranded.,Landslide,High,23,132,12,High,75,5,1,0
+violent storm activity has disrupted electricity supply and residents need immediate shelter.,Cyclone,Medium,8,137,8,Medium,56,0,2,2
+prolonged hot weather is causing people to collapse creating a serious public safety concern.,Heatwave,Critical,19,56,7,High,99,4,0,0
+dangerously high temperatures is creating dangerous conditions outdoors while temperatures remain extremely high.,Heatwave,High,29,16,20,Medium,70,4,1,2
+extreme daytime temperatures is causing serious illness among residents and vulnerable residents need support.,Heatwave,Medium,28,41,12,Medium,64,4,2,2
+a severe medical emergency has suffered a sudden health crisis while the patient's condition remains serious.,Medical Emergency,Medium,24,80,12,Low,36,7,2,1
+multiple lightning strikes has caused a medical emergency while severe weather continues.,Lightning,High,5,33,2,High,74,6,1,0
+a seriously injured person requires emergency evacuation and an ambulance is needed immediately.,Medical Emergency,Medium,11,45,20,Medium,44,7,2,2
+a major building fire has damaged commercial infrastructure and firefighters require immediate assistance.,Urban Fire,High,30,58,14,High,83,8,1,0
+a severe heatwave has increased hospital admissions with residents advised to seek shelter.,Heatwave,Medium,15,65,5,Medium,57,4,2,2
+unstable hillside material has completely blocked the highway as additional debris continues to fall.,Landslide,Medium,4,94,13,Low,35,5,2,1
+a major vegetation fire has reached the forest boundary and firefighters require additional support.,Forest Fire,Critical,28,38,5,High,98,3,0,0
+unstable hillside material has damaged local infrastructure creating a serious threat to nearby communities.,Landslide,Medium,4,155,11,Low,47,5,2,1
+a major vegetation fire has affected a large forest area creating a serious danger to nearby communities.,Forest Fire,Critical,0,17,0,High,87,3,0,0
+an unconscious patient needs an emergency ambulance creating a critical situation.,Medical Emergency,High,13,15,7,High,84,7,1,0
+strong seismic shaking has collapsed several buildings while aftershocks remain possible.,Earthquake,High,23,77,11,Medium,78,1,1,2
+a residential fire has destroyed residential property and emergency evacuation is required.,Urban Fire,High,19,66,9,High,84,8,1,0
+heavy rainfall has submerged low lying areas making the area inaccessible.,Flood,Critical,26,183,8,High,97,2,0,0
+dangerously high temperatures has resulted in medical emergencies and vulnerable residents need support.,Heatwave,Medium,26,9,4,Low,35,4,2,1
+rising river water has affected the village market making the area inaccessible.,Flood,Medium,22,118,15,Medium,47,2,2,2
+severe heat conditions is causing serious illness among residents and emergency medical teams are being requested.,Heatwave,High,20,51,13,High,75,4,1,0
+strong coastal winds has knocked down electricity poles and residents need immediate shelter.,Cyclone,High,20,27,1,Medium,80,0,1,2
+a rapidly spreading city fire has filled buildings with heavy smoke while smoke continues to spread.,Urban Fire,High,28,56,11,Medium,83,8,1,2
+a sudden mountain slope collapse has completely blocked the highway and rescue teams are required.,Landslide,Critical,23,188,20,High,86,5,0,0
+severe cyclone winds has affected multiple villages with rescue teams being deployed.,Cyclone,Medium,27,117,19,Medium,56,0,2,2
+a rapidly approaching cyclone has damaged communication infrastructure and additional emergency support is needed.,Cyclone,High,28,93,17,High,70,0,1,0
+overflowing water has submerged low lying areas and emergency evacuation is required.,Flood,High,10,191,12,Medium,70,2,1,2
+flames inside the forest has affected a large forest area and evacuation may become necessary.,Forest Fire,Medium,23,19,13,Low,54,3,2,1
+extreme heat is causing dehydration among residents creating a serious public safety concern.,Heatwave,Medium,22,47,18,Medium,52,4,2,2
+severe waterlogging has entered residential houses creating a serious threat to residents.,Flood,High,12,103,6,Medium,79,2,1,2
+heavy rainfall triggered debris has isolated a village and rescue teams are required.,Landslide,Medium,29,145,6,Medium,38,5,2,2
+severe earthquake tremors has damaged roads and bridges with people potentially trapped under debris.,Earthquake,High,22,8,17,High,66,1,1,0
+severe lightning activity has injured several residents as additional lightning activity is reported.,Lightning,Critical,24,67,18,High,85,6,0,0
+lightning during a major storm has injured several residents while severe weather continues.,Lightning,Critical,6,25,1,High,88,6,0,0
+severe heat conditions is causing people to collapse and medical assistance is required.,Heatwave,Medium,5,53,17,Low,52,4,2,1
+intense ground movement has caused widespread structural damage and immediate structural assessment is required.,Earthquake,Medium,6,74,2,Low,36,1,2,1
+prolonged hot weather is affecting vulnerable populations and vulnerable residents need support.,Heatwave,Critical,27,58,10,High,93,4,0,0
+a strong seismic event has left multiple buildings unsafe and injured residents require assistance.,Earthquake,Critical,9,18,16,High,88,1,0,0
+a fire inside a crowded neighborhood has trapped people inside a building creating a serious danger to nearby people.,Urban Fire,High,30,78,10,High,76,8,1,0
+strong seismic shaking has caused major infrastructure damage and injured residents require assistance.,Earthquake,Critical,14,76,1,High,88,1,0,0
+severe lightning activity has injured several residents with medical teams being requested.,Lightning,Critical,30,57,5,High,87,6,0,0
+strong coastal winds has affected multiple villages creating a serious threat to coastal residents.,Cyclone,Critical,8,143,9,High,96,0,0,0
+repeated lightning activity has affected people outdoors while severe weather continues.,Lightning,Medium,10,35,16,Medium,49,6,2,2
+a severe heatwave has affected elderly people with residents advised to seek shelter.,Heatwave,High,25,73,17,High,76,4,1,0
+a sudden mountain slope collapse has buried sections of the roadway and emergency clearance is needed.,Landslide,Medium,20,170,5,Medium,59,5,2,2
+rapidly rising water levels has entered residential houses with several people unable to leave.,Flood,Critical,7,26,6,High,91,2,0,0
+intense ground movement has created large cracks in walls while aftershocks remain possible.,Earthquake,High,17,45,9,Medium,73,1,1,2
+an unconscious patient requires emergency evacuation with medical assistance urgently required.,Medical Emergency,High,7,73,4,Medium,78,7,1,2
+repeated lightning activity has disrupted electrical equipment and emergency medical assistance is required.,Lightning,Medium,7,26,8,Low,55,6,2,1
+a major landslide has trapped several vehicles and emergency clearance is needed.,Landslide,Medium,2,154,11,Medium,37,5,2,2
+intense ground movement has caused widespread structural damage and rescue teams are urgently needed.,Earthquake,Medium,14,67,11,Medium,37,1,2,2
+lightning during a major storm has disrupted electrical equipment and emergency medical assistance is required.,Lightning,High,0,43,9,Medium,74,6,1,2
+violent storm activity has damaged coastal buildings with rescue teams being deployed.,Cyclone,High,16,174,13,High,68,0,1,0
+an unconscious patient has been injured in an accident and emergency responders are being requested.,Medical Emergency,Medium,19,67,7,Medium,42,7,2,2
+an unconscious patient needs immediate first response and an ambulance is needed immediately.,Medical Emergency,Medium,20,38,1,Low,58,7,2,1
+heavy rainfall has damaged roads and buildings and residents are requesting immediate assistance.,Flood,Critical,27,138,5,High,85,2,0,0
+a powerful electrical discharge has damaged a nearby structure and emergency medical assistance is required.,Lightning,High,27,12,7,Medium,69,6,1,2
+a wildfire driven by strong winds has forced residents to prepare for evacuation as strong winds continue to push the flames.,Forest Fire,Critical,3,20,14,High,92,3,0,0
+extreme heat is causing heat exhaustion while temperatures remain extremely high.,Heatwave,Critical,11,28,6,High,95,4,0,0
+a powerful earthquake has created large cracks in walls while aftershocks remain possible.,Earthquake,Critical,27,28,9,High,98,1,0,0
+dangerously high temperatures is causing serious illness among residents while temperatures remain extremely high.,Heatwave,Critical,5,74,8,High,85,4,0,0
+a fire inside a crowded neighborhood has damaged commercial infrastructure and firefighters require immediate assistance.,Urban Fire,Critical,3,33,19,High,87,8,0,0
+severe waterlogging has damaged roads and buildings and rescue teams are needed.,Flood,Medium,26,149,13,Low,61,2,2,1
+a large market fire is threatening nearby homes creating a serious danger to nearby people.,Urban Fire,Critical,5,53,15,High,87,8,0,0
+a strong seismic event has caused widespread structural damage and immediate structural assessment is required.,Earthquake,Critical,7,58,11,High,87,1,0,0
+a rapidly spreading wildfire has affected a large forest area and firefighters require additional support.,Forest Fire,Critical,17,76,19,High,96,3,0,0
+a major vegetation fire is becoming difficult to control with visibility severely reduced by smoke.,Forest Fire,Medium,16,14,18,Low,38,3,2,1
+severe earthquake tremors has affected hospitals and public buildings and rescue teams are urgently needed.,Earthquake,Critical,14,16,16,High,91,1,0,0
+a powerful earthquake has damaged roads and bridges while aftershocks remain possible.,Earthquake,Critical,23,45,5,High,87,1,0,0
+a commercial building fire is spreading through a residential area and emergency evacuation is required.,Urban Fire,Medium,18,68,5,Low,59,8,2,1
+heavy rainfall has affected the village market making the area inaccessible.,Flood,High,7,89,13,High,80,2,1,0
+heavy rainfall has entered residential houses with several people unable to leave.,Flood,Medium,15,180,7,Low,43,2,2,1
+a severe medical emergency requires urgent hospitalization and emergency responders are being requested.,Medical Emergency,High,5,44,19,High,79,7,1,0
+a large hillside collapse has buried sections of the roadway as additional debris continues to fall.,Landslide,Critical,4,29,9,High,99,5,0,0
+intense ground movement has caused major infrastructure damage and immediate structural assessment is required.,Earthquake,Medium,18,40,18,Low,54,1,2,1
+a rapidly spreading city fire has destroyed residential property and trapped residents need rescue.,Urban Fire,Medium,17,1,8,Low,42,8,2,1
+a large market fire has trapped people inside a building creating a serious danger to nearby people.,Urban Fire,Critical,12,43,2,High,93,8,0,0
+extreme storm conditions has affected multiple villages and additional emergency support is needed.,Cyclone,High,21,47,15,High,79,0,1,0
+multiple lightning strikes has injured several residents and emergency responders are needed.,Lightning,High,20,62,18,Medium,84,6,1,2
+a severe heatwave is causing people to collapse with residents advised to seek shelter.,Heatwave,Medium,3,45,17,Low,50,4,2,1
+flood water has isolated the local community making the area inaccessible.,Flood,High,18,164,0,Medium,67,2,1,2
+a large fire in dry forest land is burning through dry vegetation and evacuation may become necessary.,Forest Fire,High,26,27,15,Medium,73,3,1,2
+flames inside the forest is producing heavy smoke creating a serious danger to nearby communities.,Forest Fire,High,0,1,10,Medium,68,3,1,2
+a major earthquake has caused widespread structural damage while aftershocks remain possible.,Earthquake,Critical,6,8,3,High,94,1,0,0
+a major vegetation fire is threatening nearby homes with visibility severely reduced by smoke.,Forest Fire,Medium,19,80,13,Medium,40,3,2,2
+a large fire in dry forest land is burning through dry vegetation as strong winds continue to push the flames.,Forest Fire,Medium,21,18,2,Medium,51,3,2,2
+repeated lightning activity has struck an open area and injured people need immediate treatment.,Lightning,Critical,8,47,14,High,93,6,0,0
+a wildfire driven by strong winds is threatening nearby homes as strong winds continue to push the flames.,Forest Fire,Medium,9,3,9,Medium,41,3,2,2
+a large hillside collapse has blocked access to residential areas as additional debris continues to fall.,Landslide,High,27,140,1,Medium,77,5,1,2
+lightning during a major storm has damaged electrical infrastructure and injured people need immediate treatment.,Lightning,High,1,20,18,High,71,6,1,0
+a powerful coastal cyclone has damaged residential roofs and additional emergency support is needed.,Cyclone,Medium,9,199,9,Low,35,0,2,1
+a residential fire has damaged commercial infrastructure as the fire continues to grow.,Urban Fire,Medium,7,78,5,Medium,56,8,2,2
+a lightning strike has struck an open area and injured people need immediate treatment.,Lightning,High,25,50,15,Medium,80,6,1,2
+an unconscious patient has been injured in an accident creating a critical situation.,Medical Emergency,Critical,30,71,8,High,88,7,0,0
+a fire inside a crowded neighborhood has damaged commercial infrastructure with emergency responders at the scene.,Urban Fire,Medium,8,10,6,Low,40,8,2,1
+dangerously high temperatures is affecting outdoor workers as dangerous heat continues.,Heatwave,Medium,20,71,12,Low,42,4,2,1
+a powerful earthquake has collapsed several buildings while aftershocks remain possible.,Earthquake,Critical,18,28,4,High,85,1,0,0
+a sudden mountain slope collapse has buried sections of the roadway with transportation completely disrupted.,Landslide,Critical,24,93,7,High,89,5,0,0
+a commercial building fire has destroyed residential property creating a serious danger to nearby people.,Urban Fire,High,19,36,14,High,69,8,1,0
+a commercial building fire has damaged several shops with emergency responders at the scene.,Urban Fire,Medium,14,48,18,Medium,50,8,2,2
+falling rocks and soil has covered the road with debris with transportation completely disrupted.,Landslide,Medium,15,181,5,Medium,60,5,2,2
+a severe heatwave is causing dehydration among residents and medical assistance is required.,Heatwave,High,10,46,9,Medium,71,4,1,2
+a residential fire has forced residents to evacuate while smoke continues to spread.,Urban Fire,High,11,50,12,High,83,8,1,0
+extreme heat has increased hospital admissions and emergency medical teams are being requested.,Heatwave,Critical,9,32,4,High,98,4,0,0
+rising river water has submerged low lying areas creating a serious threat to residents.,Flood,Critical,14,199,8,High,97,2,0,0
+extreme storm conditions has affected multiple villages and residents need immediate shelter.,Cyclone,High,14,114,17,High,78,0,1,0
+strong seismic shaking has created large cracks in walls creating a serious threat to residents.,Earthquake,High,6,14,1,High,78,1,1,0
+strong coastal winds has caused widespread property damage creating a serious threat to coastal residents.,Cyclone,Medium,28,113,16,Low,51,0,2,1
+a strong seismic event has created large cracks in walls creating a serious threat to residents.,Earthquake,High,1,36,13,High,70,1,1,0
+a rapidly spreading city fire is threatening nearby homes and trapped residents need rescue.,Urban Fire,High,11,46,17,Medium,82,8,1,2
+rising river water has reached nearby schools while water levels continue to rise.,Flood,Medium,13,108,10,Medium,48,2,2,2
+a major landslide has buried part of the mountain road and emergency clearance is needed.,Landslide,Critical,24,185,6,High,89,5,0,0
+a commercial building fire is spreading between nearby buildings and firefighters require immediate assistance.,Urban Fire,Medium,16,68,10,Low,60,8,2,1
+several injured residents needs critical medical attention and immediate treatment is necessary.,Medical Emergency,Critical,10,10,15,High,94,7,0,0
+a rapidly spreading city fire has affected a crowded market as the fire continues to grow.,Urban Fire,High,7,0,5,Medium,67,8,1,2
+a wildfire driven by strong winds has affected a large forest area and emergency teams are responding.,Forest Fire,Critical,18,8,0,High,89,3,0,0
+a large market fire has damaged commercial infrastructure and emergency evacuation is required.,Urban Fire,Medium,8,23,6,Medium,50,8,2,2
+heavy rainfall has blocked the main access road and residents are requesting immediate assistance.,Flood,High,5,199,3,High,77,2,1,0
+a large hillside collapse has created dangerous conditions for travelers and immediate assistance is requested.,Landslide,High,16,119,17,Medium,68,5,1,2
+severe lightning activity has struck a residential building and injured people need immediate treatment.,Lightning,High,11,69,12,Medium,68,6,1,2
+a person with a critical injury needs an emergency ambulance and emergency responders are being requested.,Medical Emergency,High,24,55,10,High,83,7,1,0
+dangerously high temperatures is causing dehydration among residents while temperatures remain extremely high.,Heatwave,Medium,25,65,14,Medium,50,4,2,2
+a person with a critical injury has been injured in an accident creating a critical situation.,Medical Emergency,Critical,17,68,3,High,87,7,0,0
+a powerful earthquake has caused major infrastructure damage creating a serious threat to residents.,Earthquake,Critical,0,67,8,High,93,1,0,0
+a commercial building fire has trapped people inside a building and firefighters require immediate assistance.,Urban Fire,High,0,52,3,High,76,8,1,0
+a rapidly spreading wildfire has damaged forest infrastructure and firefighters require additional support.,Forest Fire,Medium,4,61,2,Low,42,3,2,1
+severe earthquake tremors has affected hospitals and public buildings and injured residents require assistance.,Earthquake,High,0,0,17,Medium,82,1,1,2
+strong coastal winds has uprooted large trees while dangerous winds continue.,Cyclone,High,24,78,19,High,76,0,1,0
+a major vegetation fire is threatening nearby homes while the fire continues to spread.,Forest Fire,Medium,14,69,6,Medium,48,3,2,2
+a rapidly approaching cyclone has affected multiple villages and additional emergency support is needed.,Cyclone,Medium,21,66,5,Medium,40,0,2,2
+a severe heatwave is affecting outdoor workers and medical assistance is required.,Heatwave,Medium,17,40,17,Medium,55,4,2,2
+a large forest fire has reached the forest boundary creating a serious danger to nearby communities.,Forest Fire,Critical,9,4,8,High,88,3,0,0
+a major vegetation fire is producing heavy smoke creating a serious danger to nearby communities.,Forest Fire,Medium,26,46,17,Medium,61,3,2,2
+a large hillside collapse has created dangerous conditions for travelers creating a serious threat to nearby communities.,Landslide,Medium,2,52,10,Medium,55,5,2,2
+an unconscious patient has suffered serious injuries with medical assistance urgently required.,Medical Emergency,Critical,29,56,19,High,92,7,0,0
+several injured residents requires immediate medical treatment with emergency medical support required.,Medical Emergency,Critical,24,7,10,High,90,7,0,0
+extreme storm conditions has forced families to leave their homes creating a serious threat to coastal residents.,Cyclone,Medium,3,136,11,Low,56,0,2,1
+overflowing water has damaged roads and buildings and rescue teams are needed.,Flood,High,5,168,8,High,66,2,1,0
+flames inside the forest is moving toward populated regions and evacuation may become necessary.,Forest Fire,Critical,1,7,12,High,93,3,0,0
+severe earthquake tremors has damaged residential structures creating a serious threat to residents.,Earthquake,Medium,1,51,14,Medium,42,1,2,2
+unstable hillside material has damaged nearby houses with transportation completely disrupted.,Landslide,High,14,194,16,High,76,5,1,0
+dangerously high temperatures is affecting vulnerable populations while temperatures remain extremely high.,Heatwave,Medium,1,45,14,Medium,38,4,2,2
+a seriously injured person has suffered serious injuries while the patient's condition remains serious.,Medical Emergency,Medium,1,40,17,Medium,53,7,2,2
+extreme daytime temperatures is causing dehydration among residents as dangerous heat continues.,Heatwave,Medium,18,5,2,Medium,46,4,2,2
+several injured residents requires urgent hospitalization with emergency medical support required.,Medical Emergency,Medium,24,61,4,Low,51,7,2,1
+prolonged hot weather is affecting vulnerable populations creating a serious public safety concern.,Heatwave,High,1,75,3,Medium,79,4,1,2
+a major vegetation fire is spreading toward nearby villages while the fire continues to spread.,Forest Fire,High,16,35,11,Medium,79,3,1,2
+severe heat conditions is affecting outdoor workers creating a serious public safety concern.,Heatwave,High,12,43,9,High,79,4,1,0
+a major building fire has trapped people inside a building and firefighters require immediate assistance.,Urban Fire,Medium,3,41,11,Low,54,8,2,1
+prolonged hot weather is creating dangerous conditions outdoors and emergency medical teams are being requested.,Heatwave,Medium,23,6,17,Low,64,4,2,1
+a large hillside collapse has covered the road with debris while residents remain stranded.,Landslide,Medium,17,24,20,Medium,51,5,2,2
+a major landslide has created dangerous conditions for travelers and immediate assistance is requested.,Landslide,High,27,32,20,Medium,75,5,1,2
+a large market fire has damaged several shops with emergency responders at the scene.,Urban Fire,Critical,6,31,19,High,90,8,0,0
+flood water has entered residential houses and residents are requesting immediate assistance.,Flood,Medium,3,110,17,Low,63,2,2,1
+severe cyclone winds has uprooted large trees with rescue teams being deployed.,Cyclone,Critical,5,87,1,High,87,0,0,0
+flames inside the forest has affected a large forest area with visibility severely reduced by smoke.,Forest Fire,High,12,14,7,High,80,3,1,0
+heavy rainfall triggered debris has damaged nearby houses as additional debris continues to fall.,Landslide,Medium,30,161,8,Low,39,5,2,1
+a person with a critical injury requires emergency evacuation and an ambulance is needed immediately.,Medical Emergency,High,26,18,0,Medium,75,7,1,2
+rapidly rising water levels has disrupted transportation creating a serious threat to residents.,Flood,High,17,20,9,High,74,2,1,0
+dangerously high temperatures is causing dehydration among residents with residents advised to seek shelter.,Heatwave,Critical,22,37,6,High,97,4,0,0
+a strong seismic event has caused widespread structural damage and rescue teams are urgently needed.,Earthquake,High,17,67,4,High,77,1,1,0
+repeated lightning activity has disrupted electrical equipment and injured people need immediate treatment.,Lightning,Medium,9,10,15,Medium,62,6,2,2
+severe heat conditions is affecting vulnerable populations and vulnerable residents need support.,Heatwave,Medium,13,13,6,Low,52,4,2,1
+multiple lightning strikes has struck an open area while severe weather continues.,Lightning,High,19,57,5,Medium,80,6,1,2
+a strong seismic event has destroyed several homes creating a serious threat to residents.,Earthquake,Critical,16,19,7,High,88,1,0,0
+a seriously injured person has suffered serious injuries and immediate treatment is necessary.,Medical Emergency,Medium,12,29,12,Medium,51,7,2,2
+several injured residents needs an emergency ambulance creating a critical situation.,Medical Emergency,High,19,18,0,High,77,7,1,0
+overflowing water has submerged low lying areas and residents are requesting immediate assistance.,Flood,Medium,22,129,17,Medium,35,2,2,2
+a rapidly approaching cyclone has knocked down electricity poles and additional emergency support is needed.,Cyclone,Medium,28,185,11,Low,36,0,2,1
+a major landslide has isolated a village with transportation completely disrupted.,Landslide,Critical,23,128,2,High,91,5,0,0
+strong coastal winds has forced families to leave their homes with rescue teams being deployed.,Cyclone,Critical,13,106,14,High,91,0,0,0
+extreme daytime temperatures is causing people to collapse creating a serious public safety concern.,Heatwave,Medium,21,6,12,Low,47,4,2,1
+a major building fire is spreading between nearby buildings as the fire continues to grow.,Urban Fire,Medium,30,5,15,Low,46,8,2,1
+a commercial building fire has damaged commercial infrastructure as the fire continues to grow.,Urban Fire,High,7,77,6,Medium,79,8,1,2
+repeated lightning activity has caused a medical emergency and injured people need immediate treatment.,Lightning,Medium,18,12,3,Medium,53,6,2,2
+multiple lightning strikes has struck a residential building and injured people need immediate treatment.,Lightning,Medium,1,49,16,Low,48,6,2,1
+a large forest fire has forced residents to prepare for evacuation as strong winds continue to push the flames.,Forest Fire,Critical,30,54,6,High,96,3,0,0
+a rapidly spreading city fire has damaged commercial infrastructure and firefighters require immediate assistance.,Urban Fire,High,3,33,2,High,77,8,1,0
+a major vegetation fire has affected a large forest area and evacuation may become necessary.,Forest Fire,Critical,12,72,13,High,90,3,0,0
+repeated lightning activity has damaged electrical infrastructure with medical teams being requested.,Lightning,Critical,3,3,6,High,87,6,0,0
+violent storm activity has damaged communication infrastructure creating a serious threat to coastal residents.,Cyclone,Medium,22,45,14,Low,40,0,2,1
+intense ground movement has destroyed several homes with people potentially trapped under debris.,Earthquake,Medium,25,27,7,Medium,56,1,2,2
+repeated lightning activity has damaged electrical infrastructure while severe weather continues.,Lightning,Critical,8,56,14,High,89,6,0,0
+a rapidly spreading wildfire has affected a large forest area as strong winds continue to push the flames.,Forest Fire,Critical,8,10,9,High,86,3,0,0
+a lightning strike has struck a residential building creating a serious safety risk.,Lightning,Critical,16,47,17,High,95,6,0,0
+falling rocks and soil has buried part of the mountain road as additional debris continues to fall.,Landslide,Critical,18,126,5,High,95,5,0,0
+unstable hillside material has buried sections of the roadway and emergency clearance is needed.,Landslide,High,22,134,6,Medium,84,5,1,2
+a residential fire has damaged several shops and trapped residents need rescue.,Urban Fire,Medium,0,33,5,Medium,48,8,2,2
+prolonged hot weather is affecting outdoor workers and vulnerable residents need support.,Heatwave,Medium,18,64,4,Medium,50,4,2,2
+a fire inside a crowded neighborhood has trapped people inside a building and trapped residents need rescue.,Urban Fire,Medium,8,50,7,Medium,59,8,2,2
+a powerful electrical discharge has injured several residents and emergency medical assistance is required.,Lightning,Medium,28,55,5,Medium,36,6,2,2
+a major vegetation fire is becoming difficult to control creating a serious danger to nearby communities.,Forest Fire,Medium,26,31,9,Medium,62,3,2,2
+dangerously high temperatures has affected elderly people creating a serious public safety concern.,Heatwave,High,14,19,1,Medium,69,4,1,2
+a large fire in dry forest land is moving toward populated regions creating a serious danger to nearby communities.,Forest Fire,Medium,22,29,13,Medium,55,3,2,2
+multiple lightning strikes has caused serious injuries creating a serious safety risk.,Lightning,High,25,69,13,High,83,6,1,0
+a severe medical emergency requires immediate medical treatment with emergency medical support required.,Medical Emergency,Critical,3,16,5,High,85,7,0,0
+a commercial building fire has trapped people inside a building and emergency evacuation is required.,Urban Fire,Critical,16,44,12,High,98,8,0,0
+heavy rainfall has surrounded several families creating a serious threat to residents.,Flood,High,19,38,14,High,78,2,1,0
+a seriously injured person requires immediate assistance from medical teams and an ambulance is needed immediately.,Medical Emergency,Medium,10,57,17,Medium,39,7,2,2
+a powerful electrical discharge has affected people outdoors while severe weather continues.,Lightning,Medium,25,39,20,Low,43,6,2,1
+strong coastal winds has caused widespread property damage as the storm continues to intensify.,Cyclone,Critical,11,80,18,High,90,0,0,0
+several injured residents needs critical medical attention while the patient's condition remains serious.,Medical Emergency,Medium,12,72,6,Medium,58,7,2,2
+a major earthquake has collapsed several buildings and injured residents require assistance.,Earthquake,Medium,4,59,1,Low,52,1,2,1
+a large fire in dry forest land is moving toward populated regions and emergency teams are responding.,Forest Fire,Medium,28,21,1,Low,47,3,2,1
+heavy rainfall triggered debris has completely blocked the highway and emergency clearance is needed.,Landslide,Medium,7,51,6,Medium,60,5,2,2
+unstable hillside material has buried part of the mountain road with transportation completely disrupted.,Landslide,Critical,22,137,1,High,89,5,0,0
+lightning during a major storm has caused a medical emergency with medical teams being requested.,Lightning,Medium,5,76,0,Low,42,6,2,1
+a rapidly approaching cyclone has forced families to leave their homes and residents need immediate shelter.,Cyclone,High,19,197,12,Medium,67,0,1,2
+a rapidly approaching cyclone has forced families to leave their homes and additional emergency support is needed.,Cyclone,High,11,130,4,Medium,72,0,1,2
+a large forest fire is producing heavy smoke while the fire continues to spread.,Forest Fire,Critical,2,72,0,High,97,3,0,0
+a major landslide has completely blocked the highway and immediate assistance is requested.,Landslide,Medium,26,66,17,Low,44,5,2,1
+severe waterlogging has damaged roads and buildings with several people unable to leave.,Flood,Medium,16,138,1,Medium,52,2,2,2
+a commercial building fire is spreading through a residential area with emergency responders at the scene.,Urban Fire,Critical,2,20,10,High,88,8,0,0
+a strong seismic event has trapped people inside buildings with people potentially trapped under debris.,Earthquake,Critical,30,15,15,High,99,1,0,0
+overflowing water has disrupted transportation while water levels continue to rise.,Flood,Critical,14,54,14,High,95,2,0,0
+a major building fire has filled buildings with heavy smoke and emergency evacuation is required.,Urban Fire,Medium,25,43,13,Low,55,8,2,1
+strong seismic shaking has affected hospitals and public buildings with people potentially trapped under debris.,Earthquake,High,18,7,17,Medium,79,1,1,2
+several injured residents requires urgent hospitalization and immediate treatment is necessary.,Medical Emergency,High,6,41,11,High,84,7,1,0
+heavy rainfall triggered debris has damaged nearby houses and emergency clearance is needed.,Landslide,Medium,25,34,2,Low,56,5,2,1
+heavy rainfall has surrounded several families with several people unable to leave.,Flood,Medium,23,159,19,Medium,63,2,2,2
+severe heat conditions is affecting vulnerable populations while temperatures remain extremely high.,Heatwave,High,7,78,19,High,72,4,1,0
+a person with a critical injury has suffered serious injuries while the patient's condition remains serious.,Medical Emergency,Medium,8,7,20,Low,43,7,2,1
+a rapidly spreading wildfire is moving toward populated regions and evacuation may become necessary.,Forest Fire,High,18,8,9,High,78,3,1,0
+a major earthquake has damaged residential structures and rescue teams are urgently needed.,Earthquake,Critical,6,64,14,High,90,1,0,0
+extreme storm conditions has disrupted electricity supply with rescue teams being deployed.,Cyclone,Medium,12,183,11,Medium,38,0,2,2
+a large fire in dry forest land has affected a large forest area while the fire continues to spread.,Forest Fire,Medium,28,1,11,Low,64,3,2,1
+a large forest fire is threatening nearby homes creating a serious danger to nearby communities.,Forest Fire,Critical,20,68,17,High,94,3,0,0
+severe lightning activity has injured several residents and emergency medical assistance is required.,Lightning,Medium,20,28,5,Medium,49,6,2,2
+lightning during a major storm has injured several residents and emergency medical assistance is required.,Lightning,High,9,66,19,High,77,6,1,0
+multiple accident victims has suffered serious injuries and emergency responders are being requested.,Medical Emergency,Critical,21,52,13,High,90,7,0,0
+lightning during a major storm has injured several residents as additional lightning activity is reported.,Lightning,Medium,7,6,15,Low,64,6,2,1
+repeated lightning activity has struck an open area and emergency responders are needed.,Lightning,High,18,70,15,High,69,6,1,0
+several injured residents has been injured in an accident with emergency medical support required.,Medical Emergency,Medium,4,74,17,Medium,56,7,2,2
+a powerful electrical discharge has injured people in the area creating a serious safety risk.,Lightning,Medium,25,20,2,Low,44,6,2,1
+strong coastal winds has damaged residential roofs while dangerous winds continue.,Cyclone,High,1,168,11,High,69,0,1,0
+a commercial building fire has affected a crowded market as the fire continues to grow.,Urban Fire,Medium,21,29,3,Low,58,8,2,1
+intense ground movement has trapped people inside buildings and emergency response operations are underway.,Earthquake,High,6,42,20,Medium,67,1,1,2
+several injured residents requires immediate medical treatment and an ambulance is needed immediately.,Medical Emergency,Critical,9,67,4,High,91,7,0,0
+severe heat conditions is affecting vulnerable populations as dangerous heat continues.,Heatwave,Medium,2,26,20,Medium,59,4,2,2
+rapidly rising water levels has disrupted transportation and emergency evacuation is required.,Flood,Medium,14,126,1,Low,41,2,2,1
+unstable hillside material has damaged nearby houses as additional debris continues to fall.,Landslide,Critical,25,146,0,High,90,5,0,0
+unstable hillside material has buried sections of the roadway creating a serious threat to nearby communities.,Landslide,High,1,110,19,Medium,78,5,1,2
+lightning during a major storm has affected people outdoors and emergency responders are needed.,Lightning,Medium,19,61,0,Medium,48,6,2,2
+flames inside the forest is spreading toward nearby villages with visibility severely reduced by smoke.,Forest Fire,Medium,29,26,4,Low,52,3,2,1
+a lightning strike has damaged electrical infrastructure as additional lightning activity is reported.,Lightning,Medium,14,41,8,Low,58,6,2,1
+severe waterlogging has reached nearby schools and emergency evacuation is required.,Flood,High,28,167,6,High,73,2,1,0
+an unconscious patient has suffered a sudden health crisis and immediate treatment is necessary.,Medical Emergency,High,0,42,6,High,82,7,1,0
+rising river water has damaged roads and buildings with several people unable to leave.,Flood,High,13,37,10,Medium,84,2,1,2
+unstable hillside material has blocked access to residential areas while residents remain stranded.,Landslide,Medium,28,92,2,Medium,43,5,2,2
+repeated lightning activity has injured people in the area with medical teams being requested.,Lightning,High,27,68,11,Medium,78,6,1,2
+flood water has affected the village market creating a serious threat to residents.,Flood,Critical,4,26,1,High,88,2,0,0
+a powerful coastal cyclone has caused widespread property damage with rescue teams being deployed.,Cyclone,Medium,8,136,9,Low,41,0,2,1
+severe cyclone winds has forced families to leave their homes creating a serious threat to coastal residents.,Cyclone,High,15,49,3,High,72,0,1,0
+flood water has trapped residents inside their homes while water levels continue to rise.,Flood,High,14,192,6,Medium,81,2,1,2
+strong coastal winds has affected multiple villages as the storm continues to intensify.,Cyclone,Critical,3,189,0,High,87,0,0,0
+a wildfire driven by strong winds has reached the forest boundary as strong winds continue to push the flames.,Forest Fire,Medium,12,37,20,Medium,36,3,2,2
+a powerful electrical discharge has struck an open area while severe weather continues.,Lightning,Critical,24,12,2,High,95,6,0,0
+a powerful electrical discharge has affected people outdoors and injured people need immediate treatment.,Lightning,Critical,20,69,12,High,87,6,0,0
+a major landslide has completely blocked the highway and emergency clearance is needed.,Landslide,High,16,121,17,Medium,80,5,1,2
+flames inside the forest has damaged forest infrastructure and evacuation may become necessary.,Forest Fire,Critical,2,12,4,High,97,3,0,0
+falling rocks and soil has trapped several vehicles while residents remain stranded.,Landslide,Critical,0,85,6,High,98,5,0,0
+overflowing water has damaged roads and buildings while water levels continue to rise.,Flood,Critical,13,52,1,High,89,2,0,0
+a severe heatwave is causing people to collapse creating a serious public safety concern.,Heatwave,High,12,50,0,High,80,4,1,0
+a powerful electrical discharge has injured people in the area and emergency responders are needed.,Lightning,High,5,9,17,Medium,67,6,1,2
+an unconscious patient requires emergency evacuation and an ambulance is needed immediately.,Medical Emergency,Medium,10,58,7,Low,48,7,2,1
+severe earthquake tremors has damaged residential structures and emergency response operations are underway.,Earthquake,Critical,6,42,7,High,91,1,0,0
+strong seismic shaking has caused widespread structural damage and emergency response operations are underway.,Earthquake,High,4,38,12,Medium,70,1,1,2
+a seriously injured person has suffered a sudden health crisis with medical assistance urgently required.,Medical Emergency,Medium,27,10,3,Medium,58,7,2,2
+flames inside the forest is producing heavy smoke while the fire continues to spread.,Forest Fire,Medium,9,21,14,Low,53,3,2,1
+a fire inside a crowded neighborhood is spreading through a residential area and emergency evacuation is required.,Urban Fire,Critical,22,20,1,High,88,8,0,0
+a severe medical emergency has been injured in an accident and emergency responders are being requested.,Medical Emergency,Critical,20,72,5,High,90,7,0,0
+a rapidly approaching cyclone has disrupted electricity supply while dangerous winds continue.,Cyclone,High,16,76,19,Medium,66,0,1,2
+falling rocks and soil has damaged local infrastructure and emergency clearance is needed.,Landslide,High,7,118,2,High,76,5,1,0
+a major vegetation fire is burning through dry vegetation and evacuation may become necessary.,Forest Fire,High,17,35,19,High,82,3,1,0
+an unconscious patient has been injured in an accident while the patient's condition remains serious.,Medical Emergency,Critical,23,25,6,High,86,7,0,0
+severe waterlogging has entered residential houses and residents are requesting immediate assistance.,Flood,Critical,26,114,18,High,93,2,0,0
+a severe heatwave is creating dangerous conditions outdoors as dangerous heat continues.,Heatwave,Critical,25,32,17,High,86,4,0,0
+flames inside the forest has affected a large forest area and emergency teams are responding.,Forest Fire,Medium,20,21,14,Medium,46,3,2,2
+a large fire in dry forest land is becoming difficult to control as strong winds continue to push the flames.,Forest Fire,Critical,8,16,4,High,88,3,0,0
+flames inside the forest has damaged forest infrastructure as strong winds continue to push the flames.,Forest Fire,Medium,28,12,4,Low,59,3,2,1
+a major earthquake has caused major infrastructure damage with people potentially trapped under debris.,Earthquake,Critical,19,78,15,High,95,1,0,0
+rapidly rising water levels has blocked the main access road making the area inaccessible.,Flood,Medium,23,59,7,Medium,62,2,2,2
+a major landslide has buried part of the mountain road and rescue teams are required.,Landslide,Medium,14,36,3,Low,61,5,2,1
+prolonged hot weather is causing heat exhaustion creating a serious public safety concern.,Heatwave,Medium,30,24,9,Medium,49,4,2,2
+lightning during a major storm has injured people in the area with medical teams being requested.,Lightning,High,28,48,11,Medium,70,6,1,2
+severe waterlogging has entered residential houses making the area inaccessible.,Flood,Critical,30,196,4,High,93,2,0,0
+an unconscious patient needs critical medical attention with medical assistance urgently required.,Medical Emergency,High,0,43,3,Medium,74,7,1,2
+extreme storm conditions has damaged residential roofs as the storm continues to intensify.,Cyclone,Critical,1,103,1,High,89,0,0,0
+severe cyclone winds has damaged communication infrastructure and emergency evacuation is required.,Cyclone,Critical,23,56,13,High,98,0,0,0
+a person with a critical injury requires immediate assistance from medical teams while the patient's condition remains serious.,Medical Emergency,Medium,12,66,19,Medium,62,7,2,2
+repeated lightning activity has injured several residents as additional lightning activity is reported.,Lightning,Critical,26,34,18,High,85,6,0,0
+a major landslide has completely blocked the highway as additional debris continues to fall.,Landslide,High,22,147,11,Medium,81,5,1,2
+strong seismic shaking has damaged roads and bridges and emergency response operations are underway.,Earthquake,High,24,62,20,Medium,80,1,1,2
+a residential fire is threatening nearby homes with emergency responders at the scene.,Urban Fire,High,8,57,5,High,83,8,1,0
+extreme daytime temperatures is creating dangerous conditions outdoors and medical assistance is required.,Heatwave,Medium,28,49,13,Medium,54,4,2,2
+unstable hillside material has completely blocked the highway while residents remain stranded.,Landslide,Medium,14,114,11,Medium,49,5,2,2
+a major landslide has buried sections of the roadway and emergency clearance is needed.,Landslide,High,30,165,1,High,84,5,1,0
+a powerful earthquake has caused major infrastructure damage with people potentially trapped under debris.,Earthquake,High,2,68,6,Medium,66,1,1,2
+rapidly rising water levels has reached nearby schools with several people unable to leave.,Flood,Medium,5,188,2,Low,44,2,2,1
+a person with a critical injury has been injured in an accident and emergency responders are being requested.,Medical Emergency,Medium,6,62,12,Medium,55,7,2,2
+a fire inside a crowded neighborhood is spreading between nearby buildings while smoke continues to spread.,Urban Fire,High,10,65,15,High,79,8,1,0
+a person with a critical injury requires emergency evacuation while the patient's condition remains serious.,Medical Emergency,Medium,8,46,3,Low,35,7,2,1
+a powerful coastal cyclone has caused widespread property damage while dangerous winds continue.,Cyclone,High,30,108,18,Medium,74,0,1,2
+a commercial building fire has affected a crowded market and firefighters require immediate assistance.,Urban Fire,Critical,21,63,19,High,85,8,0,0
+a severe medical emergency has suffered a sudden health crisis and immediate treatment is necessary.,Medical Emergency,Medium,1,70,12,Medium,43,7,2,2
+strong coastal winds has damaged residential roofs as the storm continues to intensify.,Cyclone,High,3,80,12,Medium,83,0,1,2
+a rapidly spreading city fire has damaged several shops and emergency evacuation is required.,Urban Fire,Critical,23,30,8,High,88,8,0,0
+repeated lightning activity has struck an open area while severe weather continues.,Lightning,Medium,19,51,1,Low,47,6,2,1
+a major building fire is spreading between nearby buildings while smoke continues to spread.,Urban Fire,High,28,73,8,High,80,8,1,0
+a major vegetation fire is spreading toward nearby villages as strong winds continue to push the flames.,Forest Fire,Medium,21,22,15,Medium,59,3,2,2
+falling rocks and soil has buried sections of the roadway and rescue teams are required.,Landslide,Medium,28,42,2,Low,44,5,2,1
+violent storm activity has disrupted electricity supply and emergency evacuation is required.,Cyclone,Critical,27,193,12,High,98,0,0,0
+dangerously high temperatures has increased hospital admissions as dangerous heat continues.,Heatwave,High,1,54,8,Medium,82,4,1,2
+flood water has disrupted transportation making the area inaccessible.,Flood,Medium,23,64,19,Low,53,2,2,1
+a seriously injured person has suffered serious injuries with emergency medical support required.,Medical Emergency,High,15,17,5,High,71,7,1,0
+a major vegetation fire is burning through dry vegetation while the fire continues to spread.,Forest Fire,Critical,18,49,11,High,91,3,0,0
+a major earthquake has destroyed several homes with people potentially trapped under debris.,Earthquake,Medium,23,53,11,Low,63,1,2,1
+a powerful coastal cyclone has forced families to leave their homes and additional emergency support is needed.,Cyclone,Medium,3,180,20,Low,36,0,2,1
+repeated lightning activity has caused a medical emergency and emergency medical assistance is required.,Lightning,High,0,54,2,Medium,74,6,1,2
+a rapidly spreading wildfire is spreading toward nearby villages while the fire continues to spread.,Forest Fire,Critical,25,68,12,High,88,3,0,0
+a person with a critical injury requires urgent hospitalization and immediate treatment is necessary.,Medical Emergency,Critical,19,48,10,High,91,7,0,0
+prolonged hot weather has affected elderly people as dangerous heat continues.,Heatwave,Medium,26,16,3,Low,47,4,2,1
+a strong seismic event has trapped people inside buildings while aftershocks remain possible.,Earthquake,Medium,4,28,0,Medium,59,1,2,2
+a severe heatwave is creating dangerous conditions outdoors with residents advised to seek shelter.,Heatwave,Critical,3,28,0,High,90,4,0,0
+a rapidly spreading wildfire has damaged forest infrastructure while the fire continues to spread.,Forest Fire,High,2,46,8,Medium,67,3,1,2
+severe waterlogging has damaged roads and buildings making the area inaccessible.,Flood,Critical,2,126,13,High,90,2,0,0
+intense ground movement has affected hospitals and public buildings creating a serious threat to residents.,Earthquake,Critical,21,26,18,High,92,1,0,0
+severe lightning activity has injured people in the area and injured people need immediate treatment.,Lightning,Medium,28,30,15,Medium,44,6,2,2
+a severe medical emergency requires immediate medical treatment creating a critical situation.,Medical Emergency,High,15,76,17,High,67,7,1,0
+severe heat conditions is creating dangerous conditions outdoors and vulnerable residents need support.,Heatwave,Medium,19,60,11,Low,57,4,2,1
+flood water has entered residential houses with several people unable to leave.,Flood,Critical,4,141,3,High,94,2,0,0
+a person with a critical injury needs critical medical attention while the patient's condition remains serious.,Medical Emergency,High,1,29,6,High,76,7,1,0
+a powerful coastal cyclone has blocked several roads and additional emergency support is needed.,Cyclone,Medium,27,156,12,Low,45,0,2,1
+extreme daytime temperatures has resulted in medical emergencies and vulnerable residents need support.,Heatwave,Critical,13,77,16,High,89,4,0,0
+severe heat conditions is causing dehydration among residents with residents advised to seek shelter.,Heatwave,Critical,22,43,3,High,97,4,0,0
+extreme storm conditions has damaged coastal buildings while dangerous winds continue.,Cyclone,High,10,126,5,High,71,0,1,0
+a person with a critical injury has been injured in an accident and immediate treatment is necessary.,Medical Emergency,Medium,7,29,0,Medium,46,7,2,2
+a severe medical emergency has suffered a sudden health crisis and emergency responders are being requested.,Medical Emergency,Critical,17,66,8,High,93,7,0,0
+a large market fire has damaged commercial infrastructure with emergency responders at the scene.,Urban Fire,High,15,80,3,Medium,79,8,1,2
+multiple lightning strikes has caused serious injuries while severe weather continues.,Lightning,Critical,13,19,4,High,94,6,0,0
+a powerful electrical discharge has damaged a nearby structure while severe weather continues.,Lightning,Medium,0,1,15,Medium,64,6,2,2
+falling rocks and soil has damaged local infrastructure and immediate assistance is requested.,Landslide,Medium,30,101,11,Medium,57,5,2,2
+falling rocks and soil has isolated a village creating a serious threat to nearby communities.,Landslide,Critical,1,81,13,High,95,5,0,0
+severe waterlogging has surrounded several families while water levels continue to rise.,Flood,High,0,110,9,Medium,77,2,1,2
+a seriously injured person has been injured in an accident and an ambulance is needed immediately.,Medical Emergency,Critical,14,1,2,High,91,7,0,0
+a commercial building fire has destroyed residential property as the fire continues to grow.,Urban Fire,High,22,1,0,Medium,71,8,1,2
+a rapidly approaching cyclone has caused widespread property damage as the storm continues to intensify.,Cyclone,Medium,6,170,6,Medium,61,0,2,2
+a major building fire is spreading through a residential area while smoke continues to spread.,Urban Fire,Critical,17,55,12,High,88,8,0,0
+a severe heatwave is affecting outdoor workers creating a serious public safety concern.,Heatwave,Medium,3,5,5,Medium,50,4,2,2
+a fire inside a crowded neighborhood has destroyed residential property and firefighters require immediate assistance.,Urban Fire,Critical,25,19,15,High,97,8,0,0
+severe lightning activity has affected people outdoors creating a serious safety risk.,Lightning,High,23,53,5,Medium,78,6,1,2
+a strong seismic event has trapped people inside buildings and emergency response operations are underway.,Earthquake,High,4,80,7,High,67,1,1,0
+violent storm activity has forced families to leave their homes with rescue teams being deployed.,Cyclone,High,0,178,17,High,75,0,1,0
+rising river water has affected the village market and emergency evacuation is required.,Flood,High,8,37,8,Medium,76,2,1,2
+a powerful earthquake has damaged roads and bridges creating a serious threat to residents.,Earthquake,Medium,17,62,5,Medium,64,1,2,2
+severe lightning activity has struck an open area creating a serious safety risk.,Lightning,Medium,19,75,16,Low,60,6,2,1
+a large market fire has damaged several shops and trapped residents need rescue.,Urban Fire,Critical,25,76,16,High,93,8,0,0
+extreme heat is causing heat exhaustion and vulnerable residents need support.,Heatwave,Medium,26,1,3,Low,56,4,2,1
+a large hillside collapse has covered the road with debris and rescue teams are required.,Landslide,Medium,10,184,5,Low,61,5,2,1
+a strong seismic event has left multiple buildings unsafe while aftershocks remain possible.,Earthquake,Medium,17,19,5,Low,45,1,2,1
+a rapidly approaching cyclone has damaged coastal buildings and emergency evacuation is required.,Cyclone,Critical,8,179,20,High,94,0,0,0
+multiple accident victims has suffered serious injuries and an ambulance is needed immediately.,Medical Emergency,Medium,0,5,7,Low,64,7,2,1
+a rapidly approaching cyclone has damaged coastal buildings with rescue teams being deployed.,Cyclone,Medium,2,182,14,Low,64,0,2,1
+a commercial building fire has filled buildings with heavy smoke and emergency evacuation is required.,Urban Fire,High,8,71,18,Medium,66,8,1,2
+a major building fire has filled buildings with heavy smoke creating a serious danger to nearby people.,Urban Fire,High,5,23,0,High,69,8,1,0
+a sudden mountain slope collapse has isolated a village and rescue teams are required.,Landslide,Critical,25,114,13,High,99,5,0,0
+flood water has damaged roads and buildings with several people unable to leave.,Flood,Critical,15,24,17,High,85,2,0,0
+repeated lightning activity has caused serious injuries while severe weather continues.,Lightning,Critical,23,0,1,High,91,6,0,0
+a residential fire has trapped people inside a building creating a serious danger to nearby people.,Urban Fire,Medium,30,32,17,Low,61,8,2,1
+falling rocks and soil has damaged local infrastructure while residents remain stranded.,Landslide,Medium,18,114,14,Medium,60,5,2,2
+a commercial building fire is spreading between nearby buildings as the fire continues to grow.,Urban Fire,High,10,37,8,Medium,84,8,1,2
+a large fire in dry forest land is becoming difficult to control and firefighters require additional support.,Forest Fire,High,20,64,13,Medium,78,3,1,2
+severe lightning activity has damaged electrical infrastructure with medical teams being requested.,Lightning,Medium,9,38,7,Medium,38,6,2,2
+extreme daytime temperatures is causing people to collapse as dangerous heat continues.,Heatwave,High,28,24,10,High,81,4,1,0
+a major building fire has destroyed residential property while smoke continues to spread.,Urban Fire,Medium,24,22,14,Low,38,8,2,1
+a rapidly spreading wildfire is producing heavy smoke and evacuation may become necessary.,Forest Fire,High,19,77,1,High,74,3,1,0
+a powerful earthquake has collapsed several buildings with people potentially trapped under debris.,Earthquake,High,27,48,12,High,67,1,1,0
+heavy rainfall has submerged low lying areas and rescue teams are needed.,Flood,Critical,19,156,0,High,99,2,0,0
+a person with a critical injury needs critical medical attention creating a critical situation.,Medical Emergency,Medium,19,34,19,Medium,53,7,2,2
+extreme daytime temperatures is affecting outdoor workers with residents advised to seek shelter.,Heatwave,Medium,1,80,19,Low,61,4,2,1
+overflowing water has trapped residents inside their homes and residents are requesting immediate assistance.,Flood,Critical,22,93,7,High,89,2,0,0
+prolonged hot weather is causing dehydration among residents while temperatures remain extremely high.,Heatwave,High,8,69,9,Medium,65,4,1,2
+an unconscious patient needs immediate first response while the patient's condition remains serious.,Medical Emergency,Medium,20,47,5,Low,62,7,2,1
+a large fire in dry forest land is moving toward populated regions as strong winds continue to push the flames.,Forest Fire,Critical,26,26,1,High,94,3,0,0

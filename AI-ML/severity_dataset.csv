@@ -1,0 +1,1001 @@
+citizen_severity,nearby_reports,disaster_type,population_density,distance_critical_infra,alert_intensity,people_affected,historical_risk,severity_score,severity_level
+Low,3,Forest Fire,3592,6.17,15,10,35,24.41,Moderate
+High,19,Forest Fire,6058,4.87,59,75,47,55.83,High
+High,27,Forest Fire,8697,3.64,70,156,66,73.3,Severe
+High,27,Heatwave,9717,1.09,96,140,98,85.32,Critical
+High,23,Urban Fire,9514,1.46,86,196,74,84.08,Critical
+High,25,Urban Fire,9382,3.63,79,159,86,76.61,Severe
+Medium,7,Landslide,5067,4.86,50,15,60,40.92,Medium
+Low,5,Urban Fire,1385,8.85,17,6,6,16.85,Low
+High,21,Landslide,7635,5.25,65,91,47,66.13,High
+High,26,Flood,8130,3.57,90,144,57,74.98,Severe
+Low,2,Lightning,1504,9.88,14,4,4,14.13,Low
+High,24,Cyclone,8580,0.97,98,179,70,85.65,Critical
+High,19,Earthquake,7251,1.92,75,91,60,68.18,Severe
+High,23,Lightning,8704,1.16,85,121,56,76.46,Severe
+High,17,Medical Emergency,6359,2.16,47,76,64,57.71,High
+Medium,11,Earthquake,4071,4.8,57,39,48,47.7,Medium
+High,30,Landslide,9919,0.15,99,173,99,94.17,Critical
+High,22,Flood,5342,2.99,65,75,43,64.97,High
+Medium,8,Landslide,4278,5.32,58,52,29,46.29,Medium
+Medium,21,Forest Fire,7518,2.11,60,58,50,59.46,High
+High,29,Earthquake,8258,0.71,84,182,90,88.18,Critical
+Medium,15,Landslide,3908,3.59,44,49,30,46.91,Medium
+Medium,14,Earthquake,4308,5.86,33,17,24,38.82,Medium
+Low,2,Forest Fire,1438,6.43,18,6,28,22.82,Moderate
+High,27,Earthquake,8720,1.16,82,176,90,86.7,Critical
+Medium,10,Lightning,2518,5.23,36,22,53,40.99,Medium
+Medium,22,Urban Fire,6668,5.14,54,112,61,59.13,High
+High,27,Lightning,6817,1.91,67,120,76,76.3,Severe
+Medium,13,Heatwave,4721,4.37,57,49,54,44.93,Medium
+High,28,Urban Fire,7144,3.83,89,111,78,75.05,Severe
+Low,4,Landslide,4438,8.4,38,5,34,27.13,Moderate
+High,26,Earthquake,9985,0.12,84,189,91,88.25,Critical
+High,24,Lightning,6608,2.69,77,111,57,67.69,Severe
+High,22,Medical Emergency,6555,5.23,55,63,48,54.8,High
+Medium,21,Cyclone,6342,4.52,69,79,70,62.04,High
+High,27,Landslide,8988,1.39,89,135,99,86.2,Critical
+High,21,Cyclone,7017,1.55,81,117,89,75.39,Severe
+High,26,Flood,8405,1.41,88,180,73,84.14,Critical
+Medium,5,Flood,2746,8.85,34,15,24,29.9,Moderate
+High,28,Cyclone,6346,3.93,81,118,78,77.55,Severe
+Low,8,Heatwave,1939,5.24,24,19,30,25.53,Moderate
+Medium,5,Cyclone,3889,3.22,55,61,22,44.02,Medium
+Low,0,Lightning,1457,8.76,1,15,8,16.46,Low
+High,12,Heatwave,5300,4.57,69,45,68,56.37,High
+High,25,Earthquake,8540,1.56,82,175,87,86.8,Critical
+High,24,Flood,9296,1.04,88,174,84,85.74,Critical
+High,24,Heatwave,9084,1.25,96,185,73,84.48,Critical
+Medium,14,Earthquake,5619,4.79,71,57,70,59.43,High
+Low,0,Urban Fire,1300,9.32,19,11,18,15.19,Low
+Medium,11,Landslide,3963,4.65,31,57,35,41.0,Medium
+High,30,Urban Fire,9749,1.61,81,177,88,86.18,Critical
+Low,7,Landslide,2856,6.44,17,20,13,25.5,Moderate
+High,19,Medical Emergency,4537,5.53,68,89,61,59.22,High
+Medium,14,Earthquake,5849,6.27,33,46,58,49.3,Medium
+Medium,12,Cyclone,4538,3.6,50,15,22,45.42,Medium
+High,17,Landslide,7570,3.18,72,112,85,72.52,Severe
+High,15,Forest Fire,7155,1.07,68,88,68,67.18,Severe
+Low,1,Earthquake,231,9.24,13,0,7,14.44,Low
+High,29,Forest Fire,9917,0.73,84,151,86,86.86,Critical
+Medium,13,Urban Fire,6362,5.03,75,112,68,56.56,High
+Low,1,Lightning,324,6.03,9,6,24,16.17,Low
+High,29,Flood,9736,1.06,84,158,99,86.27,Critical
+Low,3,Heatwave,1319,8.72,31,8,13,20.62,Moderate
+Medium,18,Cyclone,6077,2.42,65,55,48,60.29,High
+Low,0,Cyclone,1709,8.29,15,4,1,16.68,Low
+Low,8,Lightning,1186,5.67,32,30,30,27.19,Moderate
+High,16,Flood,6283,1.46,67,118,83,71.57,Severe
+Low,0,Medical Emergency,2421,6.67,5,8,24,14.95,Low
+Medium,5,Urban Fire,2238,4.88,26,30,11,33.68,Moderate
+High,30,Lightning,8720,1.53,93,165,80,86.55,Critical
+High,26,Medical Emergency,8839,0.52,85,198,76,84.95,Critical
+Low,9,Urban Fire,1811,6.44,35,23,16,29.05,Moderate
+Low,5,Medical Emergency,2110,7.79,0,2,9,14.07,Low
+Low,3,Medical Emergency,2447,7.79,15,14,10,16.03,Low
+Medium,5,Landslide,4853,3.51,38,38,31,39.58,Medium
+Low,4,Forest Fire,1566,8.81,9,5,1,16.98,Low
+Low,0,Urban Fire,428,9.41,2,2,21,15.11,Low
+High,21,Earthquake,8162,3.04,74,169,67,78.54,Severe
+Low,9,Landslide,2448,5.09,33,13,15,33.27,Moderate
+Low,4,Flood,1732,7.85,16,18,19,20.9,Moderate
+Medium,14,Cyclone,4942,3.72,45,54,25,48.76,Medium
+High,23,Flood,9870,0.78,85,189,87,84.06,Critical
+Medium,12,Flood,3344,3.57,38,48,48,44.5,Medium
+High,20,Earthquake,8794,1.95,79,113,57,75.66,Severe
+Medium,13,Cyclone,7656,4.7,51,96,38,56.48,High
+Medium,15,Heatwave,4441,6.58,60,63,56,48.42,Medium
+Low,4,Medical Emergency,751,8.97,15,14,8,16.72,Low
+Medium,17,Forest Fire,5621,2.87,58,88,71,56.08,High
+High,27,Earthquake,7079,3.98,72,165,82,76.72,Severe
+Medium,6,Flood,5964,5.98,38,52,42,41.19,Medium
+High,17,Earthquake,6441,3.27,69,99,77,68.15,Severe
+High,14,Heatwave,7052,5.26,66,75,47,58.09,High
+Medium,8,Flood,2558,3.69,31,34,26,37.89,Medium
+Medium,5,Urban Fire,1876,5.88,32,34,33,31.84,Moderate
+High,30,Urban Fire,9558,0.39,91,144,98,85.87,Critical
+Low,1,Landslide,1113,9.05,21,12,15,16.22,Low
+Low,4,Landslide,469,9.16,0,8,17,13.43,Low
+High,18,Medical Emergency,6468,1.47,66,149,64,70.74,Severe
+Low,0,Urban Fire,1443,9.66,7,2,20,16.47,Low
+Medium,11,Forest Fire,4326,4.43,40,18,58,43.92,Medium
+Low,2,Medical Emergency,668,9.04,15,14,19,11.94,Low
+Medium,13,Forest Fire,3066,6.93,37,49,27,39.7,Medium
+Low,9,Cyclone,1723,6.11,19,33,37,30.94,Moderate
+Low,10,Lightning,3067,5.69,20,22,29,29.37,Moderate
+High,22,Cyclone,8088,1.99,66,118,62,71.25,Severe
+Low,4,Medical Emergency,1910,9.04,6,8,17,13.25,Low
+Low,1,Landslide,381,9.52,11,9,5,14.04,Low
+Medium,4,Heatwave,4145,5.74,33,9,26,29.96,Moderate
+Low,4,Medical Emergency,349,6.35,12,4,13,15.32,Low
+High,28,Cyclone,9834,1.11,96,135,80,86.79,Critical
+High,29,Lightning,9291,0.95,93,167,94,86.93,Critical
+High,16,Lightning,6037,2.38,79,120,64,69.06,Severe
+Medium,6,Forest Fire,4245,4.35,56,62,45,43.96,Medium
+Low,5,Landslide,2689,8.78,31,22,10,25.59,Moderate
+High,16,Heatwave,6510,2.36,86,150,81,69.06,Severe
+Low,0,Urban Fire,567,8.12,6,11,11,16.45,Low
+Medium,5,Flood,1291,5.56,25,22,24,28.29,Moderate
+High,25,Forest Fire,7963,3.86,73,95,81,71.44,Severe
+High,16,Earthquake,6529,2.91,62,68,66,62.63,High
+Medium,10,Forest Fire,4936,6.38,42,22,34,41.66,Medium
+Medium,5,Cyclone,5127,5.57,50,43,28,38.74,Medium
+High,18,Lightning,6430,3.24,68,102,88,67.98,Severe
+High,23,Urban Fire,7060,1.56,72,117,72,73.16,Severe
+Low,0,Medical Emergency,383,9.91,17,4,4,11.88,Low
+Medium,14,Flood,3316,3.74,42,33,55,45.84,Medium
+Medium,8,Flood,3968,4.18,50,20,21,40.6,Medium
+High,29,Earthquake,9726,0.81,99,143,70,86.4,Critical
+High,22,Landslide,9714,1.38,90,151,98,86.43,Critical
+Medium,3,Medical Emergency,3530,6.26,37,24,25,28.98,Moderate
+Medium,5,Forest Fire,3108,3.22,35,17,50,37.17,Medium
+Low,2,Medical Emergency,1571,9.0,5,12,0,11.25,Low
+High,16,Urban Fire,6496,4.94,69,59,65,56.67,High
+Medium,9,Lightning,3273,6.43,58,68,50,46.01,Medium
+Medium,5,Forest Fire,2862,8.65,33,5,18,26.14,Moderate
+Low,5,Earthquake,2090,7.88,25,26,39,28.7,Moderate
+High,27,Heatwave,9024,1.54,87,180,82,85.13,Critical
+High,24,Landslide,7136,0.95,84,134,59,77.02,Severe
+Low,3,Cyclone,1314,9.59,6,10,16,14.74,Low
+High,28,Earthquake,6463,2.52,88,115,64,75.04,Severe
+High,25,Heatwave,6753,3.41,67,134,76,73.6,Severe
+High,17,Medical Emergency,4279,2.33,66,71,63,56.19,High
+Low,5,Medical Emergency,2215,9.47,1,5,2,12.52,Low
+High,20,Landslide,9186,1.46,90,108,72,73.75,Severe
+Medium,10,Forest Fire,7363,4.55,48,75,71,52.31,High
+High,29,Lightning,8470,1.18,84,198,77,86.93,Critical
+High,21,Earthquake,7996,0.52,89,164,71,80.74,Severe
+High,28,Cyclone,9520,1.49,94,175,75,85.62,Critical
+Medium,5,Lightning,4545,6.07,60,44,40,39.09,Medium
+Medium,6,Earthquake,4100,6.59,39,19,26,35.46,Medium
+Low,9,Urban Fire,1102,8.0,31,9,16,23.42,Moderate
+Medium,6,Flood,4727,4.29,40,67,39,42.36,Medium
+Medium,21,Earthquake,5611,4.79,46,70,45,53.73,High
+Low,3,Landslide,2398,5.98,33,24,40,26.41,Moderate
+Low,1,Medical Emergency,1720,9.54,20,14,4,13.21,Low
+High,29,Medical Emergency,9504,0.77,97,162,91,85.67,Critical
+Low,2,Landslide,922,7.92,5,12,10,15.94,Low
+High,23,Earthquake,8183,1.33,99,182,73,85.53,Critical
+High,11,Cyclone,5710,3.92,54,112,63,62.23,High
+Medium,9,Urban Fire,1320,6.62,34,7,17,30.72,Moderate
+High,27,Landslide,6503,0.64,83,106,65,73.73,Severe
+Medium,21,Earthquake,4521,3.04,63,69,68,61.57,High
+Medium,12,Earthquake,4353,4.98,32,50,20,44.51,Medium
+Low,4,Medical Emergency,887,9.83,8,9,7,15.51,Low
+High,29,Landslide,9367,0.62,92,143,84,85.63,Critical
+Medium,9,Heatwave,5597,6.16,50,40,42,41.94,Medium
+High,21,Earthquake,8379,3.0,81,153,69,78.95,Severe
+Low,7,Earthquake,1594,6.98,19,31,25,29.57,Moderate
+Low,1,Flood,244,8.21,22,13,7,16.84,Low
+High,20,Landslide,9036,3.34,88,155,88,79.15,Severe
+High,25,Forest Fire,8188,1.22,87,182,93,85.61,Critical
+High,26,Landslide,8140,3.69,76,157,89,78.51,Severe
+High,22,Heatwave,8817,2.59,70,163,79,77.16,Severe
+Medium,7,Medical Emergency,3116,6.5,46,55,21,34.03,Medium
+High,28,Lightning,7735,1.62,76,166,63,78.92,Severe
+High,16,Forest Fire,7885,3.56,62,89,47,62.33,High
+High,22,Flood,8732,1.05,96,156,81,85.03,Critical
+High,30,Cyclone,9960,1.56,82,147,89,88.43,Critical
+Medium,14,Medical Emergency,5928,4.85,30,61,47,45.64,Medium
+High,30,Urban Fire,8903,0.7,86,167,99,85.82,Critical
+Low,3,Lightning,2341,6.47,36,6,12,22.63,Moderate
+Low,4,Medical Emergency,1272,9.1,7,11,7,15.01,Low
+High,26,Cyclone,7483,3.04,83,93,64,72.87,Severe
+Medium,15,Forest Fire,3724,5.78,58,21,60,46.94,Medium
+High,27,Medical Emergency,8361,1.07,98,165,100,85.74,Critical
+High,17,Forest Fire,6652,4.74,49,103,68,61.57,High
+Low,1,Medical Emergency,968,7.42,8,10,8,16.78,Low
+Medium,13,Flood,4205,6.68,37,64,51,45.1,Medium
+Low,0,Heatwave,1020,8.15,5,14,18,16.47,Low
+Low,0,Urban Fire,349,8.99,1,1,18,12.75,Low
+Medium,11,Earthquake,2818,3.08,45,63,47,45.56,Medium
+Low,5,Urban Fire,1094,8.29,5,12,5,15.29,Low
+Low,2,Forest Fire,4333,5.27,35,8,24,30.67,Moderate
+Medium,6,Medical Emergency,5614,6.07,50,27,31,38.05,Medium
+Low,2,Urban Fire,1194,9.28,9,9,18,16.8,Low
+Medium,10,Flood,2618,3.32,56,60,50,46.88,Medium
+Medium,7,Earthquake,2557,5.87,43,64,49,44.54,Medium
+High,19,Medical Emergency,8789,1.02,72,157,65,70.49,Severe
+Low,1,Landslide,1378,6.52,12,9,5,16.75,Low
+Medium,3,Landslide,3762,6.29,36,18,38,32.19,Moderate
+High,15,Landslide,7759,3.92,88,81,82,68.02,Severe
+Medium,9,Heatwave,5123,6.34,45,22,38,38.47,Medium
+Medium,15,Urban Fire,3220,5.58,31,61,51,45.16,Medium
+Low,0,Heatwave,983,9.34,17,13,3,15.73,Low
+Low,4,Forest Fire,634,7.36,5,10,1,14.19,Low
+High,18,Cyclone,8185,1.33,66,161,64,77.37,Severe
+High,17,Heatwave,6661,0.74,83,126,77,69.37,Severe
+High,28,Forest Fire,8047,2.88,69,156,73,75.19,Severe
+High,11,Forest Fire,4875,2.42,55,62,35,53.25,High
+Medium,13,Urban Fire,3398,4.86,50,57,33,43.33,Medium
+Low,2,Lightning,2009,8.13,11,9,8,16.73,Low
+Low,3,Flood,809,8.4,0,7,8,16.37,Low
+High,27,Earthquake,9289,0.78,80,150,83,85.1,Critical
+Low,5,Lightning,665,9.42,21,3,23,16.57,Low
+Low,0,Forest Fire,1285,9.94,7,3,12,12.1,Low
+Medium,9,Forest Fire,2845,4.66,35,40,44,42.36,Medium
+High,23,Urban Fire,9842,0.93,91,152,70,84.28,Critical
+Medium,19,Cyclone,5905,4.05,55,94,63,58.4,High
+High,23,Earthquake,9021,0.54,99,199,80,86.39,Critical
+High,23,Earthquake,8156,0.58,97,156,85,86.49,Critical
+Medium,2,Heatwave,3616,8.46,25,11,16,24.31,Moderate
+High,27,Cyclone,8887,0.29,96,170,76,89.44,Critical
+Medium,8,Heatwave,2814,7.73,35,34,33,31.61,Moderate
+High,22,Cyclone,7188,1.06,86,139,60,79.29,Severe
+Low,4,Urban Fire,904,9.1,6,9,14,14.48,Low
+Medium,8,Flood,1753,8.27,19,28,17,29.72,Moderate
+High,17,Heatwave,9238,0.68,72,106,89,70.61,Severe
+Medium,14,Medical Emergency,5791,2.32,70,101,54,54.35,High
+High,15,Heatwave,6068,2.69,53,87,61,58.44,High
+High,13,Earthquake,7213,3.88,66,118,39,62.18,High
+High,27,Urban Fire,8920,1.68,85,134,100,84.33,Critical
+High,25,Forest Fire,9168,1.67,96,175,81,85.34,Critical
+Medium,7,Lightning,4976,5.72,34,34,59,40.75,Medium
+Low,5,Heatwave,1020,9.23,4,0,1,12.2,Low
+High,21,Cyclone,8851,3.88,76,86,61,70.94,Severe
+High,10,Cyclone,7328,3.86,71,119,53,64.5,High
+Low,2,Medical Emergency,1845,6.67,14,11,14,15.65,Low
+High,30,Lightning,8781,0.64,93,166,92,87.82,Critical
+High,28,Lightning,9585,0.61,98,181,88,85.75,Critical
+Low,5,Forest Fire,3807,5.87,39,28,37,29.91,Moderate
+High,26,Lightning,8863,1.58,70,142,55,73.56,Severe
+High,19,Earthquake,9253,2.58,77,141,82,76.68,Severe
+Medium,22,Flood,4253,5.68,59,47,54,52.81,High
+High,28,Urban Fire,8569,1.19,99,170,73,84.53,Critical
+Medium,10,Forest Fire,4981,5.01,63,70,66,50.45,High
+High,28,Heatwave,9474,1.85,88,196,80,85.96,Critical
+High,22,Medical Emergency,7275,5.88,50,119,48,58.64,High
+Medium,10,Earthquake,5496,4.92,31,23,55,42.25,Medium
+High,30,Urban Fire,9768,0.47,85,188,81,89.89,Critical
+High,24,Urban Fire,9164,0.5,93,174,90,87.59,Critical
+Medium,14,Lightning,6779,2.68,64,81,46,53.23,High
+High,15,Heatwave,5204,3.94,70,58,44,57.6,High
+Low,2,Earthquake,1755,9.46,0,14,13,15.1,Low
+Low,2,Lightning,2129,7.15,12,1,14,16.49,Low
+High,21,Urban Fire,9171,1.08,77,107,77,73.67,Severe
+High,21,Landslide,6036,0.85,80,105,60,71.65,Severe
+Low,5,Medical Emergency,1209,7.23,7,3,23,15.73,Low
+Low,0,Flood,1359,8.38,18,9,14,15.97,Low
+Low,0,Forest Fire,453,9.7,3,14,19,14.11,Low
+High,17,Medical Emergency,6997,5.89,71,60,44,55.83,High
+High,26,Earthquake,8353,0.94,88,155,92,85.74,Critical
+Low,3,Heatwave,2184,8.82,13,15,15,16.6,Low
+High,20,Lightning,9036,2.26,81,99,56,71.61,Severe
+Low,5,Flood,197,7.84,10,1,2,14.7,Low
+High,27,Forest Fire,6915,1.41,74,91,62,70.07,Severe
+Medium,9,Urban Fire,4075,4.24,60,59,43,49.09,Medium
+Low,5,Lightning,2186,7.93,19,9,20,19.18,Moderate
+Medium,9,Flood,5588,5.15,53,21,33,46.01,Medium
+High,11,Earthquake,6775,2.22,46,77,59,59.79,High
+Medium,2,Forest Fire,3124,6.69,38,6,27,30.13,Moderate
+High,27,Earthquake,9945,0.89,99,140,98,89.56,Critical
+High,26,Cyclone,9318,1.59,98,130,99,84.96,Critical
+High,18,Forest Fire,4731,2.78,50,73,41,54.36,High
+Low,5,Cyclone,227,9.8,6,0,19,14.15,Low
+Low,3,Earthquake,489,9.4,1,0,4,16.26,Low
+High,20,Cyclone,5859,4.07,63,64,41,58.17,High
+Medium,6,Heatwave,3218,5.84,15,29,30,31.17,Moderate
+Medium,10,Forest Fire,5630,3.18,35,36,24,41.15,Medium
+High,23,Heatwave,9110,3.49,82,124,78,73.95,Severe
+Low,3,Flood,421,8.0,11,1,3,16.19,Low
+High,21,Heatwave,7701,4.74,49,85,41,61.43,High
+High,23,Earthquake,8810,0.51,83,167,75,86.19,Critical
+Medium,8,Urban Fire,5140,4.34,48,36,40,43.6,Medium
+High,30,Medical Emergency,9521,0.29,81,185,70,85.52,Critical
+High,22,Forest Fire,8421,0.82,93,198,71,84.57,Critical
+Low,2,Heatwave,1926,9.53,1,7,20,13.29,Low
+High,22,Heatwave,9535,0.33,92,181,74,85.15,Critical
+Medium,19,Forest Fire,7704,4.29,65,105,51,59.71,High
+High,25,Earthquake,8793,0.34,84,181,94,86.8,Critical
+Medium,11,Heatwave,4371,5.4,39,58,48,40.97,Medium
+Medium,7,Forest Fire,2613,3.98,56,34,49,42.27,Medium
+Low,3,Earthquake,3892,6.25,26,7,26,30.38,Moderate
+Low,5,Landslide,4415,5.69,36,20,39,32.94,Moderate
+High,27,Flood,9238,1.13,80,178,72,85.73,Critical
+High,28,Medical Emergency,7955,1.6,85,131,79,75.45,Severe
+High,21,Cyclone,7121,3.97,69,134,56,70.39,Severe
+Medium,13,Earthquake,2790,6.58,53,43,57,46.15,Medium
+High,15,Medical Emergency,5298,3.09,45,62,63,52.28,High
+High,25,Cyclone,6971,0.63,69,118,68,78.1,Severe
+Low,3,Medical Emergency,2055,8.6,24,9,10,16.59,Low
+Low,3,Medical Emergency,102,9.97,13,6,22,15.44,Low
+High,19,Landslide,8087,2.98,85,168,78,78.16,Severe
+Medium,6,Cyclone,2529,3.72,32,60,57,44.45,Medium
+Medium,5,Earthquake,5532,3.21,47,26,30,46.47,Medium
+Low,8,Flood,3687,8.67,20,15,12,25.57,Moderate
+Medium,10,Lightning,4027,3.05,41,37,39,46.1,Medium
+High,16,Flood,5700,3.0,73,119,62,65.83,High
+Low,2,Forest Fire,3685,6.46,17,19,35,26.78,Moderate
+Medium,6,Medical Emergency,5511,3.76,31,27,21,38.04,Medium
+Low,3,Medical Emergency,1569,9.1,15,3,5,15.4,Low
+Low,2,Urban Fire,4273,6.12,32,6,26,26.77,Moderate
+Medium,10,Heatwave,4140,3.22,60,56,25,44.82,Medium
+High,22,Landslide,9270,2.14,74,115,82,75.99,Severe
+High,16,Cyclone,7430,1.76,89,97,73,71.75,Severe
+Medium,16,Cyclone,7774,2.5,74,112,45,62.03,High
+Medium,10,Lightning,3658,6.61,38,54,36,39.12,Medium
+High,12,Earthquake,6750,5.05,66,74,44,58.68,High
+Low,0,Cyclone,352,9.32,7,4,6,15.79,Low
+Medium,9,Forest Fire,2592,3.33,57,43,25,45.83,Medium
+Medium,15,Forest Fire,2616,3.48,38,46,24,43.7,Medium
+Low,6,Landslide,1359,4.25,28,10,15,28.86,Moderate
+Medium,17,Earthquake,7377,3.6,70,71,68,61.12,High
+High,30,Landslide,8686,0.42,98,185,77,89.66,Critical
+Medium,7,Medical Emergency,4947,5.09,40,26,39,34.84,Medium
+High,24,Earthquake,7547,1.84,68,81,57,69.47,Severe
+Medium,14,Lightning,5899,3.22,54,88,70,55.91,High
+Medium,21,Cyclone,7447,3.49,65,104,57,61.58,High
+High,29,Lightning,8865,1.57,89,184,78,86.58,Critical
+High,30,Earthquake,9293,1.2,92,163,96,90.32,Critical
+High,27,Landslide,8776,2.06,84,142,80,82.53,Severe
+High,15,Forest Fire,5716,3.7,69,91,69,60.96,High
+High,29,Lightning,9948,0.81,97,143,84,84.49,Critical
+Low,9,Forest Fire,1961,7.68,23,11,17,23.03,Moderate
+Medium,20,Medical Emergency,6371,2.5,46,44,59,51.62,High
+High,22,Flood,8598,2.07,83,92,57,71.2,Severe
+Medium,12,Landslide,4220,4.78,50,16,38,41.52,Medium
+Medium,5,Heatwave,1380,5.99,38,31,20,28.49,Moderate
+High,25,Lightning,7628,2.97,67,146,67,75.38,Severe
+High,10,Cyclone,4815,2.79,50,68,51,56.28,High
+High,20,Earthquake,5776,4.14,45,90,42,57.85,High
+High,22,Flood,7061,0.53,81,99,63,71.41,Severe
+Medium,6,Flood,4117,4.6,48,21,30,37.28,Medium
+Low,9,Landslide,1146,4.47,24,15,21,31.43,Moderate
+Low,5,Heatwave,1835,9.58,11,14,8,15.19,Low
+Medium,14,Cyclone,4508,5.13,52,22,40,46.07,Medium
+Medium,10,Urban Fire,3278,6.85,33,9,13,30.36,Moderate
+High,24,Heatwave,9456,0.37,93,186,85,86.64,Critical
+Medium,2,Heatwave,1908,5.07,25,5,34,30.56,Moderate
+High,17,Heatwave,6064,2.38,89,154,61,72.07,Severe
+Medium,12,Lightning,7192,3.61,65,59,42,51.53,High
+High,25,Landslide,7544,3.69,88,128,90,79.88,Severe
+High,28,Landslide,9665,0.71,86,136,95,85.33,Critical
+Medium,9,Flood,4130,8.58,23,17,17,33.06,Moderate
+Medium,9,Medical Emergency,1093,5.66,38,22,16,29.16,Moderate
+Low,5,Flood,4409,8.1,15,15,32,27.96,Moderate
+Medium,12,Urban Fire,5727,5.15,49,94,61,53.81,High
+High,20,Earthquake,8521,1.67,76,90,57,73.51,Severe
+High,27,Earthquake,6447,2.73,89,124,64,76.12,Severe
+Medium,14,Lightning,4404,3.28,58,81,51,51.25,High
+Low,0,Medical Emergency,1877,8.58,10,3,16,16.66,Low
+Low,0,Urban Fire,1594,9.84,11,12,18,13.24,Low
+Medium,16,Flood,6481,3.0,54,113,63,62.43,High
+High,30,Medical Emergency,8605,0.28,83,166,83,86.12,Critical
+Medium,6,Lightning,2862,3.03,50,32,46,39.47,Medium
+Medium,15,Flood,6365,5.5,54,41,66,53.05,High
+High,29,Medical Emergency,8355,1.0,100,199,95,85.08,Critical
+High,25,Landslide,9154,0.79,89,169,100,87.61,Critical
+High,17,Medical Emergency,9074,2.28,82,129,80,72.63,Severe
+Low,6,Medical Emergency,1337,4.63,17,32,35,24.51,Moderate
+Low,7,Heatwave,2921,6.68,37,34,25,32.0,Moderate
+High,30,Earthquake,9645,1.25,90,150,77,87.41,Critical
+Low,3,Landslide,2912,8.45,18,21,34,24.9,Moderate
+High,16,Flood,4453,2.52,58,101,39,59.14,High
+High,26,Forest Fire,9792,0.66,95,192,95,90.03,Critical
+Medium,13,Forest Fire,4312,4.55,59,40,36,45.35,Medium
+Medium,9,Heatwave,4405,6.99,32,10,12,32.64,Moderate
+High,29,Urban Fire,8446,0.88,98,140,78,86.7,Critical
+High,30,Cyclone,9913,1.41,81,163,98,89.51,Critical
+Low,0,Medical Emergency,1462,8.52,5,10,20,11.13,Low
+Low,5,Cyclone,2881,5.94,31,8,10,26.51,Moderate
+Low,8,Cyclone,2105,8.75,22,28,31,29.5,Moderate
+High,25,Forest Fire,8027,1.52,77,87,76,71.94,Severe
+Low,9,Flood,1380,8.06,37,19,13,26.34,Moderate
+Medium,8,Urban Fire,5012,5.76,60,48,54,46.86,Medium
+Medium,2,Lightning,1321,7.9,39,15,21,29.16,Moderate
+High,15,Flood,4503,5.39,59,93,35,53.67,High
+Medium,7,Lightning,2660,6.93,31,5,33,32.44,Moderate
+High,21,Medical Emergency,5940,3.07,57,114,37,59.28,High
+Medium,11,Flood,3466,3.45,53,47,27,45.45,Medium
+Medium,11,Cyclone,2664,6.97,53,64,52,41.12,Medium
+High,29,Flood,9821,0.16,96,162,88,88.93,Critical
+Low,0,Earthquake,1271,9.47,11,13,8,16.66,Low
+Medium,5,Cyclone,4787,5.59,50,29,25,42.91,Medium
+High,10,Landslide,5790,2.72,45,107,55,57.22,High
+Low,0,Urban Fire,981,7.5,14,10,5,16.2,Low
+High,30,Earthquake,8357,1.35,91,173,84,89.58,Critical
+High,19,Lightning,4208,3.34,48,120,62,63.38,High
+Medium,6,Medical Emergency,4429,5.95,59,68,41,42.77,Medium
+Medium,8,Lightning,3403,3.29,48,46,23,43.94,Medium
+Low,1,Urban Fire,1126,9.19,3,0,4,10.28,Low
+Medium,5,Earthquake,4068,4.46,49,17,43,41.41,Medium
+Low,3,Heatwave,915,10.0,15,3,7,13.31,Low
+High,27,Flood,9869,0.56,95,156,78,84.26,Critical
+Medium,15,Landslide,6302,4.51,64,66,69,55.16,High
+High,24,Landslide,7265,2.26,87,95,72,77.05,Severe
+High,15,Urban Fire,4187,5.83,73,96,52,58.23,High
+Medium,7,Flood,4490,5.94,30,9,15,32.65,Moderate
+Low,2,Heatwave,1390,9.7,12,10,10,14.44,Low
+Low,2,Urban Fire,755,9.81,4,14,1,11.15,Low
+High,28,Cyclone,9151,1.57,88,170,83,85.39,Critical
+Medium,7,Cyclone,2112,6.07,30,33,17,33.15,Moderate
+Medium,10,Landslide,4353,4.94,46,68,27,44.34,Medium
+Low,2,Forest Fire,3168,5.52,30,17,33,26.05,Moderate
+Medium,4,Landslide,3524,8.11,40,19,29,30.42,Moderate
+High,29,Heatwave,9880,0.31,83,186,98,87.69,Critical
+High,26,Urban Fire,8801,2.63,84,137,65,78.84,Severe
+Medium,8,Landslide,4887,5.74,44,20,20,38.79,Medium
+High,30,Lightning,8234,0.47,95,145,81,87.4,Critical
+High,27,Urban Fire,9335,0.66,95,185,86,90.67,Critical
+Medium,9,Heatwave,2694,4.19,48,40,34,40.77,Medium
+High,26,Earthquake,8682,1.23,89,191,92,87.41,Critical
+Low,0,Flood,2031,9.7,13,2,2,13.83,Low
+High,27,Earthquake,9834,1.94,84,195,95,88.86,Critical
+High,29,Urban Fire,9190,1.63,89,183,76,84.15,Critical
+Medium,9,Heatwave,5146,3.64,51,53,35,44.5,Medium
+High,17,Lightning,7444,1.62,78,141,81,73.55,Severe
+High,17,Lightning,7558,4.63,68,117,66,63.9,High
+High,29,Landslide,9556,0.54,87,143,98,89.1,Critical
+High,27,Lightning,8434,0.39,96,185,86,85.79,Critical
+High,22,Flood,7388,1.52,84,135,57,77.6,Severe
+Medium,3,Medical Emergency,2332,6.78,29,10,19,28.87,Moderate
+High,20,Medical Emergency,4276,3.34,64,114,63,60.64,High
+Medium,5,Forest Fire,3155,7.28,33,25,40,31.32,Moderate
+Medium,6,Flood,1481,8.49,21,5,29,28.4,Moderate
+Medium,5,Heatwave,5290,6.93,33,40,43,36.86,Medium
+High,25,Lightning,9696,0.2,98,184,74,89.43,Critical
+Low,8,Lightning,2496,5.74,25,16,29,29.23,Moderate
+High,24,Medical Emergency,6391,2.35,87,153,73,74.36,Severe
+High,24,Urban Fire,8987,0.43,92,131,91,85.2,Critical
+Medium,6,Flood,3006,4.4,36,70,38,39.15,Medium
+High,16,Forest Fire,7166,0.64,77,133,76,75.18,Severe
+Medium,10,Urban Fire,5370,3.56,68,56,68,55.48,High
+Low,9,Earthquake,3860,6.59,25,27,10,28.73,Moderate
+Medium,20,Flood,7696,4.3,65,106,53,61.4,High
+Low,4,Urban Fire,207,8.44,21,8,0,15.51,Low
+High,30,Landslide,8260,1.28,98,167,71,87.58,Critical
+High,28,Earthquake,9483,0.56,97,177,70,89.51,Critical
+Low,5,Heatwave,2800,5.99,24,29,36,26.3,Moderate
+Medium,21,Heatwave,6900,3.77,61,103,41,56.42,High
+High,16,Earthquake,6499,2.21,86,145,69,71.25,Severe
+High,15,Heatwave,6398,2.33,61,42,42,58.07,High
+High,16,Landslide,4664,2.42,73,45,66,58.99,High
+Low,9,Medical Emergency,2679,6.21,34,24,10,25.51,Moderate
+High,25,Landslide,7329,0.79,87,150,71,81.51,Severe
+Low,6,Medical Emergency,3615,5.49,26,33,11,29.22,Moderate
+Low,0,Lightning,2129,6.75,23,9,1,16.67,Low
+Medium,14,Earthquake,5318,3.26,39,22,41,46.36,Medium
+Medium,7,Medical Emergency,4836,5.99,30,44,49,38.65,Medium
+Low,4,Heatwave,1763,8.19,0,9,9,14.3,Low
+High,12,Flood,7452,3.57,47,93,54,58.02,High
+Medium,15,Urban Fire,3264,5.31,36,57,49,42.76,Medium
+Medium,19,Cyclone,7777,2.56,75,82,71,66.21,High
+Low,10,Heatwave,3974,8.15,33,16,21,30.92,Moderate
+Low,4,Urban Fire,132,8.67,17,9,21,15.84,Low
+Medium,8,Medical Emergency,5537,6.97,55,43,38,37.96,Medium
+Low,1,Heatwave,2170,7.95,1,2,20,15.4,Low
+High,27,Flood,7330,3.13,89,131,87,79.98,Severe
+Low,10,Heatwave,2682,8.63,33,16,11,28.08,Moderate
+High,26,Heatwave,9680,1.83,93,169,81,84.23,Critical
+High,18,Landslide,7865,2.12,49,41,68,64.82,High
+Medium,8,Lightning,3392,3.58,35,28,37,38.78,Medium
+Low,2,Lightning,3146,7.82,17,8,18,21.65,Moderate
+Low,10,Heatwave,3511,4.26,25,22,34,29.58,Moderate
+High,30,Urban Fire,8639,0.86,81,199,92,90.13,Critical
+Medium,20,Forest Fire,6839,2.92,64,67,50,58.68,High
+Low,3,Earthquake,168,8.35,0,8,6,13.96,Low
+High,30,Flood,8769,1.59,93,142,74,84.18,Critical
+Low,2,Flood,542,7.53,1,15,7,14.77,Low
+Low,1,Medical Emergency,1210,6.19,2,8,17,16.33,Low
+High,27,Cyclone,6608,3.22,69,120,64,71.98,Severe
+High,25,Earthquake,8014,1.09,68,108,61,78.59,Severe
+Medium,7,Heatwave,4573,3.27,43,53,55,45.65,Medium
+High,25,Lightning,9308,0.31,88,199,98,90.14,Critical
+High,20,Urban Fire,4286,3.82,56,106,35,57.21,High
+Medium,11,Flood,7615,5.7,70,64,47,53.13,High
+Medium,6,Urban Fire,3425,3.01,60,59,50,44.16,Medium
+Medium,13,Cyclone,2713,4.33,37,45,42,46.6,Medium
+Medium,12,Lightning,3893,6.68,35,21,33,35.14,Medium
+High,21,Urban Fire,6798,1.6,77,125,63,73.29,Severe
+Medium,14,Earthquake,6457,3.3,65,89,43,57.4,High
+High,27,Earthquake,8158,1.06,83,195,72,84.7,Critical
+High,27,Urban Fire,9526,1.75,96,181,85,87.41,Critical
+High,12,Flood,7434,2.07,48,62,53,56.56,High
+Low,2,Medical Emergency,697,6.25,13,8,13,15.88,Low
+Medium,15,Urban Fire,7252,2.95,47,116,74,59.18,High
+Low,1,Urban Fire,340,8.1,2,1,24,12.12,Low
+Medium,6,Earthquake,4964,3.82,58,27,31,46.67,Medium
+High,30,Forest Fire,8120,1.56,88,182,79,86.58,Critical
+High,29,Cyclone,9695,0.77,90,196,94,92.13,Critical
+Low,5,Flood,2626,4.52,17,34,38,30.24,Moderate
+Low,1,Heatwave,123,7.32,22,4,1,13.85,Low
+High,28,Cyclone,7557,1.93,74,169,69,78.73,Severe
+High,23,Forest Fire,6289,2.7,73,161,67,74.67,Severe
+Medium,14,Landslide,5639,6.91,40,18,21,41.36,Medium
+Low,2,Lightning,1214,8.1,8,2,15,16.01,Low
+Medium,10,Medical Emergency,5339,3.54,35,18,37,39.2,Medium
+Low,7,Urban Fire,3660,4.35,24,22,24,30.74,Moderate
+Low,2,Medical Emergency,567,9.29,12,15,2,13.2,Low
+High,26,Medical Emergency,7056,3.95,73,136,63,72.48,Severe
+Medium,12,Landslide,3680,6.08,31,24,42,37.92,Medium
+Low,10,Lightning,2075,4.43,31,18,34,32.99,Moderate
+Medium,11,Flood,5352,4.48,35,43,35,46.56,Medium
+High,28,Forest Fire,8868,3.08,89,102,86,79.68,Severe
+Low,0,Urban Fire,1220,9.34,8,5,12,15.29,Low
+Low,2,Heatwave,1807,8.42,2,6,14,13.57,Low
+High,23,Forest Fire,9579,1.13,90,180,71,84.11,Critical
+High,26,Forest Fire,8957,0.6,83,196,91,87.27,Critical
+High,30,Flood,8621,1.02,82,167,70,84.03,Critical
+Low,3,Medical Emergency,562,9.55,14,1,2,10.81,Low
+Low,5,Lightning,577,6.56,1,9,15,16.0,Low
+High,27,Lightning,7939,1.25,71,82,82,72.5,Severe
+High,25,Cyclone,9186,1.09,90,145,83,85.48,Critical
+Medium,21,Lightning,5827,4.58,73,109,74,63.43,High
+Medium,11,Flood,4266,6.43,49,28,38,43.01,Medium
+Medium,11,Earthquake,4292,3.44,62,65,56,51.23,High
+Low,0,Flood,1865,7.8,17,13,3,15.94,Low
+High,25,Lightning,6797,1.44,68,89,78,71.62,Severe
+High,17,Medical Emergency,7296,0.9,86,132,71,71.72,Severe
+Medium,10,Landslide,5815,5.97,30,63,60,43.97,Medium
+Low,1,Lightning,2159,9.64,1,3,16,12.08,Low
+Medium,7,Forest Fire,1761,6.12,15,23,25,32.01,Moderate
+High,25,Flood,8189,2.72,80,91,76,76.34,Severe
+Medium,18,Cyclone,7655,5.33,66,96,42,57.89,High
+High,27,Forest Fire,8933,0.7,83,160,84,85.15,Critical
+Medium,10,Urban Fire,5502,5.3,57,31,30,44.65,Medium
+Medium,7,Cyclone,5261,4.97,33,40,48,42.58,Medium
+Medium,11,Earthquake,6219,2.67,49,63,51,55.41,High
+Low,1,Medical Emergency,1767,6.76,3,13,11,15.49,Low
+High,16,Earthquake,7108,5.63,54,116,69,61.83,High
+High,25,Heatwave,6086,1.59,70,130,67,69.07,Severe
+High,24,Landslide,9395,0.23,85,172,98,85.96,Critical
+High,17,Earthquake,6026,4.49,65,84,63,64.6,High
+High,25,Cyclone,6396,1.24,90,80,79,75.93,Severe
+High,26,Flood,8538,1.17,84,196,88,86.67,Critical
+Medium,8,Medical Emergency,3229,4.55,34,44,32,37.35,Medium
+High,24,Lightning,9372,0.11,96,188,96,85.08,Critical
+Low,1,Heatwave,731,8.86,25,12,2,15.59,Low
+High,26,Lightning,7452,3.69,83,129,55,73.16,Severe
+Medium,15,Earthquake,7094,2.42,69,81,61,61.91,High
+Medium,10,Flood,4300,5.69,33,26,42,42.75,Medium
+Low,6,Heatwave,2052,4.07,18,24,15,29.02,Moderate
+Medium,8,Landslide,3442,6.12,40,29,26,35.72,Medium
+Medium,6,Lightning,3545,3.71,60,64,45,42.62,Medium
+Low,2,Cyclone,1405,7.04,3,2,10,16.45,Low
+Low,2,Lightning,2467,7.62,23,33,11,22.37,Moderate
+Low,1,Medical Emergency,1898,6.04,21,9,6,16.19,Low
+Low,5,Cyclone,1866,9.77,5,13,5,15.2,Low
+High,18,Forest Fire,8500,2.62,69,152,86,71.51,Severe
+High,21,Urban Fire,5191,2.15,57,102,67,65.75,High
+Low,8,Earthquake,2332,5.81,23,10,27,28.71,Moderate
+Low,2,Urban Fire,1846,9.83,7,12,20,14.62,Low
+Low,0,Medical Emergency,808,9.8,5,6,25,9.74,Low
+Medium,22,Flood,5529,4.16,50,71,69,59.75,High
+Low,8,Forest Fire,1036,8.84,33,30,32,25.7,Moderate
+High,20,Forest Fire,7479,2.83,77,158,58,75.68,Severe
+High,27,Flood,9202,1.72,90,196,81,86.05,Critical
+Medium,6,Forest Fire,3876,4.99,55,63,41,41.4,Medium
+High,29,Flood,8946,1.72,95,156,87,87.09,Critical
+Low,0,Lightning,495,8.98,11,4,17,11.47,Low
+Medium,12,Heatwave,4823,3.53,55,34,30,46.92,Medium
+High,10,Lightning,6625,4.69,65,46,55,53.69,High
+Medium,8,Lightning,4147,4.01,46,44,55,41.83,Medium
+High,25,Cyclone,8698,1.48,99,185,97,87.49,Critical
+High,15,Landslide,8897,3.22,86,157,81,76.52,Severe
+Low,0,Heatwave,2067,6.8,0,6,5,16.37,Low
+High,26,Urban Fire,8503,1.13,83,160,64,78.99,Severe
+Low,2,Lightning,513,8.65,8,4,13,16.74,Low
+Low,2,Medical Emergency,1098,9.0,18,12,10,12.23,Low
+High,10,Urban Fire,4471,2.57,59,64,75,57.13,High
+Medium,9,Urban Fire,3555,7.51,23,6,21,29.43,Moderate
+Low,4,Cyclone,3759,7.66,27,19,34,28.79,Moderate
+High,29,Cyclone,9859,1.82,84,189,98,90.36,Critical
+Medium,12,Urban Fire,3642,3.59,44,21,27,40.6,Medium
+High,30,Urban Fire,8492,1.2,95,165,80,87.59,Critical
+High,24,Urban Fire,7253,2.98,78,100,72,74.43,Severe
+Medium,5,Cyclone,1815,6.3,39,8,26,33.6,Moderate
+High,24,Heatwave,7329,3.95,85,81,77,67.75,Severe
+Medium,4,Medical Emergency,4382,8.5,37,23,36,32.94,Moderate
+High,20,Cyclone,6832,3.98,65,126,90,70.24,Severe
+High,27,Earthquake,9243,0.83,86,175,81,90.01,Critical
+Low,4,Medical Emergency,1187,9.87,25,7,23,14.17,Low
+Medium,7,Earthquake,5740,6.39,49,39,30,40.49,Medium
+High,10,Heatwave,7641,3.13,50,102,35,54.39,High
+Low,2,Heatwave,1373,7.12,15,3,7,15.33,Low
+Low,2,Lightning,428,9.41,21,12,10,16.77,Low
+High,16,Earthquake,4377,2.25,73,56,65,61.31,High
+Low,0,Lightning,1583,8.54,14,4,13,14.13,Low
+High,15,Flood,7302,3.81,77,103,77,69.05,Severe
+Medium,7,Landslide,3295,6.79,40,13,21,31.42,Moderate
+High,17,Forest Fire,7569,1.97,80,148,89,74.65,Severe
+Low,7,Earthquake,2018,4.79,17,26,29,29.89,Moderate
+Low,0,Landslide,1006,9.53,21,10,10,15.79,Low
+Low,2,Cyclone,3717,5.78,25,32,25,29.12,Moderate
+Low,0,Heatwave,385,9.6,10,15,14,11.98,Low
+Medium,19,Landslide,7442,3.0,48,100,50,62.18,High
+Medium,5,Landslide,3667,3.84,38,36,59,43.46,Medium
+High,16,Cyclone,5933,4.62,69,59,60,58.42,High
+Medium,8,Cyclone,1499,8.87,37,12,22,31.93,Moderate
+Medium,9,Cyclone,5143,6.87,49,17,23,40.95,Medium
+Medium,11,Landslide,6115,4.33,71,86,64,53.42,High
+High,12,Medical Emergency,6579,2.02,72,102,39,62.85,High
+High,21,Medical Emergency,4761,2.97,70,45,38,54.71,High
+Medium,7,Urban Fire,2329,8.22,28,29,30,30.44,Moderate
+High,29,Cyclone,9720,1.52,96,159,93,86.73,Critical
+High,16,Landslide,6260,3.0,90,148,66,71.08,Severe
+High,28,Lightning,7035,2.92,81,148,79,77.68,Severe
+Medium,7,Heatwave,2093,8.01,23,25,28,27.79,Moderate
+Medium,9,Lightning,1000,7.63,24,24,10,27.93,Moderate
+Low,1,Lightning,2089,7.93,12,1,5,16.03,Low
+High,27,Cyclone,9891,0.43,83,187,82,85.95,Critical
+High,26,Urban Fire,9523,1.03,87,178,99,86.85,Critical
+High,26,Landslide,8200,0.19,92,184,76,84.74,Critical
+Low,9,Cyclone,1433,5.92,17,18,22,25.56,Moderate
+Medium,16,Forest Fire,6629,2.15,74,116,63,64.87,High
+Medium,5,Heatwave,3694,5.12,59,19,52,37.89,Medium
+Low,4,Medical Emergency,1079,7.1,2,9,7,14.1,Low
+High,29,Earthquake,9699,1.62,89,165,80,89.42,Critical
+High,13,Earthquake,6095,4.21,61,83,75,60.08,High
+Medium,12,Earthquake,3475,5.4,54,66,40,46.79,Medium
+Medium,12,Lightning,2758,6.17,50,34,51,41.27,Medium
+Medium,12,Landslide,5273,2.25,65,52,36,52.18,High
+High,29,Forest Fire,8350,1.59,91,166,92,85.82,Critical
+High,20,Earthquake,6859,4.91,73,67,66,65.13,High
+Medium,14,Lightning,3230,5.58,33,24,54,41.94,Medium
+High,21,Urban Fire,9348,2.38,90,147,86,76.92,Severe
+Medium,6,Landslide,4964,4.19,32,41,43,42.47,Medium
+Medium,14,Lightning,5746,6.76,44,45,28,41.54,Medium
+Medium,4,Medical Emergency,3128,7.65,30,20,35,26.75,Moderate
+Medium,9,Lightning,4496,6.06,48,58,51,44.12,Medium
+High,23,Forest Fire,9364,0.63,83,156,87,84.34,Critical
+Medium,8,Urban Fire,3620,7.2,24,34,21,33.05,Moderate
+High,15,Landslide,7174,1.9,84,167,63,73.4,Severe
+High,20,Lightning,7950,3.95,87,92,79,68.77,Severe
+High,27,Medical Emergency,9351,2.78,73,160,83,76.98,Severe
+Low,2,Heatwave,1110,8.88,15,6,14,13.51,Low
+High,17,Heatwave,4961,2.84,46,42,57,56.53,High
+Low,0,Medical Emergency,633,9.61,17,0,24,13.97,Low
+High,26,Earthquake,8108,1.03,80,185,81,86.29,Critical
+Low,0,Lightning,1952,8.22,17,7,3,16.53,Low
+High,29,Flood,9892,1.76,92,166,70,86.07,Critical
+Low,5,Urban Fire,717,7.38,0,15,3,16.17,Low
+High,19,Landslide,5584,2.71,69,41,42,59.9,High
+Low,4,Medical Emergency,1362,8.89,12,8,0,16.0,Low
+High,26,Urban Fire,8247,1.46,99,198,92,84.36,Critical
+High,27,Heatwave,9979,1.63,99,190,76,84.56,Critical
+High,27,Earthquake,6012,2.1,87,131,63,75.01,Severe
+High,11,Cyclone,7020,2.9,67,94,39,63.9,High
+Low,4,Medical Emergency,1636,7.14,32,33,20,23.08,Moderate
+Medium,17,Medical Emergency,7626,3.55,53,112,73,57.96,High
+High,24,Forest Fire,9953,1.47,93,187,83,86.44,Critical
+Medium,14,Earthquake,5400,6.83,32,69,58,45.53,Medium
+Medium,21,Medical Emergency,7947,3.94,45,97,72,56.46,High
+Low,1,Flood,2405,9.8,2,7,3,15.2,Low
+Medium,5,Medical Emergency,5194,6.45,48,47,46,37.16,Medium
+Medium,17,Cyclone,4907,4.97,69,75,57,53.73,High
+Low,4,Urban Fire,573,7.54,18,6,8,16.27,Low
+High,17,Cyclone,6655,2.5,83,169,55,75.64,Severe
+Medium,20,Medical Emergency,4528,2.69,50,117,66,54.18,High
+Low,2,Flood,2132,8.77,11,8,25,16.94,Low
+Medium,22,Urban Fire,6426,3.03,71,78,62,64.87,High
+Low,3,Landslide,1144,7.5,4,15,2,15.43,Low
+High,15,Forest Fire,9405,3.11,87,134,89,76.1,Severe
+High,25,Urban Fire,9351,2.13,67,103,61,75.81,Severe
+High,21,Earthquake,7977,1.97,81,82,65,73.79,Severe
+Medium,5,Urban Fire,4929,3.24,33,31,22,36.6,Medium
+High,20,Heatwave,7074,2.09,72,82,56,64.25,High
+Low,2,Flood,745,8.93,13,15,20,16.88,Low
+High,26,Landslide,9818,0.73,98,183,100,92.98,Critical
+Low,5,Lightning,776,9.36,4,0,12,15.31,Low
+Medium,15,Earthquake,5206,5.37,61,109,40,57.2,High
+Low,3,Flood,1756,4.13,34,24,18,29.7,Moderate
+Low,3,Flood,2799,8.34,30,27,20,27.24,Moderate
+Medium,7,Medical Emergency,3854,7.96,25,7,36,30.6,Moderate
+High,22,Flood,6123,1.01,69,90,70,67.45,Severe
+Medium,12,Lightning,3201,6.04,37,33,58,38.23,Medium
+Medium,9,Forest Fire,3156,6.66,50,35,46,41.46,Medium
+High,28,Forest Fire,8915,0.8,98,143,90,84.51,Critical
+Medium,9,Flood,2703,4.6,43,53,36,39.56,Medium
+Medium,2,Heatwave,4265,6.24,36,15,40,33.06,Moderate
+Medium,8,Heatwave,2822,7.9,26,28,28,30.73,Moderate
+Medium,5,Urban Fire,3798,6.49,32,9,29,31.52,Moderate
+Medium,14,Cyclone,4639,3.8,44,24,35,43.99,Medium
+Medium,8,Landslide,3021,3.13,48,18,37,39.51,Medium
+Medium,6,Flood,1144,7.48,34,28,19,31.74,Moderate
+Low,2,Urban Fire,133,9.39,13,4,8,15.73,Low
+High,21,Forest Fire,7863,3.68,77,92,88,68.37,Severe
+Low,4,Urban Fire,1003,7.95,8,13,15,15.75,Low
+Low,5,Urban Fire,2434,6.75,23,9,40,27.43,Moderate
+High,26,Medical Emergency,8657,4.0,78,132,77,72.4,Severe
+Medium,10,Cyclone,7823,5.69,53,116,51,56.75,High
+Medium,10,Urban Fire,3627,8.38,40,6,26,31.25,Moderate
+High,26,Flood,9314,3.16,73,132,83,78.58,Severe
+High,18,Cyclone,4492,4.63,62,63,36,55.27,High
+High,14,Earthquake,6785,4.07,60,86,68,64.67,High
+Medium,6,Flood,3537,4.18,51,19,60,42.13,Medium
+Low,7,Medical Emergency,3445,6.66,20,11,26,27.49,Moderate
+High,26,Heatwave,9891,0.85,100,191,82,90.35,Critical
+Low,0,Lightning,1460,9.37,12,10,14,14.14,Low
+High,10,Flood,6647,5.69,64,100,35,58.56,High
+High,28,Cyclone,8329,0.71,98,194,82,90.3,Critical
+Medium,10,Heatwave,7761,3.68,59,80,35,51.1,High
+High,26,Heatwave,9222,0.69,98,185,91,89.22,Critical
+High,26,Cyclone,8066,0.74,88,155,80,85.77,Critical
+Low,2,Urban Fire,388,8.3,7,8,13,15.08,Low
+Low,0,Cyclone,120,8.29,12,2,9,13.92,Low
+Medium,13,Earthquake,2905,6.28,54,15,53,42.34,Medium
+Low,3,Cyclone,2684,4.49,18,26,24,27.68,Moderate
+Low,4,Medical Emergency,2263,8.82,2,3,1,15.89,Low
+Low,1,Lightning,1858,7.61,15,12,0,14.91,Low
+High,26,Lightning,9292,1.21,100,174,85,86.26,Critical
+Low,0,Forest Fire,657,9.12,18,3,4,12.31,Low
+Low,7,Landslide,1271,8.85,23,31,10,22.06,Moderate
+Medium,14,Cyclone,3796,4.51,42,35,56,43.96,Medium
+Medium,13,Cyclone,3714,4.7,38,59,59,47.12,Medium
+High,25,Medical Emergency,8940,0.57,99,186,77,85.95,Critical
+Low,9,Heatwave,2749,7.04,25,13,26,26.94,Moderate
+High,28,Cyclone,8234,0.44,90,184,95,86.65,Critical
+High,22,Forest Fire,6538,2.32,49,87,66,63.56,High
+High,29,Cyclone,8319,1.29,85,175,88,85.76,Critical
+Low,0,Lightning,1539,9.85,10,4,7,12.03,Low
+Low,4,Urban Fire,167,8.53,18,7,22,16.38,Low
+Medium,12,Landslide,5776,5.69,52,66,24,44.97,Medium
+High,14,Landslide,7974,2.03,63,58,38,59.71,High
+Medium,22,Urban Fire,7737,3.04,69,78,53,64.42,High
+Low,6,Heatwave,4236,4.34,24,21,27,29.45,Moderate
+Low,3,Lightning,3132,8.8,34,32,30,26.56,Moderate
+High,26,Cyclone,9389,1.71,91,199,92,85.62,Critical
+High,21,Flood,7295,3.97,78,128,56,73.01,Severe
+High,24,Flood,7809,2.94,74,98,68,70.15,Severe
+Medium,8,Medical Emergency,3801,5.41,46,18,43,36.45,Medium
+High,23,Lightning,8680,1.51,78,101,66,72.8,Severe
+Low,0,Lightning,1230,6.76,3,14,2,16.93,Low
+High,28,Forest Fire,8998,0.3,86,197,86,90.16,Critical
+Medium,16,Earthquake,5386,5.74,54,98,50,53.95,High
+High,17,Landslide,6463,1.68,86,111,89,74.73,Severe
+Medium,7,Landslide,5518,6.98,54,24,55,44.44,Medium
+High,24,Medical Emergency,7345,1.54,68,80,77,70.87,Severe
+High,28,Cyclone,9424,1.44,88,137,88,86.55,Critical
+Low,0,Forest Fire,2182,7.6,10,1,5,16.4,Low
+Medium,10,Medical Emergency,3551,7.65,19,27,32,31.79,Moderate
+Low,0,Urban Fire,1924,9.23,14,4,16,15.99,Low
+Low,1,Urban Fire,110,6.18,0,7,1,15.22,Low
+High,29,Flood,9399,1.82,92,183,83,86.91,Critical
+High,29,Lightning,8684,0.14,88,139,75,84.16,Critical
+High,24,Landslide,9019,0.16,98,185,81,85.6,Critical
+Medium,12,Forest Fire,5268,3.73,67,100,45,54.92,High
+High,30,Urban Fire,9604,1.2,91,157,82,88.27,Critical
+Low,2,Heatwave,4177,5.96,32,20,15,24.81,Moderate
+High,18,Heatwave,7933,1.48,84,92,82,69.25,Severe
+High,13,Urban Fire,7921,5.21,73,83,75,61.08,High
+High,15,Forest Fire,6396,5.36,54,45,45,55.03,High
+High,17,Heatwave,8241,3.54,90,91,86,67.26,Severe
+Medium,14,Flood,5415,5.14,35,26,29,41.09,Medium
+Medium,15,Urban Fire,5643,4.97,44,27,38,46.61,Medium
+Low,3,Urban Fire,3610,5.77,28,24,39,30.42,Moderate
+Low,0,Lightning,655,9.47,5,1,8,11.16,Low
+Medium,8,Landslide,3944,6.59,46,58,47,40.61,Medium
+Medium,7,Heatwave,2361,8.09,37,29,31,33.14,Moderate
+High,29,Medical Emergency,9541,0.56,88,173,79,85.64,Critical
+High,16,Flood,8356,0.7,88,116,90,78.88,Severe
+High,28,Flood,6326,1.53,77,95,72,71.7,Severe
+Low,7,Urban Fire,4229,7.22,26,30,38,30.18,Moderate
+Low,9,Lightning,3791,8.81,25,10,30,27.7,Moderate
+High,21,Flood,7638,2.1,73,166,82,79.52,Severe
+Low,3,Forest Fire,704,8.62,0,3,24,15.28,Low
+Low,8,Urban Fire,1265,5.46,19,8,32,28.69,Moderate
+High,28,Earthquake,8126,1.26,83,134,97,85.73,Critical
+Low,4,Medical Emergency,842,8.45,24,11,19,15.13,Low
+Medium,13,Urban Fire,4320,3.7,59,79,45,52.35,High
+High,18,Forest Fire,9390,1.29,88,97,62,76.44,Severe
+Medium,8,Flood,5343,3.57,37,34,28,40.96,Medium
+Low,3,Forest Fire,1027,10.0,4,2,9,15.86,Low
+Medium,6,Urban Fire,4875,4.41,34,15,28,37.86,Medium
+High,24,Heatwave,7426,3.56,73,143,78,75.24,Severe
+Low,2,Urban Fire,1833,9.86,17,6,22,16.57,Low
+Medium,12,Landslide,5386,4.15,53,17,25,43.99,Medium
+High,15,Cyclone,6421,2.41,68,145,81,68.19,Severe
+Medium,11,Flood,5922,5.35,32,24,33,40.53,Medium
+Medium,16,Urban Fire,7667,4.79,60,90,69,55.56,High
+Medium,8,Flood,2621,3.4,31,68,24,40.78,Medium
+Medium,7,Lightning,1631,5.44,36,9,14,28.35,Moderate
+Medium,11,Cyclone,3327,3.64,34,16,36,42.96,Medium
+Medium,2,Medical Emergency,3368,4.85,16,26,19,30.21,Moderate
+High,19,Cyclone,8319,0.71,87,104,80,76.53,Severe
+Medium,6,Flood,5306,6.38,59,45,51,42.25,Medium
+High,25,Medical Emergency,6662,0.99,88,135,55,73.11,Severe
+Medium,7,Landslide,4102,5.3,46,60,51,43.51,Medium
+Medium,3,Heatwave,1127,5.18,37,23,22,30.91,Moderate
+Low,1,Urban Fire,1278,8.77,1,12,12,14.56,Low
+Medium,15,Earthquake,5041,6.52,53,18,52,49.97,Medium
+High,24,Flood,8594,1.09,86,177,86,84.4,Critical
+High,25,Cyclone,7516,3.35,65,118,74,72.64,Severe
+Low,8,Heatwave,3511,8.6,37,21,38,26.21,Moderate
+Medium,3,Lightning,3330,8.59,38,7,33,28.17,Moderate
+Low,9,Medical Emergency,3042,6.72,15,24,38,26.22,Moderate
+High,20,Heatwave,7492,2.0,70,148,72,69.66,Severe
+High,23,Flood,6044,1.89,78,167,84,77.52,Severe
+Medium,8,Urban Fire,3432,4.63,54,35,27,40.87,Medium
+High,15,Lightning,6605,2.98,46,118,72,60.3,High
+High,21,Forest Fire,6992,2.17,76,160,56,74.55,Severe
+Medium,11,Forest Fire,5421,4.53,43,62,58,46.34,Medium
+Medium,21,Cyclone,7795,5.79,70,98,42,63.47,High
+Medium,6,Forest Fire,1139,4.12,17,6,40,31.96,Moderate
+High,25,Forest Fire,7311,2.49,84,128,58,77.1,Severe
+High,24,Forest Fire,7957,2.2,89,92,55,70.46,Severe
+High,16,Flood,7326,2.82,88,120,55,67.91,Severe
+Low,3,Earthquake,1041,7.51,4,3,0,16.76,Low
+Low,7,Flood,4190,4.53,17,26,40,33.84,Moderate
+High,24,Medical Emergency,6187,0.67,67,119,55,71.88,Severe
+Medium,14,Heatwave,4523,5.24,44,29,21,42.8,Medium
+High,23,Landslide,6464,3.74,79,134,78,70.9,Severe
+Low,3,Medical Emergency,2261,5.83,23,9,19,19.08,Moderate
+Low,3,Medical Emergency,127,8.01,4,14,5,11.6,Low
+Low,5,Urban Fire,2382,7.39,20,15,27,21.36,Moderate
+Low,0,Forest Fire,2097,6.93,8,11,7,15.59,Low
+High,19,Urban Fire,7912,1.09,79,94,85,73.89,Severe
+High,13,Cyclone,7972,4.77,62,118,51,64.27,High
+Medium,10,Heatwave,3223,7.49,21,23,15,30.7,Moderate
+Medium,15,Forest Fire,5756,5.08,67,93,48,54.14,High
+High,30,Medical Emergency,9187,0.7,97,159,71,86.85,Critical
+High,28,Flood,6088,2.42,75,134,85,79.37,Severe
+Low,5,Urban Fire,2302,8.46,8,2,9,16.24,Low
+Medium,11,Flood,4173,6.17,30,33,36,37.61,Medium
+Medium,17,Heatwave,6344,4.95,59,83,50,55.27,High
+High,21,Urban Fire,7371,2.6,86,134,64,75.98,Severe
+Medium,9,Urban Fire,1957,5.9,37,17,25,32.88,Moderate
+Medium,2,Landslide,3248,8.84,15,27,27,28.91,Moderate
+High,21,Lightning,7295,3.21,49,57,35,57.09,High
+Medium,8,Lightning,2782,6.73,36,10,25,30.4,Moderate
+Low,2,Landslide,4178,7.1,25,28,12,27.31,Moderate
+Medium,2,Heatwave,3147,4.21,32,23,14,30.82,Moderate
+High,15,Forest Fire,7749,1.85,76,163,73,71.58,Severe
+Low,3,Medical Emergency,345,9.89,4,8,2,7.83,Low
+High,22,Cyclone,7174,0.89,66,162,57,76.17,Severe
+Medium,5,Lightning,3296,6.19,22,10,32,32.21,Moderate
+High,28,Flood,8583,0.69,95,134,78,86.69,Critical
+High,22,Flood,9350,1.18,99,134,73,84.33,Critical
+High,11,Earthquake,5513,4.29,46,106,44,54.91,High
+High,16,Flood,7324,3.13,83,86,74,67.77,Severe
+Medium,18,Cyclone,4952,2.08,69,55,54,56.38,High
+Medium,6,Cyclone,5512,3.57,50,16,50,47.39,Medium
+High,27,Landslide,9233,1.34,87,167,74,84.87,Critical
+Low,0,Medical Emergency,659,6.78,12,15,13,16.85,Low
+Medium,5,Forest Fire,3791,8.39,24,23,35,33.27,Moderate
+High,18,Forest Fire,6698,3.14,86,169,60,70.43,Severe
+Medium,12,Urban Fire,5999,3.63,31,40,36,44.94,Medium
+High,19,Flood,8569,2.6,90,81,61,71.57,Severe
+Low,1,Landslide,1023,7.38,16,9,2,16.77,Low
+Medium,9,Heatwave,2027,6.81,33,6,22,28.08,Moderate
+Low,4,Cyclone,2473,5.2,15,10,12,28.42,Moderate
+Medium,20,Heatwave,7446,2.99,58,77,71,57.0,High
+Medium,6,Forest Fire,5422,3.81,60,70,37,46.32,Medium
+Medium,12,Heatwave,6974,2.77,56,96,49,54.73,High
+High,23,Landslide,8320,1.06,88,188,90,85.79,Critical
+Low,3,Urban Fire,1949,6.48,7,2,10,16.78,Low
+Medium,8,Cyclone,5783,5.57,40,66,23,45.18,Medium
+Low,7,Forest Fire,3362,6.88,35,22,15,31.74,Moderate
+High,16,Medical Emergency,6743,2.11,70,104,86,68.48,Severe
+High,25,Medical Emergency,9460,0.68,91,200,79,86.82,Critical
+Medium,10,Lightning,3326,4.99,57,65,24,45.27,Medium
+High,13,Urban Fire,4182,3.85,47,99,59,54.66,High
+Low,4,Medical Emergency,3694,6.18,19,7,14,23.53,Moderate
+Medium,11,Heatwave,7152,3.85,60,94,36,50.22,High
+High,14,Forest Fire,6712,5.93,55,66,64,58.68,High
+High,26,Earthquake,8346,1.79,75,128,55,76.74,Severe
+Medium,10,Lightning,3148,5.05,21,24,11,31.28,Moderate
+Medium,15,Urban Fire,4377,6.76,57,70,54,46.1,Medium
+Medium,8,Cyclone,3273,8.75,22,9,20,32.34,Moderate
+Medium,15,Heatwave,5165,4.67,71,113,43,55.98,High
+Low,8,Lightning,2324,6.25,20,19,28,29.24,Moderate
+Medium,5,Forest Fire,3244,4.8,30,17,12,32.13,Moderate
+Medium,20,Flood,7843,2.82,47,62,72,59.87,High
+Medium,2,Urban Fire,2226,6.82,36,15,27,30.11,Moderate
+High,20,Flood,4715,5.31,73,104,37,62.92,High
+Medium,13,Heatwave,4807,6.56,48,28,57,45.7,Medium
+High,28,Earthquake,8212,0.38,88,144,93,84.53,Critical
+Medium,11,Landslide,3554,3.65,32,32,23,39.96,Medium
+Medium,7,Lightning,2145,6.25,33,9,28,32.71,Moderate
+Medium,16,Heatwave,5818,2.21,45,46,59,53.22,High
+High,22,Landslide,6514,2.75,65,94,40,62.89,High
+High,22,Cyclone,9396,1.39,96,190,97,86.58,Critical
+High,14,Urban Fire,4347,2.54,47,77,63,56.76,High
+Medium,11,Medical Emergency,2812,3.47,34,16,50,37.42,Medium
+High,25,Heatwave,8565,2.72,82,106,83,73.0,Severe
+Low,4,Urban Fire,3801,8.0,19,14,32,26.18,Moderate
+Low,5,Lightning,1493,7.11,6,10,3,16.16,Low
+High,24,Medical Emergency,9201,0.71,98,178,91,84.76,Critical
+High,18,Lightning,6637,2.06,88,135,78,70.67,Severe
+High,19,Medical Emergency,6617,5.58,47,61,41,53.99,High
+Medium,13,Lightning,5235,5.07,60,53,69,51.88,High
+High,17,Forest Fire,7430,3.8,80,140,89,72.91,Severe
+High,30,Urban Fire,9503,0.89,83,197,95,86.48,Critical
+Medium,6,Urban Fire,4312,5.34,21,32,12,32.01,Moderate
+Medium,20,Forest Fire,7282,4.75,68,68,73,61.87,High
+High,17,Flood,7924,3.1,88,147,74,74.12,Severe
+Medium,10,Earthquake,5168,6.29,46,66,39,46.09,Medium
+High,17,Earthquake,7503,3.44,81,125,58,70.85,Severe
+Low,1,Earthquake,1116,9.87,12,1,21,16.34,Low
+High,30,Landslide,8959,0.77,94,183,100,89.8,Critical
+Medium,7,Urban Fire,5200,6.44,39,60,30,40.21,Medium
+High,30,Lightning,9760,1.46,89,150,99,85.37,Critical
+Low,2,Medical Emergency,1268,7.69,23,15,4,15.45,Low
+Medium,18,Forest Fire,6702,4.96,66,117,71,58.71,High
+Medium,8,Landslide,3230,7.47,20,26,31,30.08,Moderate
+Medium,14,Cyclone,3849,6.88,50,54,48,44.43,Medium
+High,22,Urban Fire,5532,3.99,59,62,55,61.72,High
+Medium,7,Earthquake,1394,6.62,17,6,36,33.91,Moderate
+High,22,Lightning,4840,3.6,71,40,58,57.04,High
+Medium,21,Landslide,4365,5.2,66,119,61,58.33,High
+Low,5,Flood,380,8.12,0,5,14,15.99,Low
+Medium,2,Forest Fire,1369,4.75,30,11,20,29.13,Moderate
+Medium,5,Heatwave,4566,5.48,39,40,43,35.89,Medium
+Low,0,Earthquake,121,9.77,14,11,24,15.83,Low
+Medium,14,Earthquake,4924,4.35,32,51,53,48.35,Medium
+Low,1,Forest Fire,1402,9.22,22,11,18,15.4,Low
+Medium,13,Lightning,3080,4.04,40,17,28,39.97,Medium
+Low,4,Cyclone,3191,4.11,18,14,18,26.57,Moderate
+Low,2,Forest Fire,127,7.04,7,14,24,16.86,Low
+High,10,Lightning,4871,3.84,47,75,74,53.07,High
+High,26,Forest Fire,6883,3.33,85,98,65,75.03,Severe
+Medium,2,Heatwave,4094,8.1,16,10,24,25.21,Moderate
+Low,2,Landslide,125,6.73,4,12,2,14.73,Low
+High,17,Forest Fire,7640,2.67,72,130,66,71.58,Severe
+High,26,Cyclone,8213,0.17,96,158,90,85.61,Critical
+High,21,Medical Emergency,4529,5.87,61,107,42,57.66,High
+Low,1,Heatwave,482,8.62,8,2,11,14.34,Low
+Medium,15,Heatwave,3785,5.3,33,25,35,39.88,Medium
+Medium,14,Flood,3566,3.68,45,36,49,44.24,Medium
+High,13,Cyclone,5857,3.54,70,94,74,64.2,High
+High,20,Medical Emergency,6632,1.35,82,168,72,74.52,Severe
+High,18,Landslide,5274,4.33,62,58,44,57.43,High
+Medium,2,Medical Emergency,3681,8.73,17,17,31,23.19,Moderate
+High,29,Medical Emergency,9215,1.19,93,181,85,87.15,Critical
+Low,2,Landslide,3640,4.77,32,30,13,27.54,Moderate
+Low,0,Lightning,839,8.18,10,3,2,13.03,Low
+Low,2,Flood,3706,4.75,32,14,22,30.18,Moderate
+High,28,Urban Fire,9485,0.25,100,168,83,87.89,Critical
+Low,1,Flood,2218,9.06,1,12,21,16.08,Low
+High,26,Medical Emergency,8698,0.19,96,197,88,86.09,Critical
+High,27,Forest Fire,8577,1.89,98,184,93,86.21,Critical
+Low,5,Heatwave,1122,9.84,0,5,15,14.09,Low
+High,25,Lightning,9148,0.63,89,198,86,84.68,Critical
+High,25,Urban Fire,8445,0.3,88,139,88,84.6,Critical
+High,22,Earthquake,9116,2.0,84,99,87,76.55,Severe
+Medium,10,Medical Emergency,1553,8.85,37,22,15,28.48,Moderate
+High,26,Medical Emergency,9117,1.21,88,99,57,72.55,Severe
+Low,4,Lightning,1458,9.86,13,3,0,12.67,Low
+Low,6,Forest Fire,1006,4.59,29,25,35,26.91,Moderate
+High,11,Heatwave,4248,3.27,62,92,39,54.24,High
+Low,8,Urban Fire,2558,4.22,20,34,20,30.98,Moderate
+Medium,17,Forest Fire,6112,4.35,62,99,64,56.81,High
+Low,1,Medical Emergency,1140,7.84,21,0,25,16.6,Low
+Low,6,Forest Fire,3274,6.16,27,11,14,28.88,Moderate
+Medium,15,Forest Fire,3637,6.52,59,24,43,43.66,Medium
+High,21,Urban Fire,8993,0.98,80,145,89,80.57,Severe
+High,28,Lightning,9093,0.24,95,133,77,86.06,Critical
+Medium,4,Flood,2085,5.84,33,12,17,29.58,Moderate
+High,25,Urban Fire,9664,1.27,94,185,71,85.09,Critical
+High,22,Heatwave,8282,0.77,89,194,91,85.78,Critical
+High,17,Lightning,7791,3.66,57,87,59,62.15,High
+High,24,Cyclone,8445,1.31,94,140,98,84.85,Critical
+High,25,Flood,6230,0.84,80,102,58,71.05,Severe
+Medium,6,Medical Emergency,3587,8.78,20,25,35,30.29,Moderate
+High,20,Landslide,7246,0.89,86,81,90,75.62,Severe
+High,26,Forest Fire,8866,3.37,65,99,61,69.9,Severe
+Low,5,Forest Fire,3815,4.13,17,27,34,30.74,Moderate
+Medium,3,Cyclone,2198,8.34,35,17,17,31.81,Moderate
+Medium,7,Landslide,3560,5.51,31,13,35,33.29,Moderate
+Medium,15,Landslide,5645,5.93,50,95,38,50.11,High
+High,22,Forest Fire,4959,5.92,75,86,37,58.76,High
+Medium,11,Lightning,3805,6.44,59,19,60,40.74,Medium
+Low,2,Forest Fire,215,7.27,3,10,25,15.16,Low
+High,24,Lightning,9497,0.76,77,139,60,77.06,Severe
+Low,5,Forest Fire,378,8.83,0,6,16,15.39,Low
+High,30,Urban Fire,8530,0.35,90,174,88,88.24,Critical
+High,17,Cyclone,7057,2.63,62,87,42,64.37,High
+High,25,Heatwave,6860,2.55,67,93,63,68.85,Severe
+High,23,Flood,9030,1.82,99,191,93,85.24,Critical
+Medium,15,Urban Fire,5649,4.35,61,90,51,54.89,High
+High,27,Urban Fire,9096,1.11,87,181,85,87.14,Critical
+High,20,Forest Fire,7742,5.54,53,110,72,65.1,High
+Medium,10,Forest Fire,1200,4.92,16,25,21,29.39,Moderate
+Low,1,Medical Emergency,1802,7.94,6,10,19,13.32,Low
+High,13,Cyclone,6163,2.08,63,80,70,60.63,High
+Medium,5,Heatwave,5829,4.06,44,19,51,44.11,Medium
+High,29,Urban Fire,8763,1.58,90,198,81,84.63,Critical
+Low,0,Landslide,593,9.95,13,4,15,11.83,Low
+High,13,Lightning,4154,2.04,48,57,55,55.05,High
+Medium,14,Medical Emergency,4816,4.74,38,55,50,46.89,Medium
+Low,4,Cyclone,506,9.79,6,6,8,16.58,Low
+High,22,Medical Emergency,9100,1.68,78,123,78,75.15,Severe

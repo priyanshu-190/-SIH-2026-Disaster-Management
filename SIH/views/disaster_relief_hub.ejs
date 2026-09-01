@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Disaster Relief Hub</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <script src="/socket.io/socket.io.js"></script>
+  <style>
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:#f4f7fb;color:#0f172a}
+    .panel{background:#fff;border:1px solid #e2e8f0;border-radius:16px;box-shadow:0 6px 24px rgba(15,23,42,.06)}
+    .live-dot{width:8px;height:8px;border-radius:50%;background:#4ade80;box-shadow:0 0 0 0 rgba(74,222,128,.5);animation:pulse 1.6s infinite}
+    @keyframes pulse{70%{box-shadow:0 0 0 7px rgba(74,222,128,0)}100%{box-shadow:0 0 0 0 rgba(74,222,128,0)}}
+    #map{height:100%;min-height:520px}
+    .order-card{border:1px solid #e2e8f0;border-radius:12px;padding:13px;cursor:pointer;transition:.18s;background:#fff}
+    .order-card:hover{border-color:#93c5fd;transform:translateY(-1px)}
+    .order-card.selected{border-color:#2563eb;background:#eff6ff;box-shadow:0 0 0 1px #2563eb inset}
+    .step{position:relative;display:flex;gap:12px;padding-bottom:22px}
+    .step:not(:last-child)::before{content:"";position:absolute;left:14px;top:29px;bottom:0;width:2px;background:#e2e8f0}
+    .step-dot{z-index:1;width:29px;height:29px;border:2px solid #cbd5e1;background:#fff;color:#64748b;border-radius:50%;display:grid;place-items:center;font-size:11px;font-weight:800;flex:none}
+    .step.active .step-dot{background:#2563eb;border-color:#2563eb;color:#fff}
+    .step.done .step-dot{background:#16a34a;border-color:#16a34a;color:#fff}
+    .control{border:0;border-radius:10px;padding:10px 14px;color:#fff;font-size:11px;font-weight:800;cursor:pointer;transition:.18s}
+    .control:hover:not(:disabled){transform:translateY(-1px);filter:brightness(.96)}
+    .control:disabled{opacity:.4;cursor:not-allowed}
+    .logout{display:flex;align-items:center;gap:8px;padding:9px 12px;border:1px solid rgba(255,255,255,.14);background:#111827;color:#fff;border-radius:10px;font-size:11px;font-weight:800;transition:.2s}
+    .logout .arrow{transition:transform .2s}.logout:hover{background:#1f2937}.logout:hover .arrow{transform:translateX(4px)}
+    .empty{border:1px dashed #cbd5e1;border-radius:12px;padding:24px;text-align:center;color:#64748b;font-size:12px}
+    .toast{position:fixed;right:20px;bottom:20px;z-index:5000;background:#0f172a;color:#fff;padding:12px 15px;border-radius:10px;font-size:12px;font-weight:700;box-shadow:0 15px 40px rgba(0,0,0,.2)}
+    .map-legend{position:absolute;right:14px;top:14px;z-index:500;background:rgba(255,255,255,.96);border:1px solid #e2e8f0;border-radius:10px;padding:11px;box-shadow:0 8px 25px rgba(15,23,42,.12);font-size:10px}
+    @media(max-width:1024px){#map{min-height:430px}}
+  </style>
+</head>
+<body>
+  <header class="bg-slate-950 text-white sticky top-0 z-[1000]">
+    <div class="max-w-[1900px] mx-auto px-4 lg:px-6">
+      <div class="min-h-[76px] flex items-center justify-between gap-4">
+        <div class="flex items-center gap-3">
+          <div class="w-11 h-11 rounded-xl bg-red-600 grid place-items-center text-xl">🚨</div>
+        <a
+    href="/past-incidents"
+    class="px-3 py-2 rounded-lg bg-slate-700 hover:bg-slate-600
+           text-white text-xs font-semibold transition"
+>
+    📚 Past Incidents
+</a>
+           class="logout" type="button" onclick="logout()">Logout <span class="arrow">→</span></button>
+          <div>
+            <div class="font-black text-lg">Disaster Relief Hub</div>
+            <div class="text-xs text-slate-400">Rescue Operations Console</div>
+          </div>
+        </div>
+        <div class="hidden md:flex items-center gap-3">
+          <div class="flex items-center gap-2 px-3 py-2 rounded-full bg-green-500/10 border border-green-400/20">
+            <span class="live-dot"></span><span class="text-[10px] font-bold text-green-300">LIVE OPERATIONS</span>
+          </div>
+          <span id="socketStatus" class="text-xs text-slate-400">Command Network: <b class="text-amber-300">Connecting...</b></span>
+        </div>
+        <div class="flex items-center gap-3">
+          <div class="hidden sm:flex items-center gap-2">
+            <span class="text-[9px] text-slate-500">DEMO ROLE</span>
+            <select id="roleSelector" class="bg-slate-800 border border-slate-700 text-white text-[10px] rounded-lg px-2 py-2 outline-none">
+              <option value="NDRF">NDRF</option>
+              <option value="SDRF">SDRF</option>
+              <option value="FIRE">Fire & Rescue</option>
+              <option value="AMBULANCE">Ambulance</option>
+              <option value="POLICE">Police / 112</option>
+            </select>
+          </div>
+          <div class="text-right hidden sm:block">
+            <div id="teamName" class="font-bold text-sm">NDRF Alpha</div>
+            <div id="teamOrganization" class="text-[10px] text-blue-300 font-bold">NDRF</div>
+            <div id="unitId" class="text-[10px] text-slate-400">Unit ID: NDRF-01</div>
+          </div>
+          <div id="teamIcon" class="w-10 h-10 rounded-xl bg-slate-800 border border-slate-700 grid place-items-center text-xl">🧑‍🚒</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-[1900px] mx-auto p-4 lg:p-5">
+    <section class="grid grid-cols-2 lg:grid-cols-4 gap-3 mb-4">
+      <div class="panel p-4"><div class="text-[10px] text-slate-500">Active Missions</div><div id="statActive" class="text-2xl font-black mt-1">0</div></div>
+      <div class="panel p-4"><div class="text-[10px] text-slate-500">Pending Orders</div><div id="statPending" class="text-2xl font-black mt-1">0</div></div>
+      <div class="panel p-4"><div class="text-[10px] text-slate-500">People Awaiting Rescue</div><div id="statPeople" class="text-2xl font-black mt-1">0</div></div>
+      <div class="panel p-4"><div class="text-[10px] text-slate-500">Mission ETA</div><div id="statEta" class="text-2xl font-black mt-1">—</div></div>
+    </section>
+
+    <section class="grid grid-cols-1 xl:grid-cols-[330px_minmax(0,1fr)_380px] gap-4">
+      <aside class="space-y-4">
+        <div class="panel overflow-hidden">
+          <div class="px-4 py-3 border-b border-slate-200 flex items-center justify-between">
+            <div><div class="font-black text-sm">Command Orders</div><div class="text-[11px] text-slate-400">Assigned to this unit</div></div>
+            <span id="orderCount" class="px-2 py-1 rounded-md bg-blue-50 text-blue-700 text-[10px] font-black">0</span>
+          </div>
+          <div id="ordersList" class="p-3 space-y-2"><div class="empty">Loading orders...</div></div>
+        </div>
+
+        <div class="panel overflow-hidden">
+          <div class="px-4 py-3 border-b border-slate-200 flex justify-between items-center"><div class="font-black text-sm">Mission Progress</div><span id="missionStatusBadge" class="px-2 py-1 rounded-md bg-slate-100 text-slate-600 text-[9px] font-black">NO MISSION</span></div>
+          <div id="timeline" class="p-4"><div class="empty">Select an order to view progress.</div></div>
+        </div>
+
+        <div class="panel p-4">
+          <div class="font-black text-sm mb-3">My Unit</div>
+          <div class="flex justify-between text-xs"><span class="text-slate-500">Operational status</span><b id="unitStatus">AVAILABLE</b></div>
+          <div class="mt-3 h-2 rounded-full bg-slate-100 overflow-hidden"><div id="teamLoadBar" class="h-full bg-blue-600 rounded-full" style="width:0%"></div></div>
+          <div class="flex justify-between mt-1 text-[9px] text-slate-400"><span>Load</span><b id="teamLoadText">0%</b></div>
+        </div>
+      </aside>
+
+      <section class="panel overflow-hidden">
+        <div class="px-4 py-3 border-b border-slate-200 flex items-center justify-between">
+          <div><div class="font-black text-sm">Live Rescue Operations Map</div><div class="text-[11px] text-slate-400">Response units and assigned incident</div></div>
+          <div class="flex gap-2"><button id="locateBtn" class="px-3 py-2 border border-slate-300 rounded-lg bg-white text-[9px] font-bold">📍 My Unit</button><button id="refreshBtn" class="px-3 py-2 border border-slate-300 rounded-lg bg-white text-[9px] font-bold">↻ Refresh</button></div>
+        </div>
+        <div class="relative h-[620px] lg:h-[calc(100vh-245px)] min-h-[520px]">
+          <div id="map"></div>
+          <div class="map-legend"><b>LIVE MAP</b><div class="mt-2">🔴 Assigned incident</div><div class="mt-1">🔵 Response unit</div><div class="mt-1">🟢 Other unit</div></div>
+        </div>
+      </section>
+
+      <aside class="space-y-4">
+        <div class="panel overflow-hidden">
+          <div class="px-4 py-3 border-b border-slate-200"><div class="font-black text-sm">Incident Intelligence</div><div class="text-[11px] text-slate-400">Selected mission details</div></div>
+          <div class="p-4">
+            <div class="flex justify-between items-start gap-3"><div><div id="incidentTitle" class="font-black text-lg">No mission selected</div><div id="incidentId" class="text-[10px] text-slate-400">—</div></div><div id="incidentEmoji" class="text-2xl">🚨</div></div>
+            <div class="grid grid-cols-2 gap-2 mt-4">
+              <div class="p-3 rounded-xl bg-slate-50 border border-slate-200"><div class="text-[9px] text-slate-500">People</div><div id="incidentPeople" class="text-lg font-black">—</div></div>
+              <div class="p-3 rounded-xl bg-slate-50 border border-slate-200"><div class="text-[9px] text-slate-500">Priority</div><div id="incidentPriority" class="text-lg font-black">—</div></div>
+              <div class="p-3 rounded-xl bg-slate-50 border border-slate-200"><div class="text-[9px] text-slate-500">ETA</div><div id="incidentEta" class="text-lg font-black">—</div></div>
+              <div class="p-3 rounded-xl bg-slate-50 border border-slate-200"><div class="text-[9px] text-slate-500">Distance</div><div id="incidentDistance" class="text-lg font-black">—</div></div>
+            </div>
+            <div class="mt-3 p-3 rounded-xl bg-blue-50 text-blue-800 text-[10px]"><b>Authority instructions</b><div id="incidentInstructions" class="mt-1">No instructions.</div></div>
+            <div class="mt-3"><div class="text-[10px] font-black text-slate-500 uppercase">Incident location</div><div id="incidentLocation" class="mt-1 text-xs font-bold">Not available</div></div>
+          </div>
+        </div>
+
+        <div class="panel overflow-hidden">
+          <div class="px-4 py-3 border-b border-slate-200"><div class="font-black text-sm">Team Communication</div><div class="text-[11px] text-slate-400">Updates to command</div></div>
+          <div class="p-4"><div class="flex gap-2 mt-3">
+
+    <button
+        id="assistanceBtn"
+        type="button"
+        class="flex-1 px-3 py-2 rounded-lg
+               bg-orange-500 hover:bg-orange-600
+               text-white text-xs font-bold"
+    >
+        🆘 Request Assistance
+    </button>
+
+    <button
+        id="emergencyBtn"
+        type="button"
+        class="flex-1 px-3 py-2 rounded-lg
+               bg-red-600 hover:bg-red-700
+               text-white text-xs font-bold"
+    >
+        🚨 Emergency
+    </button>
+
+    <button
+        id="updateBtn"
+        type="button"
+        class="flex-1 px-3 py-2 rounded-lg
+               bg-blue-600 hover:bg-blue-700
+               text-white text-xs font-bold"
+    >
+        📍 Situation Update
+    </button>
+
+</div><div id="communicationLog" class="h-36 overflow-y-auto space-y-2"></div><div class="flex gap-2 mt-3"><input id="messageInput" class="flex-1 h-9 px-3 border border-slate-300 rounded-lg text-[10px] outline-none" placeholder="Send update to command..."><button id="sendMessageBtn" class="w-10 rounded-lg bg-blue-600 text-white font-black">→</button></div></div>
+        </div>
+      </aside>
+    </section>
+
+    <section class="panel mt-4 p-4">
+      <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-3"><div><div class="font-black text-sm">Mission Controls</div><div id="missionControlDescription" class="text-[11px] text-slate-400">Select a mission to begin.</div></div><div id="missionControls" class="flex flex-wrap gap-2"></div></div>
+    </section>
+  </main>
+
+  <div id="toast" class="toast hidden"></div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+const API_BASE_URL = "/api";
+const organizationProfiles = {
+  NDRF:{name:"NDRF Alpha",unitId:"NDRF-01",organization:"NDRF",icon:"🧑‍🚒",controls:["ACCEPT","EN_ROUTE","ARRIVED","RESCUE_STARTED","COMPLETE","ESCALATE"]},
+  SDRF:{name:"SDRF Bravo",unitId:"SDRF-01",organization:"SDRF",icon:"🧑‍🚒",controls:["ACCEPT","EN_ROUTE","ARRIVED","RESCUE_STARTED","COMPLETE","ESCALATE"]},
+  FIRE:{name:"Fire & Rescue Unit 01",unitId:"FIRE-01",organization:"FIRE",icon:"🚒",controls:["ACCEPT","EN_ROUTE","ARRIVED","RESCUE_STARTED","COMPLETE","ESCALATE"]},
+  AMBULANCE:{name:"Ambulance Unit 01",unitId:"AMB-01",organization:"AMBULANCE",icon:"🚑",controls:["ACCEPT","EN_ROUTE","ARRIVED","RESCUE_STARTED","COMPLETE"]},
+  POLICE:{name:"Police Response Unit 112",unitId:"POL-112",organization:"POLICE / 112",icon:"👮",controls:["ACCEPT","EN_ROUTE","ARRIVED","RESCUE_STARTED","COMPLETE","ESCALATE"]}
+};
+let currentUser={...organizationProfiles.NDRF};
+let orders=[];
+let selectedMission=null;
+let teams=[];
+let markers={};
+let incidentMarker=null;
+const socket=io();
+
+const map=L.map("map").setView([20.2961,85.8245],13);
+L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",{maxZoom:19,attribution:"&copy; OpenStreetMap contributors"}).addTo(map);
+
+function toast(message){const el=document.getElementById("toast");el.textContent=message;el.classList.remove("hidden");clearTimeout(window.__toast);window.__toast=setTimeout(()=>el.classList.add("hidden"),2800)}
+function teamEmoji(org){return org==="FIRE"?"🚒":org==="AMBULANCE"?"🚑":org==="POLICE / 112"?"👮":"🧑‍🚒"}
+function safeNumber(v){return Number.isFinite(Number(v))?Number(v):0}
+function escapeHtml(v){return String(v??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#039;"}[c]))}
+
+function updateHeader(){
+  document.getElementById("teamName").textContent=currentUser.name;
+  document.getElementById("teamOrganization").textContent=currentUser.organization;
+  document.getElementById("unitId").textContent=`Unit ID: ${currentUser.unitId}`;
+  document.getElementById("teamIcon").textContent=currentUser.icon;
+  updateUnitCard();
+}
+
+function joinTeamRoom(){
+  if(socket.connected){socket.emit("joinTeamRoom",currentUser.unitId);console.log("🚑 Joining team room:",currentUser.unitId)}
+}
+
+async function loadMissions(){
+  try{
+    const response=await fetch(`/api/missions/team/${encodeURIComponent(currentUser.unitId)}`);
+    if(!response.ok)throw new Error("Failed to load missions");
+    const missions=await response.json();
+    orders=missions.map(m=>({
+      id:m.missionId,missionId:m.missionId,incidentId:m.incidentId,status:m.status,
+      priority:m.status==="ESCALATED"?"CRITICAL":"HIGH",etaMinutes:safeNumber(m.etaMinutes),distanceKm:safeNumber(m.distanceKm),
+      matchScore:safeNumber(m.matchScore),instructions:m.instructions||"",createdAt:m.createdAt
+    }));
+    renderOrders();
+    selectMission(orders[0]?.missionId||null,false);
+    console.log("✅ Missions loaded:",orders);
+  }catch(error){console.error("❌ Mission load failed:",error);orders=[];renderOrders();selectMission(null,false)}
+}
+
+function renderOrders(){
+  const box=document.getElementById("ordersList");
+  document.getElementById("orderCount").textContent=orders.length;
+  if(!orders.length){box.innerHTML='<div class="empty">No orders assigned to this unit.</div>';updateStats();return}
+  box.innerHTML=orders.map(o=>`<div class="order-card ${selectedMission?.missionId===o.missionId?"selected":""}" data-id="${escapeHtml(o.missionId)}"><div class="flex justify-between gap-2"><div><div class="font-black text-[11px]">Rescue Mission — ${escapeHtml(o.incidentId)}</div><div class="text-[9px] text-slate-500 mt-1">Mission ${escapeHtml(o.missionId)}</div></div><span class="px-2 py-1 rounded-md bg-red-50 text-red-600 text-[8px] font-black">${escapeHtml(o.priority)}</span></div><div class="flex justify-between mt-3 text-[9px]"><span class="text-slate-400">${o.createdAt?new Date(o.createdAt).toLocaleString():"Just now"}</span><b>${o.status}</b></div></div>`).join("");
+  box.querySelectorAll(".order-card").forEach(card=>card.addEventListener("click",()=>selectMission(card.dataset.id,true)));
+  updateStats();
+}
+
+function selectMission(id,focus){
+  selectedMission=id?orders.find(o=>o.missionId===id)||null:null;
+  renderOrders();renderMission();
+  if(focus&&selectedMission)loadIncidentForMission(selectedMission);
+}
+
+async function loadIncidentForMission(mission){
+  // The mission API intentionally remains the source of truth for orders.
+  // If an incident API is available in the project, enrich the selected mission without breaking the page if it is not.
+  try{
+    const response=await fetch(`/api/incidents/${encodeURIComponent(mission.incidentId)}`);
+    if(!response.ok)return;
+    const incident=await response.json();
+    mission.incident=incident;
+    renderMission();
+  }catch(_){/* optional enrichment */}
+}
+
+function renderMission(){
+  const m=selectedMission;
+  if(!m){
+    document.getElementById("missionStatusBadge").textContent="NO MISSION";
+    document.getElementById("timeline").innerHTML='<div class="empty">Select an order to view progress.</div>';
+    document.getElementById("missionControls").innerHTML="";
+    document.getElementById("missionControlDescription").textContent="Select a mission to begin.";
+    ["incidentTitle","incidentId","incidentPeople","incidentPriority","incidentEta","incidentDistance","incidentInstructions","incidentLocation"].forEach(id=>document.getElementById(id).textContent="—");
+    return;
+  }
+  const incident=m.incident||{};
+  document.getElementById("incidentTitle").textContent=incident.title||`Rescue Mission — ${m.incidentId}`;
+  document.getElementById("incidentId").textContent=`Incident ${m.incidentId} • Mission ${m.missionId}`;
+  document.getElementById("incidentPeople").textContent=incident.people??"—";
+  document.getElementById("incidentPriority").textContent=incident.priority||m.priority;
+  document.getElementById("incidentEta").textContent=m.etaMinutes?`${m.etaMinutes} min`:"—";
+  document.getElementById("incidentDistance").textContent=m.distanceKm?`${m.distanceKm} km`:"—";
+  document.getElementById("incidentInstructions").textContent=m.instructions||"No instructions provided.";
+  document.getElementById("incidentLocation").textContent=incident.lat&&incident.lng?`${Number(incident.lat).toFixed(4)}, ${Number(incident.lng).toFixed(4)}`:"Location supplied with incident data when available.";
+  const badge=document.getElementById("missionStatusBadge");badge.textContent=prettyStatus(m.status);badge.className=`px-2 py-1 rounded-md text-[9px] font-black ${statusClass(m.status)}`;
+  renderTimeline(m.status);renderControls();updateStats();
+  if(incident.lat&&incident.lng)showIncidentOnMap(Number(incident.lat),Number(incident.lng),incident.title||m.incidentId);
+}
+
+function prettyStatus(s){return ({EN_ROUTE:"EN ROUTE",ARRIVED:"ON SITE",RESCUE_STARTED:"RESCUE ACTIVE",COMPLETE:"COMPLETE",ESCALATED:"ESCALATED"}[s]||s||"WAITING")}
+function statusClass(s){return ({WAITING:"bg-amber-50 text-amber-700",ACCEPTED:"bg-blue-50 text-blue-700",EN_ROUTE:"bg-orange-50 text-orange-700",ARRIVED:"bg-green-50 text-green-700",RESCUE_STARTED:"bg-purple-50 text-purple-700",COMPLETE:"bg-green-50 text-green-700",ESCALATED:"bg-red-50 text-red-700"}[s]||"bg-slate-100 text-slate-600")}
+function renderTimeline(status){
+  const steps=["ACCEPTED","EN_ROUTE","ARRIVED","RESCUE_STARTED","COMPLETE"];
+  const active=steps.indexOf(status);
+  document.getElementById("timeline").innerHTML=steps.map((s,i)=>`<div class="step ${i<=active?"active":""} ${s===status?"done":""}"><div class="step-dot">${i+1}</div><div><div class="font-black text-sm">${prettyStatus(s)}</div><div class="text-[10px] text-slate-400 mt-1">${({ACCEPTED:"Order received",EN_ROUTE:"Unit moving to incident",ARRIVED:"Team on site",RESCUE_STARTED:"Rescue operation active",COMPLETE:"Mission completed"}[s])}</div></div></div>`).join("");
+}
+
+function renderControls(){
+  const box=document.getElementById("missionControls");
+  if(!selectedMission){box.innerHTML="";return}
+  const labels={EN_ROUTE:"↗ En Route",ARRIVED:"● Arrived",RESCUE_STARTED:"✦ Rescue Started",COMPLETE:"✓ Complete Mission",ESCALATE:"⚠ Escalate"};
+  const colors={EN_ROUTE:"bg-orange-600",ARRIVED:"bg-green-600",RESCUE_STARTED:"bg-purple-600",COMPLETE:"bg-green-700",ESCALATE:"bg-red-600"};
+  box.innerHTML=currentUser.controls.map(action=>`<button class="control ${colors[action]}" data-action="${action}">${labels[action]}</button>`).join("");
+  box.querySelectorAll("button").forEach(btn=>{const action=btn.dataset.action;btn.disabled=actionDisabled(action,selectedMission.status);btn.addEventListener("click",()=>updateMissionStatus(action))});
+  document.getElementById("missionControlDescription").textContent=`${currentUser.organization} operational controls • ${prettyStatus(selectedMission.status)}`;
+}
+function actionDisabled(action,status){
+  if(action==="ACCEPT")return ["ACCEPTED","EN_ROUTE","ARRIVED","RESCUE_STARTED","COMPLETE"].includes(status);
+  if(action==="EN_ROUTE")return !["ACCEPTED"].includes(status);
+  if(action==="ARRIVED")return !["EN_ROUTE"].includes(status);
+  if(action==="RESCUE_STARTED")return !["ARRIVED"].includes(status);
+  if(action==="COMPLETE")return !["RESCUE_STARTED","ARRIVED"].includes(status);
+  return status==="COMPLETE";
+}
+
+async function updateMissionStatus(action){
+  if(!selectedMission)return toast("Select a mission first.");
+  const next={ACCEPT:"ACCEPTED",EN_ROUTE:"EN_ROUTE",ARRIVED:"ARRIVED",RESCUE_STARTED:"RESCUE_STARTED",COMPLETE:"COMPLETE",ESCALATE:"ESCALATED"}[action];
+  if(!next)return;
+  try{
+    const response=await fetch(`/api/missions/${encodeURIComponent(selectedMission.missionId)}/status`,{method:"PATCH",headers:{"Content-Type":"application/json"},body:JSON.stringify({status:next})});
+    const result=await response.json();
+    if(!response.ok)throw new Error(result.message||"Status update failed");
+    applyMissionUpdate({missionId:selectedMission.missionId,teamId:currentUser.unitId,status:result.mission?.status||next,team:result.team});
+    toast(`Mission updated: ${prettyStatus(next)}`);
+  }catch(error){console.error(error);toast(error.message||"Could not update mission")}
+}
+
+function applyMissionUpdate(data){
+  const mission=orders.find(o=>o.missionId===data.missionId);if(!mission)return;
+  mission.status=data.status;
+  if(data.team){mission.team=data.team}
+  selectedMission=mission;
+  renderOrders();renderMission();updateUnitCard();
+}
+
+function updateStats(){
+  const active=orders.filter(o=>!["COMPLETE"].includes(o.status)).length;
+  const pending=orders.filter(o=>["WAITING","ACCEPTED"].includes(o.status)).length;
+  const eta=orders.filter(o=>o.status!=="COMPLETE").map(o=>o.etaMinutes).filter(Boolean);
+  document.getElementById("statActive").textContent=active;
+  document.getElementById("statPending").textContent=pending;
+  document.getElementById("statPeople").textContent=selectedMission?.incident?.people??"—";
+  document.getElementById("statEta").textContent=eta.length?`${Math.min(...eta)} min`:"—";
+}
+
+async function loadTeams(){
+  try{const r=await fetch("/api/teams");if(!r.ok)throw new Error("Teams unavailable");teams=await r.json();renderTeamMarkers();updateUnitCard()}catch(e){console.warn("Team data unavailable",e)}}
+function renderTeamMarkers(){
+  Object.values(markers).forEach(m=>map.removeLayer(m));markers={};
+  teams.forEach(team=>{if(team.lat==null||team.lng==null)return;const mine=team.teamId===currentUser.unitId;const marker=L.marker([team.lat,team.lng]).addTo(map).bindPopup(`<b>${escapeHtml(team.name||team.teamId)}</b><br>${escapeHtml(team.organization||"")}<br>Status: ${escapeHtml(team.status||"UNKNOWN")}`);markers[team.teamId]=marker;if(mine)marker.openPopup()})
+}
+function showIncidentOnMap(lat,lng,title){if(incidentMarker)map.removeLayer(incidentMarker);incidentMarker=L.circleMarker([lat,lng],{radius:10,color:"#dc2626",fillColor:"#ef4444",fillOpacity:.9,weight:3}).addTo(map).bindPopup(`<b>${escapeHtml(title)}</b>`).openPopup();map.flyTo([lat,lng],15,{duration:.6})}
+
+document.getElementById("locateBtn").onclick=()=>{const team=teams.find(t=>t.teamId===currentUser.unitId);if(!team)return toast("Unit location unavailable.");map.flyTo([team.lat,team.lng],15,{duration:.6});markers[team.teamId]?.openPopup()};
+document.getElementById("refreshBtn").onclick=async()=>{await Promise.all([loadMissions(),loadTeams()]);toast("Live data refreshed")};
+
+document.getElementById("roleSelector").addEventListener("change",async e=>{currentUser={...organizationProfiles[e.target.value]};orders=[];selectedMission=null;updateHeader();renderOrders();renderMission();joinTeamRoom();await Promise.all([loadMissions(),loadTeams()]);toast(`${currentUser.organization} unit loaded`)})
+// =====================================================
+// SEND CHAT MESSAGE
+// =====================================================
+
+document.getElementById("sendMessageBtn").onclick = () => {
+
+    const input =
+        document.getElementById("messageInput");
+
+    const text =
+        input.value.trim();
+
+    if (!text) {
+        return;
+    }
+
+
+    // Show immediately on this team screen
+    addMessage(
+        "team",
+        text
+    );
+
+
+    socket.emit("teamMessage", {
+
+    teamId:
+        currentUser.unitId,
+
+    incidentId:
+        selectedMission?.incidentId || null,
+
+    missionId:
+        selectedMission?.missionId || null,
+
+    message:
+        text,
+
+    type:
+        "GENERAL",
+
+    priority:
+        "NORMAL"
+
+});
+
+
+    // Clear input
+    input.value = "";
+
+};
+
+// =====================================================
+// SPECIAL COMMUNICATION ACTIONS
+// =====================================================
+
+function sendSpecialMessage(type, priority) {
+
+    const input =
+        document.getElementById(
+            "messageInput"
+        );
+
+    const text =
+        input.value.trim();
+
+
+    if (!text) {
+
+        toast(
+            "Type a message first."
+        );
+
+        input.focus();
+
+        return;
+
+    }
+
+
+    if (!selectedMission) {
+
+        toast(
+            "Select a mission first."
+        );
+
+        return;
+
+    }
+
+
+    const incidentId =
+        selectedMission.incidentId;
+
+
+    const missionId =
+        selectedMission.missionId;
+
+
+    if (!incidentId) {
+
+        toast(
+            "No incident is linked to this mission."
+        );
+
+        return;
+
+    }
+
+
+    // Show immediately in team communication log
+    addMessage(
+        "team",
+        text
+    );
+
+
+    // Send to backend
+    socket.emit(
+        "teamMessage",
+        {
+
+            teamId:
+                currentUser.unitId,
+
+            incidentId:
+                incidentId,
+
+            missionId:
+                missionId,
+
+            message:
+                text,
+
+            type:
+                type,
+
+            priority:
+                priority
+
+        }
+    );
+
+
+    input.value = "";
+
+}
+
+
+// =====================================================
+// REQUEST ASSISTANCE
+// =====================================================
+
+document.getElementById(
+    "assistanceBtn"
+).addEventListener(
+    "click",
+    function () {
+
+        sendSpecialMessage(
+            "ASSISTANCE_REQUEST",
+            "HIGH"
+        );
+
+    }
+);
+
+
+// =====================================================
+// EMERGENCY
+// =====================================================
+
+document.getElementById(
+    "emergencyBtn"
+).addEventListener(
+    "click",
+    function () {
+
+        sendSpecialMessage(
+            "EMERGENCY",
+            "CRITICAL"
+        );
+
+    }
+);
+
+
+// =====================================================
+// SITUATION UPDATE
+// =====================================================
+
+document.getElementById(
+    "updateBtn"
+).addEventListener(
+    "click",
+    function () {
+
+        sendSpecialMessage(
+            "UPDATE",
+            "NORMAL"
+        );
+
+    }
+);
+// =====================================================
+// ENTER KEY SEND
+// =====================================================
+
+document.getElementById("messageInput")
+    .addEventListener(
+        "keydown",
+        (e) => {
+
+            if (
+                e.key === "Enter"
+            ) {
+
+                e.preventDefault();
+
+                document
+                    .getElementById(
+                        "sendMessageBtn"
+                    )
+                    .click();
+
+            }
+
+        }
+    );
+
+
+// =====================================================
+// DISPLAY CHAT MESSAGE
+// =====================================================
+
+function addMessage(
+    type,
+    text
+) {
+
+    const box =
+        document.getElementById(
+            "communicationLog"
+        );
+
+
+    const div =
+        document.createElement(
+            "div"
+        );
+
+
+    const sender =
+        type === "authority"
+            ? "AUTHORITY"
+            : type === "team"
+                ? currentUser.unitId
+                : "SYSTEM";
+
+
+    const senderClass =
+        type === "authority"
+            ? "text-blue-700"
+            : type === "team"
+                ? "text-green-700"
+                : "text-slate-500";
+
+
+    const messageClass =
+        type === "authority"
+            ? "bg-blue-50 text-blue-800"
+            : type === "team"
+                ? "bg-green-50 text-green-800"
+                : "bg-slate-50 text-slate-600";
+
+
+    div.className =
+        `p-2 rounded-lg text-[10px] ${messageClass}`;
+
+
+    div.innerHTML = `
+
+        <div class="font-black text-[9px] ${senderClass}">
+            ${escapeHtml(sender)}
+        </div>
+
+        <div class="mt-1">
+            ${escapeHtml(text)}
+        </div>
+
+    `;
+
+
+    box.appendChild(div);
+
+    box.scrollTop =
+        box.scrollHeight;
+
+}
+function updateUnitCard(){const team=teams.find(t=>t.teamId===currentUser.unitId);const status=team?.status||"AVAILABLE";const load=safeNumber(team?.load);document.getElementById("unitStatus").textContent=status;document.getElementById("teamLoadText").textContent=`${load}%`;document.getElementById("teamLoadBar").style.width=`${Math.max(0,Math.min(100,load))}%`}
+
+socket.on("connect",()=>{document.getElementById("socketStatus").innerHTML='Command Network: <b class="text-green-400">Connected</b>';joinTeamRoom()});
+socket.on("disconnect",()=>{document.getElementById("socketStatus").innerHTML='Command Network: <b class="text-red-400">Disconnected</b>'});
+socket.on("newMissionOrder",order=>{
+  if(!order||order.teamId!==currentUser.unitId)return;
+  const existing=orders.find(o=>o.missionId===order.missionId);
+  const mission=existing||{missionId:order.missionId,id:order.missionId,incidentId:order.incidentId};
+  Object.assign(mission,{status:order.status||"ACCEPTED",etaMinutes:safeNumber(order.etaMinutes),distanceKm:safeNumber(order.distanceKm),matchScore:safeNumber(order.matchScore),instructions:order.instructions||"",incident:order.incident||null,priority:order.incident?.priority||"HIGH"});
+  if(!existing)orders.unshift(mission);
+  selectedMission=mission;renderOrders();renderMission();
+  if(order.incident?.lat&&order.incident?.lng)showIncidentOnMap(Number(order.incident.lat),Number(order.incident.lng),order.incident.title||order.incidentId);
+  addMessage("authority",`New mission ${order.missionId} assigned by Authority.`);toast("🚨 New authority order received");
+});
+socket.on("missionStatusUpdated",data=>{if(!data||data.teamId!==currentUser.unitId)return;applyMissionUpdate(data);addMessage("system",`Mission ${data.missionId}: ${prettyStatus(data.status)}`)});
+// =====================================================
+// CHAT MESSAGE RECEIVED
+// =====================================================
+
+socket.on("teamMessage", (data) => {
+
+    if (!data || !data.message) {
+        return;
+    }
+
+    // Ignore our own message because it is
+    // already displayed immediately when sent
+    if (
+        data.senderType === "team" &&
+        data.sender === currentUser.unitId
+    ) {
+        return;
+    }
+
+    // Only show messages meant for this team
+    if (
+        data.senderType === "team" &&
+        data.teamId !== currentUser.unitId
+    ) {
+        return;
+    }
+
+    if (data.senderType === "authority") {
+
+        addMessage(
+            "authority",
+            data.message
+        );
+
+    } else if (data.senderType === "team") {
+
+        addMessage(
+            "team",
+            data.message
+        );
+
+    } else {
+
+        addMessage(
+            "system",
+            data.message
+        );
+
+    }
+
+});
+async function logout(){try{await fetch("/api/auth/logout",{method:"POST",credentials:"include"})}catch(e){console.error("Logout error",e)}window.location.href="/login"}
+
+updateHeader();renderOrders();renderMission();loadTeams();loadMissions();
+window.addEventListener("load",()=>setTimeout(()=>map.invalidateSize(),300));
+window.addEventListener("resize",()=>setTimeout(()=>map.invalidateSize(),150));
+</script>
+</body>
+</html>

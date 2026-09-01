@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Incident Reports - Disaster Relief Hub</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+</head>
+
+
+<body class="bg-slate-100 min-h-screen">
+
+
+    <!-- =========================================================
+         HEADER
+    ========================================================== -->
+
+    <header class="bg-white border-b border-slate-200 shadow-sm">
+
+        <div
+            class="max-w-7xl mx-auto px-5 py-4 flex items-center justify-between gap-4"
+        >
+
+            <div>
+
+                <h1 class="text-xl font-bold text-slate-800">
+                    Incident Reports
+                </h1>
+
+                <p
+                    id="incidentTitle"
+                    class="text-sm text-slate-500 mt-1"
+                >
+                    Loading incident...
+                </p>
+
+            </div>
+
+
+            <button
+                onclick="goBack()"
+                class="px-4 py-2 rounded-lg bg-slate-700 hover:bg-slate-800 text-white text-sm font-semibold whitespace-nowrap"
+            >
+                ← Back to Dashboard
+            </button>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- =========================================================
+         MAIN
+    ========================================================== -->
+
+    <main class="max-w-7xl mx-auto px-5 py-6">
+
+
+        <!-- =====================================================
+             INCIDENT SUMMARY
+        ====================================================== -->
+
+        <div
+            id="incidentSummary"
+            class="bg-white rounded-xl border border-slate-200 shadow-sm p-5 mb-6"
+        >
+
+            <div
+                class="grid grid-cols-2 md:grid-cols-4 gap-4"
+            >
+
+                <div>
+
+                    <p class="text-xs text-slate-500">
+                        Incident Type
+                    </p>
+
+                    <p
+                        id="summaryType"
+                        class="font-bold text-slate-800"
+                    >
+                        —
+                    </p>
+
+                </div>
+
+
+                <div>
+
+                    <p class="text-xs text-slate-500">
+                        Total Reports
+                    </p>
+
+                    <p
+                        id="summaryReports"
+                        class="font-bold text-slate-800"
+                    >
+                        —
+                    </p>
+
+                </div>
+
+
+                <div>
+
+                    <p class="text-xs text-slate-500">
+                        People Affected
+                    </p>
+
+                    <p
+                        id="summaryPeople"
+                        class="font-bold text-slate-800"
+                    >
+                        —
+                    </p>
+
+                </div>
+
+
+                <div>
+
+                    <p class="text-xs text-slate-500">
+                        Highest Urgency
+                    </p>
+
+                    <p
+                        id="summaryUrgency"
+                        class="font-bold text-red-600"
+                    >
+                        —
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =====================================================
+             CITIZEN REPORTS
+        ====================================================== -->
+
+        <div
+            id="reportsContainer"
+            class="space-y-5"
+        >
+
+            <div
+                class="bg-white rounded-xl p-8 text-center text-slate-500"
+            >
+                Loading citizen reports...
+            </div>
+
+        </div>
+
+
+    </main>
+
+
+
+    <!-- =========================================================
+         JAVASCRIPT
+    ========================================================== -->
+
+    <script>
+
+
+        // ========================================================
+        // GET INCIDENT ID FROM URL
+        // ========================================================
+
+        const params =
+            new URLSearchParams(
+                window.location.search
+            );
+
+
+        const incidentId =
+            params.get("id");
+
+
+
+        // ========================================================
+        // BACK TO AUTHORITY DASHBOARD
+        // ========================================================
+
+        function goBack() {
+
+            window.location.href =
+                "/dashboard";
+
+        }
+
+
+
+        // ========================================================
+        // LOAD INCIDENT
+        // ========================================================
+
+        async function loadIncident() {
+
+            try {
+
+
+                // =================================================
+                // CHECK INCIDENT ID
+                // =================================================
+
+                if (!incidentId) {
+
+                    showError(
+                        "No incident selected."
+                    );
+
+                    return;
+
+                }
+
+
+
+                // =================================================
+                // GET GROUPED INCIDENTS
+                // =================================================
+
+                const response =
+                    await fetch(
+                        "/api/reports/grouped"
+                    );
+
+
+                const data =
+                    await response.json();
+
+
+
+                if (
+                    !response.ok ||
+                    !data.success
+                ) {
+
+                    showError(
+                        "Failed to load incident."
+                    );
+
+                    return;
+
+                }
+
+
+
+                // =================================================
+                // FIND SELECTED INCIDENT
+                // =================================================
+
+                const incident =
+                    data.groups.find(
+                        group =>
+                            group.groupId ===
+                            incidentId
+                    );
+
+
+
+                if (!incident) {
+
+                    showError(
+                        "Incident not found."
+                    );
+
+                    return;
+
+                }
+
+
+
+                // =================================================
+                // UPDATE INCIDENT SUMMARY
+                // =================================================
+
+                document.getElementById(
+                    "incidentTitle"
+                ).textContent =
+
+                    `${incident.incidentType} • ${incident.reportCount} Report${incident.reportCount !== 1 ? "s" : ""}`;
+
+
+
+                document.getElementById(
+                    "summaryType"
+                ).textContent =
+                    incident.incidentType;
+
+
+
+                document.getElementById(
+                    "summaryReports"
+                ).textContent =
+                    incident.reportCount;
+
+
+
+                document.getElementById(
+                    "summaryPeople"
+                ).textContent =
+                    incident.peopleCount;
+
+
+
+                document.getElementById(
+                    "summaryUrgency"
+                ).textContent =
+                    incident.urgency;
+
+
+
+                // =================================================
+                // REPORT CONTAINER
+                // =================================================
+
+                const container =
+                    document.getElementById(
+                        "reportsContainer"
+                    );
+
+
+                container.innerHTML = "";
+
+
+
+                // =================================================
+                // DISPLAY EVERY CITIZEN REPORT
+                // =================================================
+
+                incident.reports.forEach(
+                    (report, index) => {
+
+
+                        const card =
+                            document.createElement(
+                                "div"
+                            );
+
+
+                        card.className =
+
+                            "bg-white rounded-xl border border-slate-200 shadow-sm p-5";
+
+
+
+                        // =================================================
+                        // EXACT LOCATION
+                        // =================================================
+
+                        const latitude =
+                            report.location?.latitude ??
+                            "Unavailable";
+
+
+                        const longitude =
+                            report.location?.longitude ??
+                            "Unavailable";
+
+
+
+                        // =================================================
+                        // DATE + TIME
+                        // =================================================
+
+                        let dateText =
+                            "Unavailable";
+
+
+                        let timeText =
+                            "Unavailable";
+
+
+                        if (report.createdAt) {
+
+                            const submittedDate =
+                                new Date(
+                                    report.createdAt
+                                );
+
+
+                            dateText =
+                                submittedDate.toLocaleDateString(
+                                    "en-IN",
+                                    {
+                                        day: "2-digit",
+                                        month: "short",
+                                        year: "numeric"
+                                    }
+                                );
+
+
+                            timeText =
+                                submittedDate.toLocaleTimeString(
+                                    "en-IN",
+                                    {
+                                        hour: "2-digit",
+                                        minute: "2-digit",
+                                        second: "2-digit"
+                                    }
+                                );
+
+                        }
+
+
+
+                        // =================================================
+                        // PHOTO
+                        // =================================================
+
+                        let photoHTML = "";
+
+
+                        if (report.photo) {
+
+                            photoHTML = `
+
+                                <div class="mt-5">
+
+                                    <p class="text-xs text-slate-500 mb-2 font-semibold">
+                                        Citizen Evidence
+                                    </p>
+
+
+                                    <a
+                                        href="${report.photo}"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold transition"
+                                    >
+
+                                        📷 View Image ${index + 1}
+
+                                    </a>
+
+                                </div>
+
+                            `;
+
+                        } else {
+
+                            photoHTML = `
+
+                                <div class="mt-5">
+
+                                    <p class="text-xs text-slate-400">
+                                        No image uploaded
+                                    </p>
+
+                                </div>
+
+                            `;
+
+                        }
+
+
+
+                        // =================================================
+                        // REPORT CARD
+                        // =================================================
+
+                        card.innerHTML = `
+
+
+                            <!-- REPORT HEADER -->
+
+                            <div
+                                class="flex flex-col md:flex-row md:items-start md:justify-between gap-3"
+                            >
+
+                                <div>
+
+                                    <div
+                                        class="text-xs font-bold text-red-600 mb-1"
+                                    >
+
+                                        CITIZEN REPORT #${index + 1}
+
+                                    </div>
+
+
+                                    <h2
+                                        class="text-lg font-bold text-slate-800"
+                                    >
+
+                                        ${escapeHTML(
+                                            incident.incidentType
+                                        )}
+
+                                    </h2>
+
+                                </div>
+
+
+                                <span
+                                    class="inline-flex w-fit text-xs font-semibold px-3 py-1 rounded-full bg-slate-100 text-slate-600"
+                                >
+
+                                    ${escapeHTML(
+                                        report.status ||
+                                        "pending"
+                                    )}
+
+                                </span>
+
+                            </div>
+
+
+
+                            <!-- =================================================
+                                 REPORT INFORMATION
+                            ================================================== -->
+
+                            <div
+                                class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-5"
+                            >
+
+
+                                <!-- LOCATION -->
+
+                                <div
+                                    class="bg-slate-50 border border-slate-200 rounded-lg p-3"
+                                >
+
+                                    <p
+                                        class="text-xs text-slate-500 mb-1"
+                                    >
+                                        📍 Exact Location
+                                    </p>
+
+                                    <p
+                                        class="font-semibold text-slate-700 text-sm break-all"
+                                    >
+
+                                        ${latitude},
+                                        ${longitude}
+
+                                    </p>
+
+                                </div>
+
+
+
+                                <!-- DATE -->
+
+                                <div
+                                    class="bg-slate-50 border border-slate-200 rounded-lg p-3"
+                                >
+
+                                    <p
+                                        class="text-xs text-slate-500 mb-1"
+                                    >
+                                        📅 Date
+                                    </p>
+
+                                    <p
+                                        class="font-semibold text-slate-700 text-sm"
+                                    >
+
+                                        ${dateText}
+
+                                    </p>
+
+                                </div>
+
+
+
+                                <!-- TIME -->
+
+                                <div
+                                    class="bg-slate-50 border border-slate-200 rounded-lg p-3"
+                                >
+
+                                    <p
+                                        class="text-xs text-slate-500 mb-1"
+                                    >
+                                        🕐 Time
+                                    </p>
+
+                                    <p
+                                        class="font-semibold text-slate-700 text-sm"
+                                    >
+
+                                        ${timeText}
+
+                                    </p>
+
+                                </div>
+
+
+
+                                <!-- PEOPLE -->
+
+                                <div
+                                    class="bg-slate-50 border border-slate-200 rounded-lg p-3"
+                                >
+
+                                    <p
+                                        class="text-xs text-slate-500 mb-1"
+                                    >
+                                        👥 People Affected
+                                    </p>
+
+                                    <p
+                                        class="font-semibold text-slate-700 text-sm"
+                                    >
+
+                                        ${report.peopleCount || 0}
+
+                                    </p>
+
+                                </div>
+
+
+                            </div>
+
+
+
+                            <!-- =================================================
+                                 URGENCY
+                            ================================================== -->
+
+                            <div class="mt-4">
+
+                                <p
+                                    class="text-xs text-slate-500 mb-1"
+                                >
+                                    🚨 Urgency
+                                </p>
+
+                                <p
+                                    class="font-semibold text-slate-700"
+                                >
+
+                                    ${escapeHTML(
+                                        report.urgency ||
+                                        "Unavailable"
+                                    )}
+
+                                </p>
+
+                            </div>
+
+
+
+                            <!-- =================================================
+                                 CITIZEN MESSAGE
+                            ================================================== -->
+
+                            <div class="mt-5">
+
+                                <p
+                                    class="text-xs text-slate-500 mb-2 font-semibold"
+                                >
+
+                                    📝 Citizen Message
+
+                                </p>
+
+
+                                <div
+                                    class="bg-slate-50 border border-slate-200 rounded-lg p-4 text-sm text-slate-700 whitespace-pre-wrap"
+                                >
+
+                                    ${escapeHTML(
+                                        report.description ||
+                                        "No message provided."
+                                    )}
+
+                                </div>
+
+                            </div>
+
+
+
+                            <!-- =================================================
+                                 IMAGE LINK
+                            ================================================== -->
+
+                            ${photoHTML}
+
+
+                        `;
+
+
+                        container.appendChild(
+                            card
+                        );
+
+
+                    }
+                );
+
+
+            } catch (error) {
+
+
+                console.error(
+                    "Incident loading error:",
+                    error
+                );
+
+
+                showError(
+                    "Unable to connect to server."
+                );
+
+            }
+
+        }
+
+
+
+        // ========================================================
+        // ESCAPE HTML
+        // ========================================================
+
+        function escapeHTML(text) {
+
+            const div =
+                document.createElement(
+                    "div"
+                );
+
+
+            div.textContent =
+                text;
+
+
+            return div.innerHTML;
+
+        }
+
+
+
+        // ========================================================
+        // ERROR
+        // ========================================================
+
+        function showError(message) {
+
+            document.getElementById(
+                "reportsContainer"
+            ).innerHTML = `
+
+                <div
+                    class="bg-white rounded-xl border border-red-200 p-8 text-center"
+                >
+
+                    <div
+                        class="text-red-600 font-semibold"
+                    >
+
+                        ${escapeHTML(message)}
+
+                    </div>
+
+                </div>
+
+            `;
+
+        }
+
+
+
+        // ========================================================
+        // START
+        // ========================================================
+
+        loadIncident();
+
+
+    </script>
+
+
+</body>
+
+</html>

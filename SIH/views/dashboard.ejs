@@ -1,0 +1,4618 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Authority Dashboard | Disaster Relief Hub</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <!-- Leaflet CSS -->
+    <link
+        rel="stylesheet"
+        href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    />
+ 
+
+    <style>
+        
+        * {
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            width: 100%;
+            min-height: 100%;
+            margin: 0;
+            overflow-x: hidden;
+            overflow-y: auto;
+            font-family: Inter, ui-sans-serif, system-ui, -apple-system,
+                BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: #f1f5f9;
+        }
+
+        /* Main dashboard */
+     .dashboard {
+    width: 100%;
+    max-width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+        /* Header */
+       .topbar {
+    height: 74px;
+    min-height: 74px;
+    background: #5a4bda;
+}
+
+        /* Main area */
+      .main-area {
+    min-height: calc(100vh - 74px);
+    height: auto;
+    padding: 13px 24px 60px;
+    overflow: visible;
+}
+
+        /* Stats */
+        .stats-grid {
+            height: 92px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+            margin-bottom: 14px;
+        }
+
+        .stat-card {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 11px;
+            box-shadow: 0 2px 7px rgba(15, 23, 42, 0.07);
+            display: flex;
+            align-items: center;
+            padding: 14px 16px;
+            min-width: 0;
+        }
+
+        .stat-icon {
+            width: 46px;
+            height: 46px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        /* Main columns */
+        .content-grid {
+    height: calc(100vh - 217px);
+    min-height: 630px;   
+    display: grid;
+    grid-template-columns: 273px minmax(0, 1fr) 315px;
+    gap: 12px;
+}
+        .panel {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 11px;
+            box-shadow: 0 2px 7px rgba(15, 23, 42, 0.06);
+            min-height: 0;
+            overflow: hidden;
+        }
+
+        .panel-header {
+            height: 48px;
+            padding: 0 14px;
+            border-bottom: 1px solid #e5e7eb;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        /* for rotating button */
+#refreshShelters {
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+#refreshShelters.refreshing {
+    animation: shelterRefresh 0.5s linear;
+}
+
+@keyframes shelterRefresh {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+        /* Incidents */
+        .incidents-panel {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .incident-list {
+            flex: 1;
+            padding: 10px;
+            overflow: hidden;
+        }
+
+      
+
+        .incident-card:hover {
+            border-color: #93c5fd;
+            background: #f8fbff;
+        }
+
+        .incident-card.selected {
+            border-color: #ef4444;
+            background: #fff7f7;
+            box-shadow: 0 0 0 1px rgba(239, 68, 68, 0.1);
+        }
+
+       
+
+        .incident-footer {
+            padding: 9px 10px;
+            border-top: 1px solid #e5e7eb;
+        }
+
+        /* Center */
+        .center-column {
+            min-width: 0;
+            min-height: 0;
+            height: 100%;
+            display: block;
+        }
+
+        .map-panel {
+            width: 100%;
+            height: 100%;
+            min-height: 0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .map-container {
+            flex: 1;
+            min-height: 0;
+            position: relative;
+        }
+
+        #map {
+            width: 100%;
+            height: 100%;
+            min-height: 0;
+        }
+
+        .map-legend {
+            position: absolute;
+            top: 9px;
+            right: 10px;
+            z-index: 500;
+            background: rgba(255, 255, 255, 0.96);
+            border-radius: 7px;
+            padding: 7px 10px;
+            font-size: 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            margin-bottom: 3px;
+        }
+
+        .legend-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .legend-dot {
+            width: 9px;
+            height: 9px;
+            border-radius: 50%;
+        }
+
+        /* Details */
+       .details-panel {
+    width: 100%;
+    min-height: 420px;
+    margin-top: 12px;
+    margin-bottom: 40px;
+    scroll-margin-top: 12px;
+    display: flex;
+    flex-direction: column;
+}
+
+        .details-content {
+            padding: 14px;
+            min-height: 0;
+        }
+
+        .detail-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            border: 1px solid #e5e7eb;
+            border-radius: 7px;
+            overflow: hidden;
+        }
+
+        .detail-item {
+            padding: 12px 14px;
+            border-right: 1px solid #e5e7eb;
+        }
+
+        .detail-item:last-child {
+            border-right: none;
+        }
+
+        .detail-label {
+            font-size: 12px;
+            color: #64748b;
+            margin-bottom: 3px;
+        }
+
+        .detail-value {
+            font-size: 15px;
+            font-weight: 600;
+            color: #1e293b;
+        }
+
+        .nearest-title {
+            font-size: 13px;
+            font-weight: 700;
+            color: #334155;
+            margin: 8px 0 5px;
+        }
+
+        .nearest-row {
+            height: 38px;
+            display: grid;
+            grid-template-columns: 1fr 60px 100px;
+            align-items: center;
+            border: 1px solid #e5e7eb;
+            border-bottom: none;
+            padding: 0 12px;
+            font-size: 12px;
+        }
+
+        .nearest-row:last-child {
+            border-bottom: 1px solid #e5e7eb;
+            border-radius: 0 0 6px 6px;
+        }
+
+        .details-content .text-\[9px\] {
+            font-size: 12px !important;
+        }
+
+        .action-buttons {
+            display: grid;
+            grid-template-columns: 1fr 1.35fr 1.15fr;
+            gap: 8px;
+            margin-top: 8px;
+        }
+
+        .action-btn {
+            height: 40px;
+            border-radius: 6px;
+            color: white;
+            font-size: 12px;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.1s ease, opacity 0.1s ease;
+        }
+
+        .action-btn:hover {
+            opacity: 0.9;
+        }
+
+        .action-btn:active {
+            transform: scale(0.98);
+        }
+
+        /* Shelters */
+        .shelters-panel {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .shelter-list {
+            padding: 9px;
+            flex: 1;
+            overflow: hidden;
+        }
+
+       
+
+        .shelter-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 6px;
+        }
+
+        .shelter-body {
+            display: flex;
+            gap: 8px;
+        }
+
+        .shelter-image {
+            width: 72px;
+            height: 55px;
+            border-radius: 6px;
+            object-fit: cover;
+            flex-shrink: 0;
+        }
+
+        .shelter-info {
+            min-width: 0;
+            flex: 1;
+        }
+
+       
+        .progress-bar {
+            height: 5px;
+            width: 100%;
+            background: #e5e7eb;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-top: 5px;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: #16a34a;
+            border-radius: 10px;
+        }
+
+        .shelter-footer {
+            border-top: 1px solid #e5e7eb;
+            height: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Status badges */
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 3px 6px;
+            border-radius: 5px;
+            font-size: 8px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .badge-critical {
+            background: #fee2e2;
+            color: #dc2626;
+        }
+
+        .badge-high {
+            background: #fef3c7;
+            color: #d97706;
+        }
+
+        .badge-medium {
+            background: #dbeafe;
+            color: #2563eb;
+        }
+
+        .badge-low {
+            background: #dcfce7;
+            color: #16a34a;
+        }
+
+        .badge-active {
+            background: #dcfce7;
+            color: #15803d;
+        }
+
+        /* User */
+        .user-box {
+            height: 42px;
+            padding: 4px 10px;
+            border-radius: 7px;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            background: rgba(255, 255, 255, 0.06);
+        }
+
+        /* ============================================================
+           LOGOUT BUTTON (moved out of the media query — this is the bug
+           that was breaking the animation and sizing on desktop)
+        ============================================================ */
+        .Btn {
+          --black: #000000;
+          --ch-black: #141414;
+          --eer-black: #1b1b1b;
+          --night-rider: #2e2e2e;
+          --white: #ffffff;
+          --af-white: #f3f3f3;
+          --ch-white: #e1e1e1;
+          display: flex;
+          align-items: center;
+          justify-content: flex-start;
+          width: 27px;
+          height: 27px;
+          border: none;
+          border-radius: 5px;
+          cursor: pointer;
+          position: relative;
+          overflow: hidden;
+          transition-duration: .3s;
+          box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.199);
+          background-color: var(--night-rider);
+        }
+
+        .sign {
+          width: 100%;
+          transition-duration: .3s;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .sign svg {
+          width: 10px;
+        }
+
+        .sign svg path {
+          fill: var(--af-white);
+        }
+
+        .text {
+          position: absolute;
+          right: 0%;
+          width: 0%;
+          opacity: 0;
+          color: var(--af-white);
+          font-size: 1.2em;
+          font-weight: 600;
+          transition-duration: .3s;
+          white-space: nowrap;
+        }
+
+        .Btn:hover {
+          width: 100px;
+          border-radius: 5px;
+          transition-duration: .3s;
+        }
+
+        .Btn:hover .sign {
+          width: 30%;
+          transition-duration: .3s;
+          padding-left: 20px;
+        }
+
+        .Btn:hover .text {
+          opacity: 1;
+          width: 70%;
+          transition-duration: .3s;
+          padding-right: 10px;
+        }
+
+        .Btn:active {
+          transform: translate(2px, 2px);
+        }
+
+        /* Responsive desktop */
+        @media (max-width: 1200px) {
+
+            .content-grid {
+                grid-template-columns: 225px minmax(0, 1fr) 285px;
+            }
+
+            .stats-grid {
+                gap: 8px;
+            }
+
+            .stat-card {
+                padding: 10px;
+            }
+
+            .stat-icon {
+                width: 40px;
+                height: 40px;
+            }
+        }
+
+        @media (max-width: 1000px) {
+
+            .content-grid {
+                grid-template-columns: 210px minmax(0, 1fr) 260px;
+                gap: 8px;
+            }
+
+            .main-area {
+                padding: 8px;
+            }
+
+            .stats-grid {
+                margin-bottom: 8px;
+            }
+
+            .content-grid {
+                height: calc(100vh - 188px);
+                min-height: 460px;
+            }
+
+            .shelter-image {
+                width: 60px;
+                height: 48px;
+            }
+        }
+
+
+        /* ============ FONT UPGRADE - INCIDENTS & SHELTERS ============ */
+
+.panel-header span {
+    font-size: 16px;      
+    font-weight: 700;
+}
+
+.incident-card .text-\[10px\] {
+    font-size: 14px !important;   
+    font-weight: 700;
+}
+
+.incident-card .text-xs {
+    font-size: 17px !important;  
+    font-weight: 700;
+}
+
+.incident-bottom {
+    font-size: 13px !important; 
+}
+
+.shelter-card .text-\[10px\] {
+    font-size: 16px !important;   
+    font-weight: 700;
+}
+
+.shelter-info-row {
+    font-size: 13px !important;   
+}
+
+.badge {
+    font-size: 12px;      
+    padding: 5px 9px;
+    font-weight: 700;
+}
+.incident-card {
+    border: 1.5px solid #d1d5db !important;
+    border-radius: 10px !important;
+    padding: 12px !important;
+    margin-bottom: 12px !important;
+    box-shadow: 0 1px 3px rgba(15, 23, 42, 0.06) !important;
+}
+
+.incident-card.selected {
+    border-color: #ef4444 !important;
+    border-width: 2px !important;
+    box-shadow: 0 2px 6px rgba(239, 68, 68, 0.15) !important;
+}
+/* ============ CORRECT FIXES (real structure ke hisaab se) ============ */
+
+/* Arrows - bigger & professional, real IDs use kiye */
+#prevIncidentBtn, #nextIncidentBtn {
+    font-size: 18px !important;
+    font-weight: 700;
+    width: 34px;
+    height: 34px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+    background: #f8fafc;
+    color: #475569;
+    transition: all 0.15s ease;
+}
+#prevIncidentBtn:hover, #nextIncidentBtn:hover {
+    background: #2563eb;
+    color: #fff;
+    border-color: #2563eb;
+}
+
+/* Type / Severity / People / Status - font upgrade */
+.detail-label {
+    font-size: 13px;
+    font-weight: 600;
+}
+.detail-value {
+    font-size: 19px;
+    font-weight: 700;
+}
+.detail-item {
+    padding: 16px 14px;
+}
+
+/* Nearest shelters row - real class .nearest-row use kiya, fixed height hataya */
+.nearest-row {
+    height: auto;
+    min-height: 48px;
+    grid-template-columns: 1fr 70px 150px;  /* last column wide taaki "150 seats available" na tute */
+    font-size: 14px;
+    padding: 10px 14px;
+    gap: 8px;
+}
+.nearest-row > div {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Extra bottom space fill karne ke liye */
+.details-panel {
+    min-height: 480px;
+    display: flex;
+    flex-direction: column;
+}
+.details-content {
+    display: flex;
+    flex-direction: column;
+    flex: 1;              /* height:100% ki jagah - flex parent me yahi sahi hai */
+    padding: 18px;
+}
+.action-buttons {
+    margin-top: auto;   /* buttons ko neeche push karega, extra gap khatam */
+    padding-top: 16px;
+}
+
+    </style>
+    
+</head>
+
+<body>
+
+<div class="dashboard">
+
+    <!-- =========================================================
+         TOP NAVBAR
+    ========================================================== -->
+    <header class="topbar px-5 flex items-center justify-between">
+
+        <!-- Logo -->
+        <div class="flex items-center gap-3">
+
+            <div
+                class="w-10 h-10 rounded-lg bg-white/10 border border-white/10
+                       flex items-center justify-center"
+            >
+                <svg
+                    class="w-6 h-6 text-white"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    viewBox="0 0 24 24"
+                >
+                    <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M12 3l8 4v5c0 5-3.5 8.5-8 9-4.5-.5-8-4-8-9V7l8-4z"
+                    />
+                    <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M9.5 12l2 2 4-4"
+                    />
+                </svg>
+            </div>
+
+            <div>
+                <div class="text-white font-bold text-base leading-tight">
+                    Disaster Relief Hub
+                </div>
+
+                <div class="text-slate-300 text-[10px]">
+                    Authority Dashboard
+                </div>
+            </div>
+
+  <!-- User / Navigation / Logout -->
+
+<div class="ml-auto flex items-center gap-2"></div>
+    <!-- Past Incidents -->
+    <a
+        href="/past-incidents"
+        class="px-4 py-2 rounded-lg bg-slate-700
+               hover:bg-slate-600 text-white text-sm
+               font-semibold transition"
+    >
+        📚 Past Incidents
+    </a>
+
+    <!-- Logout -->
+    <button class="Btn" id="logoutBtn">
+        <div class="sign">
+            <svg viewBox="0 0 512 512">
+                <path d="M377.9 105.9L500.7 228.7c7.2 7.2 11.3 17.1 11.3 27.3s-4.1 20.1-11.3 27.3L377.9 406.1c-6.4 6.4-15 9.9-24 9.9c-18.7 0-33.9-15.2-33.9-33.9l0-62.1-128 0c-17.7 0-32-14.3-32-32l0-64c0-17.7 14.3-32 32-32l128 0 0-62.1c0-18.7 15.2-32.1 33.9-32.1c9 0 17.6 3.6 24 9.9zM160 96L96 96c-17.7 0-32 14.3-32 32l0 256c0 53 43 96 96 96l64 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-64 0c-17.7 0-32-14.3-32-32L64 128c0-17.7 43-32 96-32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32z"></path>
+            </svg>
+        </div>
+        <div class="text">Logout</div>
+    </button>
+
+</div>      
+            
+
+    </header>
+
+
+    <!-- =========================================================
+         MAIN DASHBOARD
+    ========================================================== -->
+    <main class="main-area">
+
+        <!-- =====================================================
+       
+     STATISTICS
+====================================================== -->
+<section class="stats-grid">
+
+    <!-- Active Reports -->
+    <div class="stat-card">
+
+        <div class="stat-icon bg-red-50">
+            <svg class="w-6 h-6 text-red-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v4m0 4h.01M10.3 3.5L2.6 17a2 2 0 001.7 3h15.4a2 2 0 001.7-3L13.7 3.5a2 2 0 00-3.4 0z" />
+            </svg>
+        </div>
+
+        <div class="ml-3 min-w-0">
+            <div class="text-[14px] font-semibold text-slate-500 tracking-wide">
+                Active Reports
+            </div>
+            <div id="activeReports" class="text-2xl font-bold text-slate-800">
+                --
+            </div>
+            <div class="text-[12px] text-slate-400">
+                Live incidents
+            </div>
+        </div>
+
+    </div>
+
+
+    <!-- People -->
+    <div class="stat-card">
+
+        <div class="stat-icon bg-blue-50">
+            <svg class="w-6 h-6 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M16 11a4 4 0 10-3.9-5 4 4 0 003.9 5zM8 10a3 3 0 100-6 3 3 0 000 6zm8.5 3c-2.3 0-4.5 1.1-5.8 2.9A7.4 7.4 0 0010 15c-3.3 0-6 2.1-6 4.8V21h16v-1.2c0-2.7-2.1-4.8-5.5-4.8z" />
+            </svg>
+        </div>
+
+        <div class="ml-3 min-w-0">
+            <div class="text-[14px] font-semibold text-slate-500 tracking-wide">
+                People Needing Help
+            </div>
+            <div id="peopleHelp" class="text-2xl font-bold text-slate-800">
+                --
+            </div>
+            <div class="text-[12px] text-slate-400">
+                Across all incidents
+            </div>
+        </div>
+
+    </div>
+
+
+    <!-- Shelter seats -->
+    <div class="stat-card">
+
+        <div class="stat-icon bg-green-50">
+            <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3 11l9-7 9 7" />
+                <path stroke-linecap="round" stroke-linejoin="round" d="M5 10v9h14v-9M9 19v-5h6v5" />
+            </svg>
+        </div>
+
+        <div class="ml-3 min-w-0">
+            <div class="text-[14px] font-semibold text-slate-500 tracking-wide">
+                Available Shelter Seats
+            </div>
+            <div id="availableSeats" class="text-2xl font-bold text-slate-800">
+                --
+            </div>
+            <div class="text-[12px] text-slate-400">
+                Total available
+            </div>
+        </div>
+
+    </div>
+
+
+    <!-- Active shelters -->
+    <div class="stat-card">
+
+        <div class="stat-icon bg-purple-50">
+            <svg class="w-6 h-6 text-purple-600" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M4 21V5a2 2 0 012-2h12a2 2 0 012 2v16h-5v-5h-6v5H4zm5-11h2V7H9v3zm4 0h2V7h-2v3z" />
+            </svg>
+        </div>
+
+        <div class="ml-3 min-w-0">
+            <div class="text-[14px] font-semibold text-slate-500 tracking-wide">
+                Active Shelters
+            </div>
+            <div id="activeShelters" class="text-2xl font-bold text-slate-800">
+                --
+            </div>
+            <div class="text-[12px] text-slate-400">
+                Operational shelters
+            </div>
+        </div>
+
+    </div>
+
+</section>
+        <!-- =====================================================
+             THREE COLUMN CONTENT
+        ====================================================== -->
+        <section class="content-grid">
+
+
+            <!-- =================================================
+                 LEFT : INCIDENTS
+            ================================================== -->
+            <aside class="panel incidents-panel">
+
+                <div class="panel-header">
+
+                    <div class="flex items-center gap-2">
+
+                        <svg
+                            class="w-4 h-4 text-red-500"
+                            fill="currentColor"
+                            viewBox="0 0 24 24"
+                        >
+                            <path
+                                d="M12 2L1 21h22L12 2zm1
+                                   14h-2v-2h2v2zm0-4h-2V8h2v4z"
+                            />
+                        </svg>
+
+                        <span
+                            class="text-xs font-bold text-slate-800"
+                        >
+                            Active Incidents
+                        </span>
+
+                    </div>
+
+  
+
+                </div>
+
+
+                <div
+                    id="incidentList"
+                    class="incident-list"
+                >
+                </div>
+
+
+                <div class="incident-footer">
+
+                    <button
+                        id="viewAllReports"
+                        class="w-full h-8 border border-slate-200
+                               rounded-md text-blue-600 text-[10px]
+                               font-semibold hover:bg-blue-50 transition"
+                    >
+                        View All Reports 
+                    </button>
+
+                </div>
+
+            </aside>
+
+
+
+            <!-- =================================================
+                 CENTER
+            ================================================== -->
+            <div class="center-column">
+
+
+                <!-- ================= MAP ================= -->
+                <section class="panel map-panel">
+
+                  <div class="panel-header">
+
+    <div class="flex items-center gap-2">
+        <svg class="w-4 h-4 text-slate-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 18l-6 3V6l6-3 6 3 6-3v15l-6 3-6-3z" />
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 3v15M15 6v15" />
+        </svg>
+        <span class="text-xs font-bold text-slate-800">
+            Live Map
+        </span>
+    </div>
+
+
+    <div class="flex items-center gap-3">
+
+        <button
+            id="toggleHeatmap"
+            class="text-[9px] font-semibold px-2 py-1 rounded border border-slate-300 hover:bg-slate-50 text-slate-700"
+        >
+            🔥 Heatmap: ON
+        </button>
+
+        <div class="flex items-center gap-3 text-[9px]">
+
+            <span class="flex items-center gap-1">
+                <span class="w-2.5 h-2.5 bg-red-500 rounded-full"></span>
+                Incident
+            </span>
+
+            <span class="flex items-center gap-1">
+                <span class="w-2.5 h-2.5 bg-green-600 rounded-full"></span>
+                Shelter
+            </span>
+
+            <span class="flex items-center gap-1">
+                <span class="w-2.5 h-2.5 bg-blue-600 rounded-full"></span>
+                You
+            </span>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+                    <div class="map-container">
+
+                        <div id="map"></div>
+
+                        <!-- Map legend -->
+                        <div class="map-legend">
+
+                            <div class="legend-item">
+                                <span
+                                    class="legend-dot bg-red-500"
+                                ></span>
+                                <span>Incident</span>
+                            </div>
+
+                            <div class="legend-item">
+                                <span
+                                    class="legend-dot bg-green-600"
+                                ></span>
+                                <span>Shelter</span>
+                            </div>
+
+                            <div class="legend-item">
+                                <span
+                                    class="legend-dot bg-blue-600"
+                                ></span>
+                                <span>Your Location</span>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+            </div>
+
+
+            <!-- =================================================
+                 RIGHT : SHELTERS
+            ================================================== -->
+            <aside class="panel shelters-panel">
+
+                <div class="panel-header">
+
+                    <div class="flex items-center gap-2">
+
+                        <svg
+                            class="w-4 h-4 text-green-600"
+                            fill="currentColor"
+                            viewBox="0 0 24 24"
+                        >
+                            <path
+                                d="M3 11l9-8 9 8v10a1 1 0
+                                   01-1 1h-5v-7H9v7H4a1 1
+                                   0 01-1-1V11z"
+                            />
+                        </svg>
+
+                        <span
+                            class="text-xs font-bold text-slate-800"
+                        >
+                            Shelters Overview
+                        </span>
+
+                    </div>
+
+                    <button
+                        id="refreshShelters"
+                        class="text-slate-500 hover:text-blue-600"
+                    >
+                        ↻
+                    </button>
+
+                </div>
+
+
+                <div
+                    id="shelterList"
+                    class="shelter-list"
+                >
+
+
+                  
+
+                </div>
+
+
+                <div class="shelter-footer">
+
+                    <button
+                        id="viewAllShelters"
+                        class="text-blue-600 text-[10px] font-semibold
+                               hover:text-blue-800"
+                    >
+                        View All Shelters 
+                    </button>
+
+                </div>
+
+            </aside>
+
+        </section>
+
+        <!-- =====================================================
+             FULL-WIDTH INCIDENT DETAILS / FOOTER AREA
+             ===================================================== -->
+                        <!-- ============== INCIDENT DETAILS ============== -->
+                <section class="panel details-panel">
+
+                  <div class="panel-header">
+
+    <div class="flex items-center gap-2">
+        <svg class="w-4 h-4 text-red-500" ...>...</svg>
+        <span id="incidentDetailsTitle" class="text-xs font-bold text-slate-800">
+            Incident Details - SOS #101
+        </span>
+    </div>
+
+    <div class="flex items-center gap-3">
+
+        <button
+            id="prevIncidentBtn"
+            class="text-slate-500 hover:text-blue-600 font-bold text-sm px-2"
+        >
+            ←
+        </button>
+
+        <button
+            id="nextIncidentBtn"
+            class="text-slate-500 hover:text-blue-600 font-bold text-sm px-2"
+        >
+            →
+        </button>
+
+      
+
+    </div>
+
+</div>
+
+
+                    <div class="details-content">
+
+                        <!-- Incident information -->
+                        <div class="detail-grid">
+
+                            <div class="detail-item">
+
+                                <div class="detail-label">
+                                    Type
+                                </div>
+
+                                <div
+                                    id="detailType"
+                                    class="detail-value"
+                                >
+                                    Flood
+                                </div>
+
+                            </div>
+
+
+                            <div class="detail-item">
+
+                                <div class="detail-label">
+                                    Severity
+                                </div>
+
+                                <div
+                                    id="detailSeverity"
+                                    class="detail-value text-red-500"
+                                >
+                                    Critical
+                                </div>
+
+                            </div>
+
+
+                            <div class="detail-item">
+
+                                <div class="detail-label">
+                                    People
+                                </div>
+
+                                <div
+                                    id="detailPeople"
+                                    class="detail-value"
+                                >
+                                    12
+                                </div>
+
+                            </div>
+
+
+                            <div class="detail-item">
+
+                                <div class="detail-label">
+                                    Status
+                                </div>
+
+                                <div
+                                    id="detailStatus"
+                                    class="detail-value text-green-600"
+                                >
+                                    Active
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- Location -->
+                         <!-- Citizen Uploaded Photo -->
+<div
+    id="incidentPhotoContainer"
+    class="mt-4 hidden"
+>
+    <div class="text-sm font-semibold text-slate-600 mb-2">
+        Citizen Uploaded Photo
+    </div>
+
+    <img
+        id="incidentPhoto"
+        src=""
+        alt="Citizen uploaded incident"
+        class="w-full max-h-64 object-cover rounded-lg border border-slate-200 shadow-sm"
+    >
+</div>
+                        <div class="mt-2 flex items-center gap-2">
+
+                            <span class="text-[9px] text-slate-500">
+                                Location
+                            </span>
+<!-- CITIZEN UPLOADED PHOTO -->
+<div
+    id="incidentPhotoContainer"
+    class="hidden mt-3"
+>
+    <div class="text-[9px] text-slate-500 font-semibold mb-1">
+        Citizen Uploaded Photo
+    </div>
+
+    <img
+        id="incidentPhoto"
+        src=""
+        alt="Citizen uploaded incident photo"
+        class="w-full max-h-64 object-cover rounded-lg border border-slate-200"
+    >
+</div>
+                            <span
+                                id="detailLocation"
+                                class="text-[9px] text-slate-700 font-medium"
+                            >
+                                📍 20.28010, 85.81020
+                            </span>
+
+                        </div>
+
+
+                        <!-- Nearest shelters -->
+                      <div class="nearest-title">
+    Nearest Shelters
+</div>
+
+<div id="nearestSheltersList"></div>
+
+<!-- ============================================================
+     MISSION PROGRESS
+============================================================ -->
+
+<div class="mt-5 border border-slate-200 rounded-lg overflow-hidden">
+
+    <div class="px-4 py-3 border-b border-slate-200 flex justify-between items-center">
+
+        <div class="font-bold text-sm text-slate-800">
+            🚑 Mission Progress
+        </div>
+
+        <span
+            id="authorityMissionStatusBadge"
+            class="text-xs font-bold px-3 py-1 rounded-full bg-slate-100 text-slate-500"
+        >
+            NO MISSION
+        </span>
+
+    </div>
+
+
+    <div
+        id="authorityMissionTimeline"
+        class="p-4"
+    >
+
+        <div class="text-sm text-slate-400 text-center">
+            Select an incident with a dispatched team to view mission progress.
+        </div>
+
+    </div>
+
+</div>
+                        <!-- Actions -->
+                        <div class="action-buttons">
+
+                            <button
+                                id="assignShelterBtn"
+                                class="action-btn bg-blue-600"
+                            >
+                                👥 &nbsp; Assign Shelter
+                            </button>
+<button
+    id="dispatchTeamBtn"
+    class="action-btn bg-purple-600"
+>
+    🚑 &nbsp; Dispatch Relief Team
+</button>
+                            <button
+                                id="rescueBtn"
+                                class="action-btn bg-amber-500"
+                            >
+                                ◷ &nbsp; Mark Rescue In Progress
+                            </button>
+
+                            <button
+                                id="safeBtn"
+                                class="action-btn bg-green-600"
+                            >
+                                ✓ &nbsp; Mark Area Safe
+                            </button>
+
+                        </div>
+<!-- ============================================================
+     AUTHORITY → RESCUE TEAM COMMUNICATION
+============================================================ -->
+
+<div class="mt-4 p-4 rounded-xl bg-slate-50 border border-slate-200">
+
+    <div class="font-bold text-slate-800 text-sm mb-1">
+        💬 Communicate With Rescue Team
+    </div>
+
+    <div class="text-xs text-slate-500 mb-3">
+        Send instructions, updates or assistance requests to the deployed team.
+    </div>
+
+
+    <!-- TEAM SELECTION -->
+
+    <select
+        id="authorityTeamSelect"
+        class="w-full mb-2 px-3 py-2 rounded-lg
+               border border-slate-300
+               text-sm bg-white"
+    >
+
+        <option value="">
+            Select Rescue Team
+        </option>
+
+    </select>
+
+
+    <!-- MESSAGE -->
+
+    <textarea
+        id="authorityMessageInput"
+        rows="3"
+        placeholder="Type instructions or an update for the rescue team..."
+        class="w-full px-3 py-2 rounded-lg
+               border border-slate-300
+               text-sm resize-none"
+    ></textarea>
+
+
+    <!-- MESSAGE TYPE -->
+
+    <div class="flex gap-2 mt-2">
+
+        <button
+            id="authorityInstructionBtn"
+            type="button"
+            class="flex-1 px-3 py-2 rounded-lg
+                   bg-blue-600 hover:bg-blue-700
+                   text-white text-xs font-bold"
+        >
+            📢 Instruction
+        </button>
+
+
+        <button
+            id="authorityUrgentBtn"
+            type="button"
+            class="flex-1 px-3 py-2 rounded-lg
+                   bg-red-600 hover:bg-red-700
+                   text-white text-xs font-bold"
+        >
+            🚨 Urgent
+        </button>
+
+    </div>
+
+</div>
+                    </div>
+
+                </section>
+
+    </main>
+
+</div>
+
+
+
+<!-- =============================================================
+     LEAFLET JS
+============================================================== -->
+<!-- =========================================================
+     DISPATCH RELIEF TEAM MODAL
+========================================================= -->
+<!-- =========================================================
+     SHELTER ASSIGNMENT MODAL
+========================================================= -->
+
+<div
+    id="shelterAssignmentModal"
+    class="hidden fixed inset-0 z-[9999] bg-black/50 flex items-center justify-center p-4"
+>
+
+    <div class="bg-white rounded-xl shadow-xl w-full max-w-lg p-6">
+
+        <div class="flex justify-between items-center mb-5">
+
+            <div>
+                <div class="font-bold text-lg text-slate-800">
+                    🏠 Assign Shelter
+                </div>
+
+                <div class="text-xs text-slate-500">
+                    Select a nearby available shelter
+                </div>
+            </div>
+
+            <button
+                id="closeShelterAssignmentModal"
+                class="text-slate-500 text-xl"
+            >
+                ✕
+            </button>
+
+        </div>
+
+
+        <div
+            id="shelterAssignmentIncidentInfo"
+            class="mb-4 p-3 rounded-lg bg-slate-50 border border-slate-200"
+        ></div>
+
+
+        <div class="mb-4">
+
+            <div class="text-sm font-semibold text-slate-700 mb-2">
+                Nearby Available Shelters
+            </div>
+
+            <div
+                id="shelterAssignmentList"
+                class="space-y-2 max-h-64 overflow-y-auto"
+            ></div>
+
+        </div>
+
+
+        <div
+            id="selectedShelterInfo"
+            class="hidden mb-4 p-3 rounded-lg bg-blue-50 border border-blue-200"
+        ></div>
+
+
+        <div class="mb-5">
+
+            <label
+                for="shelterPeopleCount"
+                class="block text-sm font-semibold text-slate-700 mb-2"
+            >
+                Number of people to assign
+            </label>
+
+            <input
+                id="shelterPeopleCount"
+                type="number"
+                min="1"
+                step="1"
+                placeholder="Enter number of people"
+                class="w-full border border-slate-300 rounded-lg px-3 py-2"
+            >
+
+            <div
+                id="shelterCapacityHint"
+                class="text-xs text-slate-500 mt-1"
+            >
+                Select a shelter first.
+            </div>
+
+        </div>
+
+
+        <div
+            id="shelterAssignmentError"
+            class="hidden mb-4 p-3 rounded-lg bg-red-50 border border-red-200 text-sm text-red-700"
+        ></div>
+
+
+        <div class="flex gap-3">
+
+            <button
+                id="cancelShelterAssignment"
+                class="flex-1 px-4 py-2 rounded-lg bg-slate-200 text-slate-700 font-semibold"
+            >
+                Cancel
+            </button>
+
+            <button
+                id="confirmShelterAssignment"
+                class="flex-1 px-4 py-2 rounded-lg bg-blue-600 text-white font-semibold"
+            >
+                Assign People
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+<div
+    id="dispatchTeamModal"
+    class="hidden fixed inset-0 z-[9999] bg-black/50 flex items-center justify-center p-4"
+>
+
+    <div
+        class="bg-white rounded-xl shadow-xl w-full max-w-md p-5"
+    >
+
+        <div class="flex justify-between items-center mb-4">
+
+            <div>
+                <div class="font-bold text-lg">
+                    🚑 Dispatch Relief Team
+                </div>
+
+                <div class="text-xs text-slate-500">
+                    Send an emergency order to a response team
+                </div>
+            </div>
+
+            <button
+                id="closeDispatchModal"
+                class="text-slate-500 text-xl"
+            >
+                ✕
+            </button>
+
+        </div>
+
+
+        <div
+            class="p-3 rounded-lg bg-red-50 border border-red-100 mb-3"
+        >
+
+            <div class="text-[9px] text-slate-500 font-bold">
+                AI SEVERITY
+            </div>
+
+            <div
+                id="dispatchAiSeverity"
+                class="text-lg font-black text-red-600"
+            >
+                —
+            </div>
+
+        </div>
+
+
+        <div
+            class="p-3 rounded-lg bg-slate-50 border mb-3"
+        >
+
+            <div class="text-[9px] text-slate-500">
+                PEOPLE NEEDING ASSISTANCE
+            </div>
+
+            <div
+                id="dispatchPeople"
+                class="text-lg font-bold"
+            >
+                —
+            </div>
+
+        </div>
+
+
+        <label class="block text-xs font-bold mb-1">
+            Select Relief Team
+        </label>
+
+        <select
+            id="dispatchTeamSelect"
+            class="w-full border border-slate-300 rounded-lg p-3 text-sm mb-4"
+        >
+
+            <option value="">
+                Select a team...
+            </option>
+
+        </select>
+
+
+        <label class="block text-xs font-bold mb-1">
+            Authority Instructions
+        </label>
+
+        <textarea
+            id="dispatchInstructions"
+            rows="4"
+            class="w-full border border-slate-300 rounded-lg p-3 text-sm resize-none"
+            placeholder="Enter instructions for the relief team..."
+        ></textarea>
+
+
+        <div class="flex gap-2 mt-4">
+
+            <button
+                id="cancelDispatchBtn"
+                class="flex-1 py-2 rounded-lg border border-slate-300 font-bold text-sm"
+            >
+                Cancel
+            </button>
+
+            <button
+                id="confirmDispatchBtn"
+                class="flex-1 py-2 rounded-lg bg-purple-600 text-white font-bold text-sm"
+            >
+                🚑 Dispatch Order
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet.heat@0.2.0/dist/leaflet-heat.js"></script>
+
+
+<script>
+    var selectedIncident = null;
+/* ============================================================
+   INCIDENT DATA
+============================================================ */
+const incidents = {};
+let incidentMarkers = {};
+let currentIncidentId = null;
+
+// =========================================================
+// RELIEF TEAMS
+// =========================================================
+
+let teams = [];
+
+// =========================================================
+// LOAD RELIEF TEAMS
+// =========================================================
+
+async function loadTeams() {
+
+    try {
+
+        const response =
+            await fetch("/api/teams");
+
+        if (!response.ok) {
+
+            throw new Error(
+                "Failed to load teams"
+            );
+
+        }
+
+        const data =
+            await response.json();
+
+        console.log(
+            "✅ Relief teams loaded:",
+            data
+        );
+
+
+        // Handle either:
+        // [ team, team, team ]
+        // OR
+        // { teams: [...] }
+
+        const teamData =
+            Array.isArray(data)
+                ? data
+                : data.teams || [];
+
+
+        teams =
+            teamData.map(team => ({
+
+                id:
+                    team.teamId,
+
+                name:
+                    team.name,
+
+                organization:
+                    team.organization,
+
+                lat:
+                    Number(team.lat || 0),
+
+                lng:
+                    Number(team.lng || 0),
+
+                status:
+                    team.status,
+
+                load:
+                    Number(team.load || 0),
+
+                capabilities:
+                    team.capabilities || []
+
+            }));
+
+
+        console.log(
+            "✅ Teams available:",
+            teams
+        );
+
+
+    } catch (error) {
+
+        console.error(
+            "❌ Failed to load relief teams:",
+            error
+        );
+
+    }
+
+}
+/* ============================================================
+   MAP
+============================================================ */
+
+const map = L.map("map", {
+    zoomControl: true,
+    attributionControl: true
+}).setView(
+    [20.28010, 85.81020],
+    13
+);
+    L.tileLayer(
+        "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+        {
+            maxZoom: 19,
+            attribution:
+                '&copy; OpenStreetMap contributors'
+        }
+    ).addTo(map);
+
+    // ============================================================
+// HEATMAP LAYER
+// ============================================================
+
+let heatLayer = null;
+let heatmapVisible = true;
+
+function updateHeatmap() {
+
+    if (!heatmapVisible) return;
+
+    // Purana heat layer hatao
+    if (heatLayer) {
+        map.removeLayer(heatLayer);
+    }
+
+    const heatPoints = Object.values(incidents).map(incident => {
+
+        // Severity ke hisaab se base intensity
+        let intensity = 0.3;
+
+        if (incident.severity === "High / Critical") {
+            intensity = 1.0;
+        } else if (incident.severity === "Medium") {
+            intensity = 0.6;
+        } else {
+            intensity = 0.3;
+        }
+
+        // People count se intensity thoda aur badhao (max +0.5)
+        intensity += Math.min(incident.people / 50, 0.5);
+
+        return [incident.lat, incident.lng, intensity];
+    });
+    const zoom = map.getZoom();
+    const scale = Math.pow(1.5, zoom - 13);
+      const cappedScale = Math.min(scale, 3);
+
+    heatLayer = L.heatLayer(heatPoints, {
+         radius: 35 * cappedScale,   // scale is multiplied for dynamic heat map
+        blur: 25 *cappedScale,
+        maxZoom: 15,
+        max: 1.5,
+        gradient: {
+            0.2: '#2563eb',   // blue = low
+            0.4: '#eab308',   // yellow = medium
+            0.6: '#f97316',   // orange = high
+            1.0: '#dc2626'    // red = critical/dense
+        }
+    }).addTo(map);
+}
+// for updating the heatmap 
+map.on('zoomend', () => {
+    if (heatmapVisible) updateHeatmap();
+});
+
+    /* ============================================================
+       CUSTOM MARKERS
+    ============================================================ */
+
+    function incidentIcon() {
+
+        return L.divIcon({
+
+            className: "",
+
+            html: `
+                <div style="
+                    width:32px;
+                    height:32px;
+                    background:#ef4444;
+                    border:4px solid white;
+                    border-radius:50%;
+                    box-shadow:0 2px 8px rgba(0,0,0,.35);
+                    display:flex;
+                    align-items:center;
+                    justify-content:center;
+                    color:white;
+                    font-size:15px;
+                    font-weight:bold;
+                ">
+                    !
+                </div>
+            `,
+
+            iconSize: [32, 32],
+            iconAnchor: [16, 16]
+
+        });
+
+    }
+async function loadIncidents() {
+
+    try {
+
+        // ============================================================
+        // LOAD DEDUPLICATED INCIDENTS
+        // ============================================================
+
+        const response =
+            await fetch("/api/reports/grouped");
+
+        const data =
+            await response.json();
+
+        console.log(
+            "Grouped incidents from database:",
+            data
+        );
+
+
+        if (!data.success) {
+
+            console.error(
+                "Failed to load grouped reports"
+            );
+
+            return;
+        }
+
+
+        // ============================================================
+        // REMOVE OLD MAP MARKERS
+        // ============================================================
+
+        Object.values(incidentMarkers)
+            .forEach(marker => {
+
+                map.removeLayer(marker);
+
+            });
+
+        incidentMarkers = {};
+
+
+        // ============================================================
+        // CLEAR OLD INCIDENT DATA
+        // ============================================================
+
+        Object.keys(incidents)
+            .forEach(key => {
+
+                delete incidents[key];
+
+            });
+
+
+        document.getElementById(
+            "incidentList"
+        ).innerHTML = "";
+
+
+        // ============================================================
+        // CREATE ONE INCIDENT PER GROUP
+        // ============================================================
+
+        data.groups.forEach(
+            (group, index) => {
+
+
+const incident = {
+
+    id:
+        group.groupId,
+
+    displayId:
+        index + 1,
+
+    type:
+        group.incidentType,
+
+    severity:
+        group.urgency,
+
+
+    // =================================================
+    // TOTAL PEOPLE FROM ALL REPORTS
+    // =================================================
+
+    people:
+        group.peopleCount || 0,
+
+
+    // =================================================
+    // NUMBER OF CITIZEN REPORTS
+    // =================================================
+
+    reportCount:
+        group.reportCount || 1,
+
+
+    // =================================================
+    // STATUS
+    // =================================================
+
+   status:
+    group.status ||
+    "ACTIVE",
+
+
+    // =================================================
+    // LOCATION
+    // =================================================
+
+    lat:
+        group.latitude,
+
+    lng:
+        group.longitude,
+
+
+    // =================================================
+    // KEEP ALL ORIGINAL REPORTS
+    // =================================================
+
+    reports:
+        group.reports || [],
+
+
+    // =================================================
+    // KEEP ALL PHOTOS
+    // =================================================
+
+    photos:
+        (group.reports || [])
+            .filter(report =>
+                report.photo
+            )
+            .map(report =>
+                report.photo
+            ),
+
+
+    // =================================================
+    // KEEP ALL DESCRIPTIONS
+    // =================================================
+
+    descriptions:
+        (group.reports || [])
+            .map(report =>
+                report.description || ""
+            ),
+
+
+    // =================================================
+    // AI SEVERITY
+    // =================================================
+
+    severityScore:
+        Math.max(
+            0,
+            ...(group.reports || [])
+                .map(report =>
+                    Number(report.severityScore) || 0
+                )
+        ),
+
+
+    // =================================================
+    // AI SEVERITY LEVEL
+    // =================================================
+
+    severityLevel:
+        (() => {
+
+            const priority = {
+
+                "Low": 1,
+
+                "Moderate": 2,
+
+                "Medium": 3,
+
+                "High": 4,
+
+                "Severe": 5,
+
+                "Critical": 6
+
+            };
+
+
+            const reports =
+                group.reports || [];
+
+
+            if (!reports.length) {
+
+                return "Unknown";
+
+            }
+
+
+            return reports
+                .filter(report =>
+                    report.severityLevel
+                )
+                .sort(
+                    (a, b) =>
+                        (priority[b.severityLevel] || 0) -
+                        (priority[a.severityLevel] || 0)
+                )[0]
+                ?.severityLevel || "Unknown";
+
+        })()
+
+};
+
+                // =====================================================
+                // STORE GROUPED INCIDENT
+                // =====================================================
+
+                incidents[incident.id] =
+                    incident;
+
+
+                // =====================================================
+                // CREATE MAP MARKER
+                // =====================================================
+
+                const marker =
+                    L.marker(
+                        [
+                            incident.lat,
+                            incident.lng
+                        ],
+                        {
+                            icon:
+                                incidentIcon()
+                        }
+                    ).addTo(map);
+
+
+                // =====================================================
+                // MAP POPUP
+                // =====================================================
+
+                marker.bindPopup(`
+
+                    <div
+                        style="min-width:180px"
+                    >
+
+                        <strong>
+                            SOS-${incident.displayId}
+                        </strong>
+
+                        <br>
+
+                        ${incident.type}
+
+                        <br>
+
+                        Severity:
+                        ${incident.severity}
+
+                        <br>
+
+                        Reports:
+                        ${incident.reportCount}
+
+                        <br>
+
+                        People affected:
+                        ${incident.people}
+
+                        <br>
+
+                        Status:
+                        ${incident.status}
+
+                    </div>
+
+                `);
+
+
+                incidentMarkers[incident.id] =
+                    marker;
+
+
+                // =====================================================
+                // SEVERITY BADGE
+                // =====================================================
+
+                // =====================================================
+// AI SEVERITY BADGE
+// =====================================================
+
+const severityClass =
+
+    incident.severityLevel === "Critical"
+
+        ? "badge-critical"
+
+        : incident.severityLevel === "Severe"
+
+            ? "badge-critical"
+
+            : incident.severityLevel === "High"
+
+                ? "badge-high"
+
+                : incident.severityLevel === "Medium"
+
+                    ? "badge-medium"
+
+                    : incident.severityLevel === "Moderate"
+
+                        ? "badge-medium"
+
+                        : "badge-low";
+                // =====================================================
+                // CREATE INCIDENT CARD
+                // =====================================================
+
+                const card =
+                    document.createElement(
+                        "div"
+                    );
+
+
+                card.className =
+                    "incident-card";
+
+
+                card.dataset.incident =
+                    incident.id;
+card.onclick = () => {
+
+    document
+        .querySelectorAll(".incident-card")
+        .forEach(item => item.classList.remove("selected"));
+
+    card.classList.add("selected");
+    selectedIncident = incident;
+    currentIncidentId = incident.id;
+
+    console.log("✅ Incident selected:", selectedIncident);
+
+    // Update the full details panel on single click
+    selectIncident(incident.id);
+};
+
+card.ondblclick = () => {
+
+    // DOUBLE CLICK = OPEN FULL DETAILS
+
+    window.open(
+        `/api/reports/incident-reports?id=${encodeURIComponent(incident.id)}`,
+        "_blank"
+    );
+
+};
+
+                card.innerHTML = `
+
+                    <div
+                        class="flex justify-between items-start"
+                    >
+
+                        <div>
+
+                            <div
+                                class="text-[10px] font-bold text-red-600"
+                            >
+                                #${incident.displayId}
+                            </div>
+
+                            <div
+                                class="text-xs font-bold text-slate-800"
+                            >
+                                ${incident.type}
+                            </div>
+
+                        </div>
+
+<div class="text-right">
+
+    <span
+        class="badge ${severityClass}"
+    >
+        ${incident.severityLevel || "UNKNOWN"}
+    </span>
+
+    <div
+        class="mt-1 text-[10px] font-black text-slate-700"
+    >
+        AI SCORE:
+        ${Number(incident.severityScore || 0).toFixed(2)}
+        / 100
+    </div>
+
+</div>
+                    </div>
+
+
+                    <div
+                        class="incident-bottom"
+                    >
+
+                        <span>
+                            ♟ ${incident.people}
+                        </span>
+
+                        <span>
+                            ${incident.reportCount}
+                            Report${incident.reportCount !== 1 ? "s" : ""}
+                        </span>
+
+                    </div>
+
+                `;
+
+
+                document.getElementById(
+                    "incidentList"
+                ).appendChild(card);
+
+
+            }
+        );
+
+
+        // ============================================================
+        // DASHBOARD STATS UPDATE
+        // ============================================================
+
+        console.log(
+            "✅ Grouped incidents loaded:",
+            Object.keys(incidents).length
+        );
+
+
+        // Keep your existing dashboard stats code below this point.
+        // ================================================
+        // 🆕 DASHBOARD STATS UPDATE
+        // ================================================
+
+        const activeReportsCount = (data.groups || []).reduce(
+            (total, group) => total + Number(group.reportCount || 0),
+            0
+        );
+
+        const totalPeopleNeedingHelp = (data.groups || []).reduce(
+    (total, group) => {
+        return total + Math.max(
+            0,
+            Number(group.peopleCount || 0)
+        );
+    },
+    0
+);
+
+        document.getElementById("activeReports").textContent =
+            activeReportsCount;
+
+        document.getElementById("peopleHelp").textContent =
+            totalPeopleNeedingHelp;
+
+
+                    // Pehla incident auto-select karo (agar koi select nahi hai)
+        const allIds = Object.keys(incidents);
+
+        if (allIds.length > 0 && currentIncidentId === null) {
+            selectIncident(allIds[0]);
+        }
+
+        console.log(
+            "✅ Incidents loaded:",
+            Object.keys(incidents).length
+        );
+        updateHeatmap();   //For real time update
+        document.getElementById("toggleHeatmap").addEventListener("click", function () {
+
+    heatmapVisible = !heatmapVisible;
+
+    if (heatmapVisible) {
+        updateHeatmap();
+        this.textContent = " Heatmap: ON";
+    } else {
+        if (heatLayer) {
+            map.removeLayer(heatLayer);
+        }
+        this.textContent = " Heatmap: OFF";
+    }
+});
+
+    } catch (error) {
+
+        console.error(
+            "Error loading incidents:",
+            error
+        );
+
+    }
+
+}
+
+loadIncidents();
+loadTeams();
+
+
+    function shelterIcon() {
+
+        return L.divIcon({
+
+            className: "",
+
+            html: `
+                <div style="
+                    width:31px;
+                    height:31px;
+                    background:#16a34a;
+                    border:4px solid white;
+                    border-radius:50%;
+                    box-shadow:0 2px 8px rgba(0,0,0,.35);
+                    display:flex;
+                    align-items:center;
+                    justify-content:center;
+                    color:white;
+                    font-size:14px;
+                ">
+                    🏠
+                </div>
+            `,
+
+            iconSize: [31, 31],
+            iconAnchor: [15, 15]
+
+        });
+
+    }
+
+
+    function youIcon() {
+
+        return L.divIcon({
+
+            className: "",
+
+            html: `
+                <div style="
+                    width:18px;
+                    height:18px;
+                    background:#2563eb;
+                    border:4px solid white;
+                    border-radius:50%;
+                    box-shadow:0 2px 7px rgba(0,0,0,.4);
+                "></div>
+            `,
+
+            iconSize: [18, 18],
+            iconAnchor: [9, 9]
+
+        });
+
+    }
+
+
+    
+   
+
+
+    
+
+
+
+
+    /* ============================================================
+       SHELTER MARKERS
+    ============================================================ */
+let allShelters = [];
+let currentIncident = null;
+async function loadShelters() {
+
+    try {
+
+        const response = await fetch("/api/shelters");
+        const data = await response.json();
+
+        console.log("Shelters:", data);
+
+        if (!data.success) {
+            console.error("Failed to load shelters");
+            return;
+        }
+
+        // Store shelters globally
+        allShelters = data.shelters;
+
+
+        /* ============================================================
+           DASHBOARD STATISTICS
+        ============================================================ */
+
+        const activeShelters = data.shelters.filter(
+            shelter => shelter.status === "available"
+        ).length;
+
+        const availableSeats = data.shelters.reduce(
+            (total, shelter) =>
+                total + Number(shelter.availableCapacity || 0),
+            0
+        );
+
+
+        document.getElementById("activeShelters").textContent =
+            activeShelters;
+
+        document.getElementById("availableSeats").textContent =
+            availableSeats;
+
+
+        /* ============================================================
+           SHELTER LIST
+        ============================================================ */
+
+        const shelterList =
+            document.getElementById("shelterList");
+
+        shelterList.innerHTML = "";
+
+
+        /* ============================================================
+           SHELTER MARKERS + CARDS
+        ============================================================ */
+
+        data.shelters.forEach(shelter => {
+
+            const lat =
+                shelter.location.latitude;
+
+            const lng =
+                shelter.location.longitude;
+
+
+            /* =========================
+               MAP MARKER
+            ========================= */
+
+            L.marker(
+                [lat, lng],
+                {
+                    icon: shelterIcon()
+                }
+            )
+            .addTo(map)
+            .bindPopup(`
+                <div style="min-width:180px">
+
+                    <strong>${shelter.name}</strong>
+
+                    <br>
+
+                    📍 ${shelter.address}
+
+                    <br>
+
+                    🪑 Available:
+                    ${shelter.availableCapacity}
+
+                    <br>
+
+                    👥 Capacity:
+                    ${shelter.capacity}
+
+                    <br>
+
+                    Status:
+                    ${shelter.status}
+
+                </div>
+            `);
+
+
+            /* =========================
+               OCCUPANCY
+            ========================= */
+
+            const usedCapacity =
+                Number(shelter.capacity || 0) -
+                Number(shelter.availableCapacity || 0);
+
+            const occupancy =
+                Number(shelter.capacity) > 0
+                    ? Math.round(
+                        (usedCapacity /
+                            Number(shelter.capacity)) * 100
+                    )
+                    : 0;
+
+
+            /* =========================
+               DASHBOARD CARD
+            ========================= */
+
+            const card =
+                document.createElement("div");
+
+            card.className = "shelter-card";
+
+            card.innerHTML = `
+
+                <div class="shelter-top">
+
+                    <span class="text-[10px] font-bold text-slate-800">
+                        ${shelter.name}
+                    </span>
+
+                    <span class="badge badge-active">
+                        ${shelter.status}
+                    </span>
+
+                </div>
+
+
+                <div class="shelter-body">
+
+                    <div class="shelter-info">
+
+                        <div class="shelter-info-row">
+                            📍 ${shelter.address}
+                        </div>
+
+                        <div class="shelter-info-row">
+                            ♟ Capacity:
+                            ${shelter.capacity} seats
+                        </div>
+
+                        <div
+                            class="shelter-info-row text-green-600 font-semibold"
+                        >
+                            ✓ Available:
+                            ${shelter.availableCapacity} seats
+                        </div>
+
+                        <div class="progress-bar">
+
+                            <div
+                                class="progress-fill"
+                                style="width: ${occupancy}%"
+                            ></div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            `;
+
+            shelterList.appendChild(card);
+
+        });
+
+
+    } catch (error) {
+
+        console.error(
+            "Error loading shelters:",
+            error
+        );
+
+    }
+}
+
+
+loadShelters();
+const socket = io();
+// =========================================================
+// AUTHORITY → RESCUE TEAM COMMUNICATION
+// =========================================================
+
+document.getElementById(
+    "authorityInstructionBtn"
+).addEventListener(
+    "click",
+    function () {
+
+        const teamId =
+            document.getElementById(
+                "authorityTeamSelect"
+            ).value;
+
+        const message =
+            document.getElementById(
+                "authorityMessageInput"
+            ).value.trim();
+
+
+        if (!teamId) {
+
+            alert(
+                "Please select a rescue team."
+            );
+
+            return;
+
+        }
+
+
+        if (!message) {
+
+            alert(
+                "Please enter a message."
+            );
+
+            return;
+
+        }
+
+
+        if (!selectedIncident) {
+
+            alert(
+                "Please select an incident first."
+            );
+
+            return;
+
+        }
+
+
+        socket.emit(
+            "authorityMessage",
+            {
+
+                teamId:
+
+                    teamId,
+
+                incidentId:
+
+                    selectedIncident.incidentId ||
+                    selectedIncident.id ||
+                    currentIncidentId,
+
+                missionId:
+
+                    null,
+
+                message:
+
+                    message,
+
+                type:
+
+                    "INSTRUCTION",
+
+                priority:
+
+                    "NORMAL"
+
+            }
+        );
+
+
+        document.getElementById(
+            "authorityMessageInput"
+        ).value = "";
+
+
+        alert(
+            "📢 Instruction sent to " +
+            teamId
+        );
+
+    }
+);
+socket.on("connect", () => {
+    console.log("🟢 Authority dashboard connected:", socket.id);
+});
+
+socket.on("newIncident", (report) => {
+
+    console.log("🚨 NEW INCIDENT RECEIVED:", report);
+
+    // Fresh data reload karo — map, list, stats sab auto update ho jayenge
+    loadIncidents();
+
+   
+});
+socket.on("missionStatusUpdated", async (update) => {
+// ============================================================
+// RELIEF TEAM CHAT MESSAGE RECEIVED
+// ============================================================
+
+socket.on("teamMessage", (data) => {
+
+    if (!data || !data.message) {
+        return;
+    }
+
+    console.log(
+        "💬 RELIEF TEAM MESSAGE:",
+        data
+    );
+
+});
+    console.log(
+        "📡 MISSION STATUS UPDATED:",
+        update
+    );
+
+
+    // --------------------------------------------------------
+    // If this is the incident currently selected by Authority,
+    // refresh its Mission Progress immediately.
+    // --------------------------------------------------------
+
+    if (
+        currentIncidentId &&
+        String(update.incidentId) ===
+        String(currentIncidentId)
+    ) {
+
+        await loadAuthorityMissionProgress(
+            currentIncidentId
+        );
+
+    }
+
+
+    // --------------------------------------------------------
+    // Refresh incident/team data as well
+    // --------------------------------------------------------
+
+    loadIncidents();
+
+});
+document.getElementById("viewAllShelters").addEventListener(
+    "click",
+    function () {
+
+        /* ========================================================
+           SHOW ALL SHELTERS
+        ======================================================== */
+
+        const shelterList =
+            document.getElementById("shelterList");
+
+        shelterList.style.maxHeight = "none";
+        shelterList.style.overflowY = "visible";
+
+
+        /* ========================================================
+           SHOW ALL SHELTERS ON MAP
+        ======================================================== */
+
+        if (allShelters.length > 0) {
+
+            const shelterLocations =
+                allShelters.map(shelter => [
+
+                    shelter.location.latitude,
+                    shelter.location.longitude
+
+                ]);
+
+            map.fitBounds(
+                shelterLocations,
+                {
+                    padding: [40, 40]
+                }
+            );
+        }
+
+    }
+);
+
+    /* ============================================================
+       USER LOCATION
+    ============================================================ */
+
+ let userLocationMarker = null;
+
+function loadUserLocation() {
+
+    if (!navigator.geolocation) {
+        console.warn("Geolocation not supported by this browser.");
+        return;
+    }
+
+    navigator.geolocation.getCurrentPosition(
+
+        function(position) {
+
+            const lat = position.coords.latitude;
+            const lng = position.coords.longitude;
+
+            if (userLocationMarker) {
+                map.removeLayer(userLocationMarker);
+            }
+
+            userLocationMarker = L.marker(
+                [lat, lng],
+                { icon: youIcon() }
+            )
+            .addTo(map)
+            .bindPopup("Your current location");
+
+        },
+
+        function(error) {
+            console.warn("Location access denied or unavailable:", error);
+        },
+
+        {
+            enableHighAccuracy: true,
+            timeout: 10000
+        }
+
+    );
+
+}
+
+loadUserLocation();
+
+
+    // ============================================================
+// DISTANCE CALCULATE (Haversine formula)
+// ============================================================
+
+function getDistanceKm(lat1, lng1, lat2, lng2) {
+
+    const R = 6371; // Earth radius in km
+
+    const dLat = (lat2 - lat1) * Math.PI / 180;
+    const dLng = (lng2 - lng1) * Math.PI / 180;
+
+    const a =
+        Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+        Math.cos(lat1 * Math.PI / 180) *
+        Math.cos(lat2 * Math.PI / 180) *
+        Math.sin(dLng / 2) * Math.sin(dLng / 2);
+
+    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+
+    return R * c;
+}
+// ============================================================
+// REVERSE GEOCODING — Coordinates se place name nikalna
+// ============================================================
+
+async function getPlaceName(lat, lng) {
+
+    try {
+
+        const response = await fetch(
+            `https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lng}&zoom=14`
+        );
+
+        const data = await response.json();
+
+        if (data && data.display_name) {
+
+            // Poora address bahut lamba hota hai, thoda short karte hain
+            const parts = data.display_name.split(",");
+            return parts.slice(0, 3).join(",").trim();
+
+        }
+
+        return `${lat.toFixed(5)}, ${lng.toFixed(5)}`;
+
+    } catch (error) {
+
+        console.error("Reverse geocoding failed:", error);
+        return `${lat.toFixed(5)}, ${lng.toFixed(5)}`;
+
+    }
+
+}
+
+    async function selectIncident(id) {
+
+        const incident = incidents[id];
+
+        if (!incident) return;
+
+currentIncident = incident;
+        /* Remove selected class */
+        document
+            .querySelectorAll(".incident-card")
+            .forEach(card => {
+
+                card.classList.remove("selected");
+
+            });
+
+
+        /* Add selected class */
+        const selectedCard =
+            document.querySelector(
+                `[data-incident="${id}"]`
+            );
+
+        if (selectedCard) {
+
+            selectedCard.classList.add("selected");
+
+        }
+
+
+        /* Update details */
+        document.getElementById(
+            "incidentDetailsTitle"
+        ).textContent =
+            `Incident Details - SOS -${incident.displayId}`;
+
+
+        document.getElementById(
+            "detailType"
+        ).textContent =
+            incident.type;
+
+
+        document.getElementById(
+            "detailSeverity"
+        ).textContent =
+            incident.severity;
+
+
+        document.getElementById(
+            "detailPeople"
+        ).textContent =
+            incident.people;
+
+
+        document.getElementById(
+            "detailStatus"
+        ).textContent =
+            incident.status;
+
+// ============================================================
+// LOAD MISSION PROGRESS FOR SELECTED INCIDENT
+// ============================================================
+
+loadAuthorityMissionProgress(incident.id);
+  // ============================================================
+// SHOW CITIZEN UPLOADED PHOTO
+// ============================================================
+
+const photoContainer =
+    document.getElementById("incidentPhotoContainer");
+
+const photoElement =
+    document.getElementById("incidentPhoto");
+
+// Get photos from ALL citizen reports in this grouped incident
+const incidentPhotos =
+    (incident.reports || [])
+        .filter(report => report.photo)
+        .map(report => report.photo);
+
+
+// Show first available photo
+if (incidentPhotos.length > 0) {
+
+    photoElement.src =
+        incidentPhotos[0];
+
+    photoContainer.classList.remove("hidden");
+
+} else {
+
+    photoElement.src = "";
+
+    photoContainer.classList.add("hidden");
+
+}
+
+                    /* ============================================================
+           NEAREST SHELTERS — REAL TIME
+        ============================================================ */
+
+        const nearestSheltersList =
+            document.getElementById("nearestSheltersList");
+
+        nearestSheltersList.innerHTML = "";
+
+        if (allShelters.length > 0) {
+
+            const sheltersWithDistance = allShelters.map(shelter => {
+
+                const distance = getDistanceKm(
+                    incident.lat,
+                    incident.lng,
+                    shelter.location.latitude,
+                    shelter.location.longitude
+                );
+
+                return { ...shelter, distance };
+
+            });
+
+            sheltersWithDistance.sort(
+                (a, b) => a.distance - b.distance
+            );
+
+            const nearest = sheltersWithDistance.slice(0, 2);
+
+            nearest.forEach(shelter => {
+
+                const row = document.createElement("div");
+                row.className = "nearest-row";
+
+                row.innerHTML = `
+                    <div class="font-semibold text-slate-700">
+                        🏠 &nbsp; ${shelter.name}
+                    </div>
+                    <div class="text-slate-500">
+                        ${shelter.distance.toFixed(1)} km
+                    </div>
+                    <div class="text-green-600 font-semibold">
+                        ${shelter.availableCapacity} seats available
+                    </div>
+                `;
+
+                nearestSheltersList.appendChild(row);
+
+            });
+
+        } else {
+
+            nearestSheltersList.innerHTML =
+                `<p class="text-xs text-slate-400">No shelters found.</p>`;
+
+        }
+
+
+        /* Move map */
+        map.flyTo(
+            [incident.lat, incident.lng],
+            14,
+            {
+                duration: 0.7
+            }
+        );
+
+
+        /* Open marker popup */
+        if (incidentMarkers[id]) {
+
+            incidentMarkers[id].openPopup();
+
+        }
+
+    }
+// ============================================================
+// AUTHORITY MISSION PROGRESS
+// ============================================================
+
+async function loadAuthorityMissionProgress(incidentId) {
+
+    const badge =
+        document.getElementById(
+            "authorityMissionStatusBadge"
+        );
+
+    const timeline =
+        document.getElementById(
+            "authorityMissionTimeline"
+        );
+
+    if (!badge || !timeline) return;
+
+
+    try {
+
+        const response =
+            await fetch("/api/missions");
+
+        if (!response.ok) {
+
+            throw new Error(
+                "Failed to load missions"
+            );
+
+        }
+
+
+        const missions =
+            await response.json();
+
+
+        // Find mission belonging to selected incident
+
+        const mission =
+            missions.find(
+                m =>
+                    String(m.incidentId) ===
+                    String(incidentId)
+            );
+
+
+        // --------------------------------------------------------
+        // NO MISSION
+        // --------------------------------------------------------
+
+        if (!mission) {
+
+            badge.textContent =
+                "NO MISSION";
+
+            badge.className =
+                "text-xs font-bold px-3 py-1 rounded-full bg-slate-100 text-slate-500";
+
+
+            timeline.innerHTML = `
+
+                <div class="text-sm text-slate-400 text-center">
+                    No relief team has been dispatched to this incident yet.
+                </div>
+
+            `;
+
+            return;
+        }
+
+
+        // --------------------------------------------------------
+        // STATUS
+        // --------------------------------------------------------
+
+        const currentStatus =
+            String(
+                mission.status || "WAITING"
+            ).toUpperCase();
+
+
+        // --------------------------------------------------------
+        // STATUS BADGE
+        // --------------------------------------------------------
+
+        const badgeText = {
+
+            WAITING: "WAITING",
+
+            ACCEPTED: "ACCEPTED",
+
+            EN_ROUTE: "EN ROUTE",
+
+            ARRIVED: "ON SITE",
+
+            RESCUE: "RESCUE ACTIVE",
+
+            RESCUE_STARTED: "RESCUE ACTIVE",
+
+            COMPLETE: "COMPLETE",
+
+            ESCALATED: "ESCALATED"
+
+        };
+
+
+        badge.textContent =
+            badgeText[currentStatus] ||
+            currentStatus;
+
+
+        badge.className =
+            "text-xs font-bold px-3 py-1 rounded-full bg-blue-100 text-blue-700";
+
+
+        // --------------------------------------------------------
+        // FIVE MAIN PROGRESS STEPS
+        // --------------------------------------------------------
+
+        const steps = [
+
+            {
+                status: "ACCEPTED",
+                title: "ACCEPTED",
+                subtitle: "Order received"
+            },
+
+            {
+                status: "EN_ROUTE",
+                title: "EN ROUTE",
+                subtitle: "Unit moving to incident"
+            },
+
+            {
+                status: "ARRIVED",
+                title: "ON SITE",
+                subtitle: "Team has arrived"
+            },
+
+            {
+                status: "RESCUE_STARTED",
+                title: "RESCUE ACTIVE",
+                subtitle: "Rescue operation active"
+            },
+
+            {
+                status: "COMPLETE",
+                title: "COMPLETE",
+                subtitle: "Mission completed"
+            }
+
+        ];
+
+
+        const statusOrder = {
+
+            WAITING: 0,
+
+            ACCEPTED: 1,
+
+            EN_ROUTE: 2,
+
+            ARRIVED: 3,
+
+            RESCUE: 4,
+
+            RESCUE_STARTED: 4,
+
+            COMPLETE: 5,
+
+            ESCALATED: 0
+
+        };
+
+
+        const currentOrder =
+            statusOrder[currentStatus] || 0;
+
+
+        // --------------------------------------------------------
+        // CREATE TIMELINE
+        // --------------------------------------------------------
+
+        timeline.innerHTML = `
+
+            <div class="space-y-0">
+
+                ${steps.map((step, index) => {
+
+                    const stepOrder =
+                        index + 1;
+
+                    const completed =
+                        currentOrder >= stepOrder;
+
+                    const active =
+                        currentOrder === stepOrder;
+
+                    let circleClass =
+                        "border-2 border-slate-300 bg-white text-slate-500";
+
+                    let titleClass =
+                        "text-slate-400";
+
+                    if (completed) {
+
+                        circleClass =
+                            "bg-green-600 text-white border-2 border-green-600";
+
+                        titleClass =
+                            "text-slate-900";
+
+                    }
+
+                    if (active) {
+
+                        circleClass =
+                            "bg-blue-600 text-white border-2 border-blue-600";
+
+                        titleClass =
+                            "text-blue-700";
+
+                    }
+
+
+                    return `
+
+                        <div class="flex items-start">
+
+                            <div class="flex flex-col items-center mr-3">
+
+                                <div
+                                    class="w-9 h-9 rounded-full flex items-center justify-center font-bold text-sm ${circleClass}"
+                                >
+                                    ${stepOrder}
+                                </div>
+
+                                ${
+                                    index < steps.length - 1
+                                    ? `
+                                        <div
+                                            class="w-0.5 h-10 ${
+                                                completed
+                                                ? "bg-green-500"
+                                                : "bg-slate-200"
+                                            }"
+                                        ></div>
+                                    `
+                                    : ""
+                                }
+
+                            </div>
+
+
+                            <div class="pt-1 pb-5">
+
+                                <div
+                                    class="font-bold text-sm ${titleClass}"
+                                >
+                                    ${step.title}
+                                </div>
+
+                                <div
+                                    class="text-xs text-slate-400 mt-1"
+                                >
+                                    ${step.subtitle}
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    `;
+
+                }).join("")}
+
+            </div>
+
+
+            <div class="mt-2 pt-3 border-t border-slate-100 text-xs text-slate-500">
+
+                🚑 Team:
+                <span class="font-semibold text-slate-700">
+                    ${mission.teamId}
+                </span>
+
+                ${
+                    mission.etaMinutes
+                    ? `
+                        &nbsp; • &nbsp;
+                        ETA:
+                        <span class="font-semibold">
+                            ${mission.etaMinutes} min
+                        </span>
+                    `
+                    : ""
+                }
+
+            </div>
+
+        `;
+
+
+    } catch (error) {
+
+        console.error(
+            "❌ Authority mission progress error:",
+            error
+        );
+
+        timeline.innerHTML = `
+
+            <div class="text-sm text-red-500 text-center">
+                Unable to load mission progress.
+            </div>
+
+        `;
+
+    }
+
+}
+
+    /* ============================================================
+   PREV / NEXT INCIDENT NAVIGATION
+============================================================ */
+
+
+// Har baar selectIncident call ho to current id track karo
+const originalSelectIncident = selectIncident;
+
+selectIncident = async function(id) {
+    currentIncidentId = id;
+   await originalSelectIncident(id);
+};
+
+
+function goToAdjacentIncident(direction) {
+
+    const ids = Object.keys(incidents);
+
+    if (ids.length === 0) return;
+
+    let currentIndex = ids.indexOf(String(currentIncidentId));
+
+    if (currentIndex === -1) currentIndex = 0;
+
+    let newIndex = currentIndex + direction;
+
+    // Wraparound (last se first, first se last)
+    if (newIndex < 0) newIndex = ids.length - 1;
+    if (newIndex >= ids.length) newIndex = 0;
+
+    selectIncident(ids[newIndex]);
+
+}
+
+
+document.getElementById("prevIncidentBtn")
+    .addEventListener("click", () => goToAdjacentIncident(-1));
+
+document.getElementById("nextIncidentBtn")
+    .addEventListener("click", () => goToAdjacentIncident(1));
+
+
+    /* ============================================================
+       ACTION BUTTONS
+    ============================================================ */
+document.getElementById(
+    "rescueBtn"
+).addEventListener(
+    "click",
+    async function () {
+
+        const button = this;
+
+
+        // =====================================================
+        // FIRST CLICK → RESCUE IN PROGRESS
+        // =====================================================
+
+        if (
+            button.dataset.rescueStarted !== "true"
+        ) {
+
+            button.dataset.rescueStarted =
+                "true";
+
+            button.textContent =
+                "✓ Rescue In Progress";
+
+            button.classList.remove(
+                "bg-amber-500"
+            );
+
+            button.classList.add(
+                "bg-orange-600"
+            );
+
+            document.getElementById(
+                "detailStatus"
+            ).textContent =
+                "Rescue In Progress";
+
+            document.getElementById(
+                "detailStatus"
+            ).className =
+                "detail-value text-orange-600";
+
+            return;
+
+        }
+
+
+        // =====================================================
+        // SECOND CLICK → RESCUE COMPLETED
+        // =====================================================
+
+        if (!currentIncident) {
+
+            alert(
+                "Please select an incident first."
+            );
+
+            return;
+
+        }
+
+
+        const incidentId =
+            currentIncident.id ||
+            currentIncident.incidentId;
+
+
+        if (!incidentId) {
+
+            alert(
+                "Incident ID not found."
+            );
+
+            return;
+
+        }
+
+
+        button.disabled = true;
+
+        button.textContent =
+            "Saving...";
+
+
+        try {
+
+            const response =
+                await fetch(
+                    `/api/incidents/${encodeURIComponent(
+                        incidentId
+                    )}/resolve`,
+                    {
+                        method: "PATCH",
+
+                        headers: {
+                            "Content-Type":
+                                "application/json"
+                        },
+
+                        body: JSON.stringify({
+
+                            resolution:
+                                "RESCUE_COMPLETED",
+
+                            resolvedBy:
+                                "Authority"
+
+                        })
+
+                    }
+                );
+
+
+            const result =
+                await response.json();
+
+
+            if (!response.ok) {
+
+                throw new Error(
+                    result.message ||
+                    "Failed to complete rescue"
+                );
+
+            }
+
+
+            // =================================================
+            // UPDATE UI
+            // =================================================
+
+            button.textContent =
+                "✓ Rescue Completed";
+
+            button.classList.remove(
+                "bg-orange-600"
+            );
+
+            button.classList.add(
+                "bg-green-600"
+            );
+
+
+            document.getElementById(
+                "detailStatus"
+            ).textContent =
+                "Rescue Completed";
+
+            document.getElementById(
+                "detailStatus"
+            ).className =
+                "detail-value text-green-600";
+
+
+            alert(
+                "✓ Rescue completed. Incident moved to Past Incidents."
+            );
+
+
+            currentIncident = null;
+
+
+            await loadIncidents();
+
+
+        } catch (error) {
+
+            console.error(
+                "Rescue completion error:",
+                error
+            );
+
+
+            alert(
+                "Could not complete rescue: " +
+                error.message
+            );
+
+
+            button.disabled = false;
+
+            button.textContent =
+                "✓ Rescue In Progress";
+
+        }
+
+    }
+);
+// ============================================================
+// OPEN SHELTER ASSIGNMENT
+// ============================================================
+
+function openShelterAssignment() {
+
+    if (!currentIncident) {
+
+        alert("Please select an incident first.");
+
+        return;
+    }
+
+
+    const modal =
+        document.getElementById(
+            "shelterAssignmentModal"
+        );
+
+    const incidentInfo =
+        document.getElementById(
+            "shelterAssignmentIncidentInfo"
+        );
+
+    const shelterList =
+        document.getElementById(
+            "shelterAssignmentList"
+        );
+
+
+    // Show incident information
+
+    incidentInfo.innerHTML = `
+
+        <div class="font-semibold text-slate-800">
+            ${currentIncident.type || "Incident"}
+        </div>
+
+        <div class="text-xs text-slate-500 mt-1">
+            📍 ${Number(currentIncident.lat).toFixed(5)},
+            ${Number(currentIncident.lng).toFixed(5)}
+        </div>
+
+        <div class="text-xs text-slate-500 mt-1">
+            👥 ${currentIncident.people || 0}
+            people affected
+        </div>
+
+    `;
+
+
+    // ========================================================
+    // FIND NEARBY AVAILABLE SHELTERS
+    // ========================================================
+
+    const nearbyShelters =
+        allShelters
+            .filter(shelter =>
+                shelter.status === "available" &&
+                Number(shelter.availableCapacity || 0) > 0
+            )
+            .map(shelter => {
+
+                const distance =
+                    getDistanceKm(
+                        Number(currentIncident.lat),
+                        Number(currentIncident.lng),
+                        Number(shelter.location.latitude),
+                        Number(shelter.location.longitude)
+                    );
+
+                return {
+                    ...shelter,
+                    distance
+                };
+
+            })
+            .sort((a, b) =>
+                a.distance - b.distance
+            );
+
+
+    shelterList.innerHTML = "";
+
+
+    // ========================================================
+    // NO AVAILABLE SHELTERS
+    // ========================================================
+
+    if (nearbyShelters.length === 0) {
+
+        shelterList.innerHTML = `
+            <div class="text-sm text-slate-500 text-center p-4">
+                No shelters with available beds found.
+            </div>
+        `;
+
+        modal.classList.remove("hidden");
+
+        return;
+    }
+
+
+    // ========================================================
+    // DISPLAY SHELTERS
+    // ========================================================
+
+    nearbyShelters.forEach(shelter => {
+
+        const button =
+            document.createElement("button");
+
+        button.type = "button";
+
+        button.className =
+            "w-full text-left p-3 rounded-lg border border-slate-200 hover:border-blue-500 hover:bg-blue-50 mb-2";
+
+
+        button.innerHTML = `
+
+            <div class="flex justify-between">
+
+                <div>
+
+                    <div class="font-semibold text-slate-800">
+                        🏠 ${shelter.name}
+                    </div>
+
+                    <div class="text-xs text-slate-500">
+                        ${shelter.address}
+                    </div>
+
+                    <div class="text-xs text-slate-500 mt-1">
+                        📍 ${shelter.distance.toFixed(1)} km away
+                    </div>
+
+                </div>
+
+                <div class="text-right">
+
+                    <div class="text-green-600 font-bold">
+                        ${shelter.availableCapacity}
+                    </div>
+
+                    <div class="text-[10px] text-slate-500">
+                        beds available
+                    </div>
+
+                </div>
+
+            </div>
+
+        `;
+
+
+        button.addEventListener(
+            "click",
+            function () {
+
+                selectShelterForAssignment(
+                    shelter,
+                    button
+                );
+
+            }
+        );
+
+
+        shelterList.appendChild(button);
+
+    });
+
+
+    modal.classList.remove("hidden");
+}
+// ============================================================
+// SELECT SHELTER FOR ASSIGNMENT
+// ============================================================
+
+let selectedShelterForAssignment = null;
+
+function selectShelterForAssignment(shelter, button) {
+
+    selectedShelterForAssignment = shelter;
+
+
+    // Remove previous selection
+
+    document
+        .querySelectorAll(
+            "#shelterAssignmentList button"
+        )
+        .forEach(btn => {
+
+            btn.classList.remove(
+                "border-blue-600",
+                "bg-blue-50"
+            );
+
+        });
+
+
+    // Highlight selected shelter
+
+    button.classList.add(
+        "border-blue-600",
+        "bg-blue-50"
+    );
+
+
+    // Show selected shelter
+
+    const selectedInfo =
+        document.getElementById(
+            "selectedShelterInfo"
+        );
+
+    selectedInfo.innerHTML = `
+
+        <div class="font-semibold text-blue-800">
+            Selected Shelter:
+            ${shelter.name}
+        </div>
+
+        <div class="text-xs text-blue-700 mt-1">
+            ${shelter.availableCapacity}
+            beds currently available
+        </div>
+
+    `;
+
+    selectedInfo.classList.remove("hidden");
+
+
+    // Set maximum number of people
+
+    const peopleInput =
+        document.getElementById(
+            "shelterPeopleCount"
+        );
+
+    peopleInput.value = "";
+
+    peopleInput.max =
+        shelter.availableCapacity;
+
+
+    document.getElementById(
+        "shelterCapacityHint"
+    ).textContent =
+        `Maximum you can assign:
+        ${shelter.availableCapacity} people`;
+
+}
+// ============================================================
+// CONFIRM SHELTER ASSIGNMENT
+// ============================================================
+
+document
+    .getElementById("confirmShelterAssignment")
+    .addEventListener("click", async function () {
+
+        // --------------------------------------------------------
+        // CHECK SHELTER SELECTION
+        // --------------------------------------------------------
+
+        if (!selectedShelterForAssignment) {
+
+            alert("Please select a shelter first.");
+
+            return;
+        }
+
+
+        // --------------------------------------------------------
+        // GET NUMBER OF PEOPLE
+        // --------------------------------------------------------
+
+        const people =
+            Number(
+                document.getElementById(
+                    "shelterPeopleCount"
+                ).value
+            );
+
+
+        // --------------------------------------------------------
+        // VALIDATE NUMBER
+        // --------------------------------------------------------
+
+        if (
+            !Number.isInteger(people) ||
+            people <= 0
+        ) {
+
+            alert(
+                "Please enter a valid number of people."
+            );
+
+            return;
+        }
+
+
+        // --------------------------------------------------------
+        // CHECK CAPACITY
+        // --------------------------------------------------------
+
+        if (
+            people >
+            Number(
+                selectedShelterForAssignment
+                    .availableCapacity
+            )
+        ) {
+
+            alert(
+                `Only ${selectedShelterForAssignment.availableCapacity} beds are available.`
+            );
+
+            return;
+        }
+
+
+        // --------------------------------------------------------
+        // DISABLE BUTTON
+        // --------------------------------------------------------
+
+        this.disabled = true;
+
+        this.textContent =
+            "Assigning...";
+
+
+        try {
+
+            // ----------------------------------------------------
+            // SEND ASSIGNMENT TO SERVER
+            // ----------------------------------------------------
+
+            const response =
+                await fetch(
+                    `/api/shelters/${selectedShelterForAssignment._id}/assign`,
+                    {
+                        method: "POST",
+
+                        headers: {
+                            "Content-Type":
+                                "application/json"
+                        },
+
+                        body: JSON.stringify({
+                            people: people
+                        })
+                    }
+                );
+
+
+            const result =
+                await response.json();
+
+
+            // ----------------------------------------------------
+            // HANDLE ERROR
+            // ----------------------------------------------------
+
+            if (
+                !response.ok ||
+                !result.success
+            ) {
+
+                throw new Error(
+                    result.message ||
+                    "Shelter assignment failed"
+                );
+
+            }
+
+
+            // ----------------------------------------------------
+            // SUCCESS
+            // ----------------------------------------------------
+
+            alert(
+                `${people} people assigned to ${result.shelter.name} successfully.`
+            );
+
+
+            // ----------------------------------------------------
+            // CLOSE MODAL
+            // ----------------------------------------------------
+
+            document
+                .getElementById(
+                    "shelterAssignmentModal"
+                )
+                .classList.add("hidden");
+
+
+            // ----------------------------------------------------
+            // REFRESH SHELTER DATA
+            // ----------------------------------------------------
+
+            await loadShelters();
+
+
+            // Reset selection
+
+            selectedShelterForAssignment =
+                null;
+
+
+        } catch (error) {
+
+            console.error(
+                "Shelter assignment error:",
+                error
+            );
+
+
+            alert(
+                error.message ||
+                "Failed to assign shelter."
+            );
+
+
+        } finally {
+
+            this.disabled = false;
+
+            this.textContent =
+                "Assign People";
+
+        }
+
+    });
+    // ============================================================
+// CLOSE SHELTER ASSIGNMENT MODAL
+// ============================================================
+
+document
+    .getElementById("closeShelterAssignmentModal")
+    .addEventListener("click", function () {
+
+        document
+            .getElementById("shelterAssignmentModal")
+            .classList.add("hidden");
+
+        selectedShelterForAssignment = null;
+
+    });
+
+
+document
+    .getElementById("cancelShelterAssignment")
+    .addEventListener("click", function () {
+
+        document
+            .getElementById("shelterAssignmentModal")
+            .classList.add("hidden");
+
+        selectedShelterForAssignment = null;
+
+    });
+    document.getElementById("safeBtn").addEventListener(
+    "click",
+    async function () {
+
+        if (!currentIncident) {
+
+            alert("Please select an incident first.");
+            return;
+
+        }
+
+        const incidentId =
+            currentIncident.id ||
+            currentIncident.incidentId;
+
+        if (!incidentId) {
+
+            alert("Incident ID not found.");
+            return;
+
+        }
+
+        const button = this;
+
+        button.disabled = true;
+        button.textContent = "Saving...";
+
+        try {
+
+            const response = await fetch(
+                `/api/incidents/${encodeURIComponent(incidentId)}/resolve`,
+                {
+                    method: "PATCH",
+
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+
+                    body: JSON.stringify({
+                        resolution: "AREA_SAFE",
+                        resolvedBy: "Authority"
+                    })
+                }
+            );
+
+            const result =
+                await response.json();
+
+            if (!response.ok) {
+
+                throw new Error(
+                    result.message ||
+                    "Failed to resolve incident"
+                );
+
+            }
+
+            alert(
+                "✓ Area marked safe. Incident moved to Past Incidents."
+            );
+
+            currentIncident = null;
+
+            await loadIncidents();
+
+        } catch (error) {
+
+            console.error(
+                "Area safe error:",
+                error
+            );
+
+            alert(
+                "Could not mark area safe: " +
+                error.message
+            );
+
+            button.disabled = false;
+            button.textContent =
+                "✓  Mark Area Safe";
+
+        }
+
+    }
+);
+
+document.getElementById(
+    "assignShelterBtn"
+).addEventListener(
+    "click",
+    function () {
+
+        openShelterAssignment();
+
+    }
+);
+
+
+
+  
+
+/* ============================================================
+   REFRESH SHELTERS
+============================================================ */
+
+const refreshShelters = document.getElementById("refreshShelters");
+
+refreshShelters.addEventListener("click", async function () {
+
+    // rotate
+    this.classList.add("refreshing");
+
+    // shelters dobara load karo
+    await loadShelters();
+
+    // rotation complete hone ke baad class hatao
+    setTimeout(() => {
+        this.classList.remove("refreshing");
+    }, 500);
+});
+
+
+
+/* ============================================================
+   VIEW ALL REPORTS
+============================================================ */
+
+document.getElementById("viewAllReports").addEventListener(
+    "click",
+    function () {
+
+        const incidentList =
+            document.getElementById("incidentList");
+
+        incidentList.style.maxHeight = "none";
+        incidentList.style.overflowY = "visible";
+
+        const allIds = Object.keys(incidents);
+
+        if (allIds.length > 0) {
+
+            const incidentLocations = allIds.map(id => [
+                incidents[id].lat,
+                incidents[id].lng
+            ]);
+
+            map.fitBounds(
+                incidentLocations,
+                { padding: [40, 40] }
+            );
+
+        }
+
+    }
+);
+
+
+    /* ============================================================
+       LOGOUT
+       
+       IMPORTANT:
+       If your firebase.js already handles logout,
+       connect this button there.
+    ============================================================ */
+document.getElementById("logoutBtn").addEventListener("click", async function () {
+
+    try {
+
+        const response = await fetch("/api/auth/logout", {
+            method: "POST"
+        });
+
+        if (response.ok) {
+            window.location.href = "/citizen";
+        } else {
+            console.error("Logout failed");
+        }
+
+    } catch (error) {
+
+        console.error("Logout error:", error);
+
+    }
+
+});
+
+
+
+    /* ============================================================
+       INITIAL MAP SIZE FIX
+    ============================================================ */
+
+    setTimeout(() => {
+
+        map.invalidateSize();
+
+    }, 300);
+
+/* =========================================================
+   DISPATCH TEAM MODAL
+========================================================= */
+
+/* =========================================================
+   DISPATCH RELIEF TEAM
+   ========================================================= */
+
+const dispatchTeamBtn = document.getElementById("dispatchTeamBtn");
+const dispatchTeamModal = document.getElementById("dispatchTeamModal");
+const closeDispatchModal = document.getElementById("closeDispatchModal");
+const cancelDispatchBtn = document.getElementById("cancelDispatchBtn");
+const confirmDispatchBtn = document.getElementById("confirmDispatchBtn");
+const dispatchTeamSelect = document.getElementById("dispatchTeamSelect");
+const dispatchInstructions = document.getElementById("dispatchInstructions");
+
+function getTeamCapabilityMatches(incident, team) {
+    const incidentCapabilities = Array.isArray(incident?.capabilities)
+        ? incident.capabilities.map(String)
+        : [];
+
+    const teamCapabilities = Array.isArray(team?.capabilities)
+        ? team.capabilities.map(String)
+        : [];
+
+    if (!incidentCapabilities.length || !teamCapabilities.length) return 0;
+
+    return incidentCapabilities.filter(capability =>
+        teamCapabilities.some(teamCap =>
+            String(teamCap).toLowerCase() === String(capability).toLowerCase()
+        )
+    ).length;
+}
+
+function getTeamOperationalScore(incident, team) {
+    if (!incident || !team) return -Infinity;
+
+    const distance = getDistanceKm(
+        Number(incident.lat),
+        Number(incident.lng),
+        Number(team.lat),
+        Number(team.lng)
+    );
+
+    const matches = getTeamCapabilityMatches(incident, team);
+    const load = Number(team.load || 0);
+
+    // Operational recommendation for now.
+    // Later the AI model can replace this score without changing the UI.
+    let score = 100;
+    score -= Math.min(distance * 5, 50);
+    score += matches * 15;
+    score -= load * 0.25;
+
+    if (String(team.status).toUpperCase() !== "AVAILABLE") {
+        score -= 1000;
+    }
+
+    return score;
+}
+
+function populateDispatchTeams() {
+
+    if (!dispatchTeamSelect) return;
+
+    dispatchTeamSelect.innerHTML = `
+        <option value="">Select a team...</option>
+    `;
+
+    if (!selectedIncident) return;
+
+    if (!Array.isArray(teams) || teams.length === 0) {
+        const option = document.createElement("option");
+        option.value = "";
+        option.textContent = "No relief teams available";
+        option.disabled = true;
+        dispatchTeamSelect.appendChild(option);
+        return;
+    }
+
+    const rankedTeams = teams
+        .map(team => {
+            const distance = getDistanceKm(
+                Number(selectedIncident.lat),
+                Number(selectedIncident.lng),
+                Number(team.lat),
+                Number(team.lng)
+            );
+
+            const matches = getTeamCapabilityMatches(selectedIncident, team);
+            const score = getTeamOperationalScore(selectedIncident, team);
+
+            return { team, distance, matches, score };
+        })
+        .sort((a, b) => b.score - a.score);
+
+    rankedTeams.forEach(({ team, distance, matches }, index) => {
+
+        const option = document.createElement("option");
+        option.value = team.id;
+
+        const organization = team.organization || "Response Team";
+        const status = String(team.status || "UNKNOWN").toUpperCase();
+        const recommendation = index === 0 && status === "AVAILABLE"
+            ? " ⭐ RECOMMENDED"
+            : "";
+
+        option.textContent =
+            `${organization} — ${team.name || team.id} — ${distance.toFixed(1)} km — ${matches} capability match${matches === 1 ? "" : "es"}${recommendation}`;
+
+        if (status !== "AVAILABLE") {
+            option.disabled = true;
+            option.textContent += " — BUSY";
+        }
+
+        dispatchTeamSelect.appendChild(option);
+    });
+}
+
+function openDispatchModal() {
+
+    if (!selectedIncident) {
+        alert("Please select an incident first.");
+        return;
+    }
+
+    const score = Number(selectedIncident.severityScore || 0);
+    const level = selectedIncident.severityLevel || selectedIncident.severity || "Unknown";
+    const people = Number(selectedIncident.people || 0);
+
+    const severityElement = document.getElementById("dispatchAiSeverity");
+    const peopleElement = document.getElementById("dispatchPeople");
+
+    if (severityElement) {
+        severityElement.textContent = `${level} — ${score.toFixed(2)} / 100`;
+    }
+
+    if (peopleElement) {
+        peopleElement.textContent = people;
+    }
+
+    if (dispatchInstructions) {
+        dispatchInstructions.value = "";
+    }
+
+    populateDispatchTeams();
+    dispatchTeamModal.classList.remove("hidden");
+}
+
+if (dispatchTeamBtn && dispatchTeamModal) {
+    dispatchTeamBtn.addEventListener("click", openDispatchModal);
+}
+
+function closeDispatchModalNow() {
+    if (dispatchTeamModal) {
+        dispatchTeamModal.classList.add("hidden");
+    }
+}
+
+if (closeDispatchModal) {
+    closeDispatchModal.addEventListener("click", closeDispatchModalNow);
+}
+
+if (cancelDispatchBtn) {
+    cancelDispatchBtn.addEventListener("click", closeDispatchModalNow);
+}
+
+if (confirmDispatchBtn) {
+
+    confirmDispatchBtn.addEventListener("click", async function () {
+
+        if (!selectedIncident) {
+            alert("Please select an incident first.");
+            return;
+        }
+
+        if (!dispatchTeamSelect) {
+            alert("Team selector is unavailable.");
+            return;
+        }
+
+        const selectedTeamId = dispatchTeamSelect.value;
+
+        if (!selectedTeamId) {
+            alert("Please select a relief team.");
+            return;
+        }
+
+        const team = teams.find(t => String(t.id) === String(selectedTeamId));
+
+        if (!team) {
+            alert("Selected team could not be found.");
+            return;
+        }
+
+        if (String(team.status).toUpperCase() !== "AVAILABLE") {
+            alert("This team is no longer available.");
+            return;
+        }
+
+        const distance = getDistanceKm(
+            Number(selectedIncident.lat),
+            Number(selectedIncident.lng),
+            Number(team.lat),
+            Number(team.lng)
+        );
+
+        const matches = getTeamCapabilityMatches(selectedIncident, team);
+
+        const etaMinutes = Math.max(
+            1,
+            Math.ceil((distance / 40) * 60)
+        );
+
+        const originalText = this.textContent;
+        
+        this.disabled = true;
+        this.textContent = "🚑 Dispatching...";
+
+        try {
+console.log("🚑 SELECTED TEAM:", team);
+console.log("🚑 TEAM ID BEING SENT:", team.id);
+            const response = await fetch("/api/missions/dispatch", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    incidentId: selectedIncident.id,
+                    teamId: team.id,
+                    etaMinutes,
+                    matchScore: Math.min(100, Math.round(
+                        getTeamOperationalScore(selectedIncident, team)
+                    )),
+                    distanceKm: Number(distance.toFixed(2)),
+                    instructions: dispatchInstructions
+                        ? dispatchInstructions.value.trim()
+                        : "",
+                    incident: {
+                        title: selectedIncident.type || "Disaster Incident",
+                        type: selectedIncident.type || "Other",
+                        priority:
+                            selectedIncident.severityLevel === "Critical"
+                                ? "CRITICAL"
+                                : selectedIncident.severityLevel === "Severe" || selectedIncident.severityLevel === "High"
+                                    ? "HIGH"
+                                    : selectedIncident.severityLevel === "Medium" || selectedIncident.severityLevel === "Moderate"
+                                        ? "MEDIUM"
+                                        : "LOW",
+                        description: (selectedIncident.descriptions || []).join(" "),
+                        lat: Number(selectedIncident.lat),
+                        lng: Number(selectedIncident.lng),
+                        people: Number(selectedIncident.people || 0),
+                        capabilities: selectedIncident.capabilities || []
+                    }
+                })
+            });
+
+            const result = await response.json();
+
+            if (!response.ok) {
+                throw new Error(result.message || "Dispatch failed");
+            }
+
+            // Update local state immediately.
+            team.status = "BUSY";
+            if (result.team && result.team.load !== undefined) {
+                team.load = Number(result.team.load);
+            }
+
+            if (dispatchTeamModal) {
+                dispatchTeamModal.classList.add("hidden");
+            }
+
+            alert(
+                `🚑 Team dispatched successfully!\n\n` +
+                `Team: ${team.name || team.id}\n` +
+                `Organization: ${team.organization || "Response Team"}\n` +
+                `Incident: ${selectedIncident.id}\n` +
+                `Distance: ${distance.toFixed(1)} km\n` +
+                `ETA: ${etaMinutes} min`
+            );
+
+            console.log("🚨 DISPATCH SUCCESS", result);
+
+        } catch (error) {
+
+            console.error("❌ Dispatch failed:", error);
+            alert("Dispatch failed: " + error.message);
+
+        } finally {
+            this.disabled = false;
+            this.textContent = originalText || "🚑 Dispatch Order";
+        }
+    });
+}
+
+// If teams load after the modal code is ready, this still refreshes the list
+// the next time the modal is opened.
+
+</script>
+</body>
+</html>

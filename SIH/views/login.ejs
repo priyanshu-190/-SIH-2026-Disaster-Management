@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Authority Login - Disaster Relief Hub</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="min-h-screen bg-slate-100 flex items-center justify-center">
+
+    <!-- LOGIN CONTAINER -->
+    <div class="w-full max-w-md px-5">
+
+        <!-- LOGIN CARD -->
+        <div class="bg-white rounded-2xl shadow-xl border border-slate-200 p-8">
+
+            <!-- LOGO / HEADER -->
+            <div class="text-center mb-8">
+
+                <div
+                    class="mx-auto w-16 h-16 rounded-full bg-blue-100 flex items-center justify-center text-3xl mb-4"
+                >
+                    🛡️
+                </div>
+
+                <h1 class="text-2xl font-bold text-slate-800">
+                      Disaster Relief Pannel
+                </h1>
+
+                
+
+            </div>
+
+
+            <!-- LOGIN FORM -->
+            <form id="loginForm" class="space-y-5">
+
+                <!-- AUTHORITY ID -->
+         <!-- ROLE SELECTION -->
+<div>
+
+    <label
+        for="role"
+        class="block text-sm font-semibold text-slate-700 mb-2"
+    >
+        Login As
+    </label>
+
+    <select
+    id="role"
+    class="w-full px-4 py-3 border border-slate-300 rounded-lg outline-none transition focus:border-blue-500 focus:ring-2 focus:ring-blue-100 bg-white"
+    required
+>
+    <option value="" disabled selected>Select your role</option>
+    <option value="authority">Authority</option>
+    <option value="relief-team">Relief Team</option>
+</select>
+
+</div>
+                <div>
+
+                    <label
+                        for="authorityId"
+                        class="block text-sm font-semibold text-slate-700 mb-2"
+                    >
+                        Login ID
+                    </label>
+
+                    <input
+                        type="text"
+                        id="authorityId"
+                        placeholder="Enter your Authority ID"
+                        autocomplete="username"
+                        class="w-full px-4 py-3 border border-slate-300 rounded-lg outline-none transition focus:border-blue-500 focus:ring-2 focus:ring-blue-100"
+                        required
+                    >
+
+                </div>
+
+
+                
+               <!-- PASSWORD -->
+<div>
+    <label
+        for="password"
+        class="block text-sm font-semibold text-slate-700 mb-2"
+    >
+        Password
+    </label>
+
+    <div class="relative">
+
+        <input
+            type="password"
+            id="password"
+            placeholder="Enter your password"
+            autocomplete="current-password"
+            class="w-full px-4 py-3 pr-16 border border-slate-300 rounded-lg outline-none transition focus:border-blue-500 focus:ring-2 focus:ring-blue-100"
+            required
+        >
+
+        <button
+            type="button"
+            id="togglePassword"
+            class="absolute right-4 top-1/2 -translate-y-1/2 text-sm font-semibold text-blue-600 hover:text-blue-700"
+        >
+            Show
+        </button>
+
+    </div>
+</div>
+
+
+                <!-- ERROR MESSAGE -->
+                <div
+                    id="errorMessage"
+                    class="hidden bg-red-50 border border-red-200 text-red-600 text-sm rounded-lg px-4 py-3"
+                >
+                    <span id="errorText"></span>
+                </div>
+
+
+                <!-- SIGN IN BUTTON -->
+                <button
+                    type="submit"
+                    id="loginButton"
+                    class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-lg transition duration-200"
+                >
+                    Sign In
+                </button>
+
+            </form>
+
+
+            <!-- BACK TO MAIN PAGE -->
+            <div class="text-center mt-6">
+
+                <a
+                    href="/"
+                    class="text-sm text-blue-600 hover:text-blue-800 font-medium"
+                >
+                    ← Back to Citizen Portal
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- SECURITY MESSAGE -->
+        <p class="text-center text-xs text-slate-500 mt-5">
+            🔒 Authorized personnel only
+        </p>
+
+    </div>
+
+
+    <script src="/js/login.js"></script>
+
+</body>
+
+</html>

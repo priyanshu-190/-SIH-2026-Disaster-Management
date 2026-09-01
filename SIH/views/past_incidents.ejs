@@ -1,0 +1,958 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Past Incidents</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+</head>
+
+
+<body class="bg-slate-100 min-h-screen">
+
+
+    <!-- HEADER -->
+
+    <header class="bg-slate-900 text-white">
+
+        <div
+            class="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between"
+        >
+
+            <div>
+
+                <h1 class="text-xl font-bold">
+                    Disaster Relief Hub
+                </h1>
+
+                <p class="text-xs text-slate-400">
+                    Incident History
+                </p>
+
+            </div>
+
+
+            <a
+                href="/dashboard"
+                class="px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 text-sm"
+            >
+                ← Back To Dashboard
+            </a>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- MAIN -->
+
+    <main class="max-w-7xl mx-auto px-6 py-8">
+
+        <div class="mb-6">
+
+            <h2 class="text-2xl font-bold text-slate-800">
+                Past Incidents
+            </h2>
+
+            <p class="text-sm text-slate-500 mt-1">
+                Resolved disaster incidents and response history
+            </p>
+
+        </div>
+
+
+        <!-- EMPTY STATE -->
+<!-- ============================================================
+     INCIDENT HISTORY MODAL
+============================================================ -->
+
+<div
+    id="historyModal"
+    class="hidden fixed inset-0 z-50 bg-black/60 overflow-y-auto p-6"
+>
+
+    <div
+        class="max-w-5xl mx-auto bg-white rounded-2xl shadow-2xl overflow-hidden"
+    >
+
+        <!-- HEADER -->
+
+        <div
+            class="bg-slate-900 text-white px-6 py-5 flex items-center justify-between"
+        >
+
+            <div>
+
+                <div
+                    id="historyIncidentId"
+                    class="text-xs text-slate-400 font-bold"
+                >
+                </div>
+
+                <h2
+                    id="historyTitle"
+                    class="text-xl font-bold mt-1"
+                >
+                    Incident History
+                </h2>
+
+            </div>
+
+            <button
+                onclick="closeHistory()"
+                class="text-slate-300 hover:text-white text-2xl"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+        <!-- CONTENT -->
+
+        <div class="p-6">
+
+            <!-- SUMMARY -->
+
+            <div
+                id="historySummary"
+                class="grid grid-cols-2 md:grid-cols-4 gap-4"
+            >
+            </div>
+
+
+            <!-- RESPONSE -->
+
+            <div class="mt-8">
+
+                <h3 class="text-lg font-bold text-slate-800 mb-4">
+                    🚑 Response Teams
+                </h3>
+
+                <div id="historyMissions">
+                </div>
+
+            </div>
+
+
+            <!-- TIMELINE -->
+
+            <div class="mt-8">
+
+                <h3 class="text-lg font-bold text-slate-800 mb-4">
+                    🕒 Incident Timeline
+                </h3>
+
+                <div id="historyTimeline">
+                </div>
+
+            </div>
+
+
+            <!-- CITIZEN REPORTS -->
+
+            <div class="mt-8">
+
+                <h3 class="text-lg font-bold text-slate-800 mb-4">
+                    📢 Citizen Reports
+                </h3>
+
+                <div id="historyReports">
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+        <div
+            id="pastIncidents"
+            class="bg-white rounded-xl border border-slate-200 p-10 text-center"
+        >
+
+            <div class="text-4xl mb-3">
+                📋
+            </div>
+
+            <h3 class="font-bold text-slate-700">
+                No Past Incidents
+            </h3>
+
+            <p class="text-sm text-slate-400 mt-1">
+                Resolved incidents will appear here.
+            </p>
+
+        </div>
+
+    </main>
+<script>
+
+async function loadPastIncidents() {
+
+    try {
+
+        const response =
+            await fetch(
+                "/api/incidents?status=PAST"
+            );
+
+        const incidents =
+            await response.json();
+
+        console.log(
+            "PAST INCIDENTS:",
+            incidents
+        );
+
+        const container =
+            document.getElementById(
+                "pastIncidents"
+            );
+
+
+        // =====================================================
+        // NO INCIDENTS
+        // =====================================================
+
+        if (
+            !Array.isArray(incidents) ||
+            incidents.length === 0
+        ) {
+
+            container.innerHTML = `
+
+                <div class="text-4xl mb-3">
+                    📋
+                </div>
+
+                <h3 class="font-bold text-slate-700">
+                    No Past Incidents
+                </h3>
+
+                <p class="text-sm text-slate-400 mt-1">
+                    Resolved incidents will appear here.
+                </p>
+
+            `;
+
+            return;
+
+        }
+
+
+        // =====================================================
+        // INCIDENT CARDS
+        // =====================================================
+
+        container.className =
+            "grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5";
+
+
+        container.innerHTML =
+            incidents.map(
+                incident => {
+
+                    const resolution =
+                        incident.resolution ===
+                        "AREA_SAFE"
+                            ? "Area Safe"
+                            : "Rescue Completed";
+
+
+                    return `
+
+                        <div
+                            class="bg-white rounded-xl border border-slate-200
+                                   shadow-sm p-5 hover:shadow-md transition"
+                        >
+
+                            <!-- INCIDENT ID -->
+
+                            <div class="text-xs font-bold text-slate-400">
+                                ${incident.incidentId}
+                            </div>
+
+
+                            <!-- TYPE -->
+
+                            <h3
+                                class="text-lg font-bold text-slate-800 mt-1"
+                            >
+                                ${incident.type}
+                            </h3>
+
+
+                            <!-- RESOLUTION -->
+
+                            <div
+                                class="inline-block mt-3 px-3 py-1
+                                       rounded-full bg-green-100
+                                       text-green-700 text-xs font-bold"
+                            >
+                                ✓ ${resolution}
+                            </div>
+
+
+                            <!-- DETAILS -->
+
+                            <div class="grid grid-cols-2 gap-4 mt-5">
+
+                                <div>
+
+                                    <div
+                                        class="text-xs text-slate-400"
+                                    >
+                                        People Affected
+                                    </div>
+
+                                    <div
+                                        class="font-bold text-slate-700"
+                                    >
+                                        ${incident.people || 0}
+                                    </div>
+
+                                </div>
+
+
+                                <div>
+
+                                    <div
+                                        class="text-xs text-slate-400"
+                                    >
+                                        Reports
+                                    </div>
+
+                                    <div
+                                        class="font-bold text-slate-700"
+                                    >
+                                        ${incident.reportCount || 0}
+                                    </div>
+
+                                </div>
+
+
+                                <div>
+
+                                    <div
+                                        class="text-xs text-slate-400"
+                                    >
+                                        Priority
+                                    </div>
+
+                                    <div
+                                        class="font-bold text-slate-700"
+                                    >
+                                        ${incident.priority || "—"}
+                                    </div>
+
+                                </div>
+
+
+                                <div>
+
+                                    <div
+                                        class="text-xs text-slate-400"
+                                    >
+                                        Resolved
+                                    </div>
+
+                                    <div
+                                        class="font-bold text-slate-700 text-sm"
+                                    >
+                                        ${
+                                            incident.resolvedAt
+                                                ? new Date(
+                                                    incident.resolvedAt
+                                                ).toLocaleString()
+                                                : "—"
+                                        }
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+
+                            <!-- VIEW BUTTON -->
+
+                            <button
+                                onclick="viewIncident('${incident.incidentId}')"
+                                class="w-full mt-5 bg-slate-900
+                                       text-white rounded-lg py-2.5
+                                       text-sm font-semibold
+                                       hover:bg-slate-700"
+                            >
+                                View Incident History
+                            </button>
+
+                        </div>
+
+                    `;
+
+                }
+            ).join("");
+
+    } catch (error) {
+
+        console.error(
+            "Failed to load past incidents:",
+            error
+        );
+
+    }
+
+}
+
+
+// ============================================================
+// VIEW INCIDENT
+// ============================================================
+function formatEvent(event) {
+
+    const eventNames = {
+
+        INCIDENT_REPORTED:
+            "Incident Reported",
+
+        AREA_DECLARED_SAFE:
+            "Area Declared Safe",
+
+        RESCUE_STARTED:
+            "Rescue Started",
+
+        RESCUE_COMPLETED:
+            "Rescue Completed",
+
+        TEAM_DISPATCHED:
+            "Response Team Dispatched",
+
+        TEAM_ACCEPTED:
+            "Response Team Accepted",
+
+        TEAM_ARRIVED:
+            "Response Team Arrived",
+
+        MISSION_COMPLETED:
+            "Mission Completed",
+
+        INCIDENT_RESOLVED:
+            "Incident Resolved"
+
+    };
+
+    return (
+        eventNames[event] ||
+        event
+            ?.replaceAll("_", " ")
+            ?.replace(
+                /\b\w/g,
+                char => char.toUpperCase()
+            ) ||
+        "Incident Update"
+    );
+
+}
+async function viewIncident(
+    incidentId
+) {
+
+    try {
+
+        const response =
+            await fetch(
+                `/api/incidents/${encodeURIComponent(
+                    incidentId
+                )}`
+            );
+
+        const incident =
+            await response.json();
+
+        if (!response.ok) {
+
+            throw new Error(
+                incident.message ||
+                "Failed to load incident"
+            );
+
+        }
+
+        console.log(
+            "SELECTED PAST INCIDENT:",
+            incident
+        );
+
+console.log(
+    "========== PAST INCIDENT HISTORY =========="
+);
+
+console.log(
+    "Incident ID:",
+    incident.incidentId
+);
+
+console.log(
+    "Type:",
+    incident.type
+);
+
+console.log(
+    "Priority:",
+    incident.priority
+);
+
+console.log(
+    "Status:",
+    incident.status
+);
+
+console.log(
+    "Resolution:",
+    incident.resolution
+);
+
+console.log(
+    "People affected:",
+    incident.people
+);
+
+console.log(
+    "Citizen reports:",
+    incident.reports
+);
+
+console.log(
+    "Response missions:",
+    incident.missions
+);
+
+console.log(
+    "Timeline:",
+    incident.timeline
+);
+// ============================================================
+// HISTORY MODAL DATA
+// ============================================================
+
+document.getElementById(
+    "historyIncidentId"
+).textContent =
+    incident.incidentId || "";
+
+document.getElementById(
+    "historyTitle"
+).textContent =
+    `${incident.type || "Incident"} — Complete History`;
+
+
+// ============================================================
+// SUMMARY CARDS
+// ============================================================
+
+const resolutionText =
+    incident.resolution === "AREA_SAFE"
+        ? "Area Safe"
+        : incident.resolution === "RESCUE_COMPLETED"
+            ? "Rescue Completed"
+            : "—";
+
+
+document.getElementById(
+    "historySummary"
+).innerHTML = `
+
+    <div class="bg-slate-50 rounded-xl p-4">
+        <div class="text-xs text-slate-400">
+            People Affected
+        </div>
+
+        <div class="text-xl font-bold text-slate-800 mt-1">
+            ${incident.people || 0}
+        </div>
+    </div>
+
+
+    <div class="bg-slate-50 rounded-xl p-4">
+        <div class="text-xs text-slate-400">
+            Citizen Reports
+        </div>
+
+        <div class="text-xl font-bold text-slate-800 mt-1">
+            ${(incident.reports || []).length}
+        </div>
+    </div>
+
+
+    <div class="bg-slate-50 rounded-xl p-4">
+        <div class="text-xs text-slate-400">
+            Response Missions
+        </div>
+
+        <div class="text-xl font-bold text-slate-800 mt-1">
+            ${(incident.missions || []).length}
+        </div>
+    </div>
+
+
+    <div class="bg-green-50 rounded-xl p-4">
+        <div class="text-xs text-green-600">
+            Resolution
+        </div>
+
+        <div class="font-bold text-green-700 mt-1">
+            ${resolutionText}
+        </div>
+    </div>
+
+`;
+
+
+// ============================================================
+// RESPONSE MISSIONS
+// ============================================================
+
+const missions =
+    incident.missions || [];
+
+const missionContainer =
+    document.getElementById(
+        "historyMissions"
+    );
+
+
+if (missions.length === 0) {
+
+    missionContainer.innerHTML = `
+
+        <div class="bg-slate-50 rounded-lg p-5 text-sm text-slate-400">
+            No response missions recorded.
+        </div>
+
+    `;
+
+} else {
+
+    missionContainer.innerHTML =
+        missions.map(
+            mission => `
+
+                <div
+                    class="border border-slate-200 rounded-xl p-4 mb-3"
+                >
+
+                    <div class="flex justify-between items-center">
+
+                        <div class="font-bold text-slate-800">
+                            🚑 ${mission.teamId || "Unknown Team"}
+                        </div>
+
+                        <span
+                            class="text-xs font-bold px-2 py-1
+                                   rounded-full bg-blue-100 text-blue-700"
+                        >
+                            ${mission.status || "UNKNOWN"}
+                        </span>
+
+                    </div>
+
+
+                    <div
+                        class="grid grid-cols-1 md:grid-cols-3
+                               gap-3 mt-4 text-sm"
+                    >
+
+                        <div>
+
+                            <div class="text-xs text-slate-400">
+                                Dispatched
+                            </div>
+
+                            <div class="font-semibold">
+                                ${
+                                    mission.dispatchedAt
+                                        ? new Date(
+                                            mission.dispatchedAt
+                                        ).toLocaleString()
+                                        : "—"
+                                }
+                            </div>
+
+                        </div>
+
+
+                        <div>
+
+                            <div class="text-xs text-slate-400">
+                                Arrived
+                            </div>
+
+                            <div class="font-semibold">
+                                ${
+                                    mission.arrivedAt
+                                        ? new Date(
+                                            mission.arrivedAt
+                                        ).toLocaleString()
+                                        : "—"
+                                }
+                            </div>
+
+                        </div>
+
+
+                        <div>
+
+                            <div class="text-xs text-slate-400">
+                                Completed
+                            </div>
+
+                            <div class="font-semibold">
+                                ${
+                                    mission.completedAt
+                                        ? new Date(
+                                            mission.completedAt
+                                        ).toLocaleString()
+                                        : "—"
+                                }
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div
+                        class="mt-3 pt-3 border-t
+                               border-slate-100 text-xs text-slate-500"
+                    >
+
+                        ETA:
+                        ${mission.etaMinutes || 0} min
+
+                        &nbsp; • &nbsp;
+
+                        Distance:
+                        ${mission.distanceKm || 0} km
+
+                    </div>
+
+                </div>
+
+            `
+        ).join("");
+
+}
+
+
+// ============================================================
+// INCIDENT TIMELINE
+// ============================================================
+
+const timeline =
+    incident.timeline || [];
+
+const timelineContainer =
+    document.getElementById(
+        "historyTimeline"
+    );
+
+
+if (timeline.length === 0) {
+
+    timelineContainer.innerHTML = `
+
+        <div class="bg-slate-50 rounded-lg p-5 text-sm text-slate-400">
+            No timeline events recorded.
+        </div>
+
+    `;
+
+} else {
+
+    timelineContainer.innerHTML =
+        timeline.map(
+            event => `
+
+                <div class="flex gap-4 mb-5">
+
+                    <div
+                        class="w-3 h-3 rounded-full
+                               bg-indigo-600 mt-1.5 flex-shrink-0"
+                    ></div>
+
+
+                    <div>
+
+                        <div class="font-bold text-slate-800">
+                            ${formatEvent(event.event)}
+                        </div>
+
+                        <div class="text-xs text-slate-400 mt-1">
+                            ${
+                                event.timestamp
+                                    ? new Date(
+                                        event.timestamp
+                                    ).toLocaleString()
+                                    : "—"
+                            }
+                        </div>
+
+                        <div class="text-sm text-slate-500 mt-1">
+                            ${event.details || ""}
+                        </div>
+
+                    </div>
+
+                </div>
+
+            `
+        ).join("");
+
+}
+
+
+// ============================================================
+// CITIZEN REPORTS
+// ============================================================
+
+const reports =
+    incident.reports || [];
+
+const reportsContainer =
+    document.getElementById(
+        "historyReports"
+    );
+
+
+if (reports.length === 0) {
+
+    reportsContainer.innerHTML = `
+
+        <div class="bg-slate-50 rounded-lg p-5 text-sm text-slate-400">
+            No citizen reports found.
+        </div>
+
+    `;
+
+} else {
+
+    reportsContainer.innerHTML =
+        reports.map(
+            report => `
+
+                <div
+                    class="border border-slate-200
+                           rounded-xl p-4 mb-3"
+                >
+
+                    <div class="flex justify-between">
+
+                        <div class="font-semibold text-slate-700">
+                            Citizen Report
+                        </div>
+
+                        <div class="text-xs text-slate-400">
+                            ${
+                                report.createdAt
+                                    ? new Date(
+                                        report.createdAt
+                                    ).toLocaleString()
+                                    : "—"
+                            }
+                        </div>
+
+                    </div>
+
+
+                    <div class="text-sm text-slate-600 mt-2">
+                        ${report.description || "No description"}
+                    </div>
+
+
+                    <div
+                        class="text-xs text-slate-400 mt-3"
+                    >
+
+                        👥 People reported:
+                        ${report.peopleCount || 0}
+
+                        &nbsp; • &nbsp;
+
+                        Urgency:
+                        ${report.urgency || "—"}
+
+                    </div>
+
+
+                    ${
+                        report.photo
+                            ? `
+                                <img
+                                    src="${report.photo}"
+                                    class="mt-3 max-h-48 rounded-lg object-cover"
+                                >
+                            `
+                            : ""
+                    }
+
+                </div>
+
+            `
+        ).join("");
+
+}
+
+
+// ============================================================
+// OPEN MODAL
+// ============================================================
+
+document.getElementById(
+    "historyModal"
+).classList.remove("hidden");
+    } catch (error) {
+
+        console.error(
+            "Failed to load incident:",
+            error
+        );
+
+        alert(
+            "Could not load incident history."
+        );
+
+    }
+
+}
+function closeHistory() {
+
+    const modal =
+        document.getElementById(
+            "historyModal"
+        );
+
+    if (modal) {
+
+        modal.classList.add("hidden");
+
+    }
+
+}
+
+loadPastIncidents();
+
+</script>
+</body>
+
+</html>

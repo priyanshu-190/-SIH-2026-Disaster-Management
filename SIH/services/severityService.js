@@ -1,0 +1,90 @@
+const SEVERITY_AI_URL =
+    "http://127.0.0.1:5001/predict-severity";
+
+
+async function predictSeverity(inputs) {
+
+    try {
+
+        const response = await fetch(
+            SEVERITY_AI_URL,
+            {
+                method: "POST",
+
+                headers: {
+                    "Content-Type": "application/json"
+                },
+
+                body: JSON.stringify({
+
+                    citizen_severity:
+                        inputs.citizenSeverity,
+
+                    nearby_reports:
+                        inputs.nearbyReports,
+
+                    disaster_type:
+                        inputs.disasterType,
+
+                    population_density:
+                        inputs.populationDensity,
+
+                    distance_critical_infra:
+                        inputs.distanceCriticalInfra,
+
+                    alert_intensity:
+                        inputs.alertIntensity,
+
+                    people_affected:
+                        inputs.peopleAffected,
+
+                    historical_risk:
+                        inputs.historicalRisk
+
+                })
+            }
+        );
+
+
+        const data =
+            await response.json();
+
+
+        if (!response.ok) {
+
+            throw new Error(
+                data.error ||
+                "Severity AI prediction failed"
+            );
+
+        }
+
+
+        return {
+
+            severityScore:
+                data.severity_score,
+
+            severityLevel:
+                data.severity_level
+
+        };
+
+
+    } catch (error) {
+
+        console.error(
+            "Severity AI error:",
+            error.message
+        );
+
+        throw error;
+
+    }
+
+}
+
+
+module.exports = {
+    predictSeverity
+};
